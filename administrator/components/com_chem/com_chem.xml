@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="component" version="1.5.0">
+    <name>Chem</name>
+    <!-- The following elements are optional and free of formatting constraints -->
+    <creationDate>2015-07-04</creationDate>
+    <author>Nick Korbut</author>
+    <authorEmail>nick.korbut@gmail.com</authorEmail>
+    <authorUrl>http://katapulta.com.ua</authorUrl>
+    <copyright>SigmaSoft</copyright>
+    <license>SigmaSoft</license>
+    <!--  The version string is recorded in the components table -->
+    <version>1.01</version>
+    <!-- The description is optional and defaults to the name -->
+    <description>Component for chemicals</description>
+
+    <!-- Site Main File Copy Section -->
+    <!-- Note the folder attribute: This attribute describes the folder
+         to copy FROM in the package to install therefore files copied
+         in this section are copied from /site/ in the package -->
+    <files folder="site">
+        <filename>controller.php</filename>
+        <filename>chem.php</filename>
+        <filename>index.html</filename>
+        <filename>views/index.html</filename>
+        <filename>views/chem/index.html</filename>
+        <filename>views/chem/view.html.php</filename>
+        <filename>views/chem/tmpl/default.php</filename>
+        <filename>views/chem/tmpl/index.html</filename>
+        <filename>views/assets/chem.css</filename>
+        <filename>views/assets/index.html</filename> 
+   </files>
+
+    <administration>
+        <!-- Administration Menu Section -->
+        <menu>Chem</menu>
+
+        <!-- Administration Main File Copy Section -->
+        <files folder="admin">
+            <filename>chem.php</filename>
+            <filename>index.html</filename>
+        </files>
+
+    </administration>
+</install>
