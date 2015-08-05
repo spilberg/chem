@@ -10,10 +10,16 @@ defined('_JEXEC') or die('Restricted access');
     </div>
 <?php endif; ?>
 <div class="contentpane<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
-<!--    <label for="id">-->
-<!--        --><?php //echo JText::_('Select Poll'); ?>
-<!--        --><?php //echo $this->lists['polls']; ?>
-<!--    </label>-->
 
- тут будет контент
+    <?php foreach($this->request as $obj) :
+       // echo $obj->status;
+        //print_r($j);
+        foreach($obj as $k => $v){
+            echo $k . ' : ' . $v . '</br>';
+        }
+    echo '</br>';
+    endforeach; ?>
+
+ <?php //print_r($this->request[0]->id); ?>
+
 </div>

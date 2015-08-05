@@ -34,7 +34,7 @@ class ChemViewChem extends JView
         $chem = $db->loadObjectList();
 
 
-        $request = "test chem";
+
         $this->assignRef('request', $chem);
         $this->assignRef('params',	$params);
         parent::display($tpl);

@@ -30,6 +30,12 @@
         <filename>views/assets/index.html</filename> 
    </files>
 
+    <!--<install>-->
+        <!--<sql>-->
+            <!--<file driver="mysql" charset="utf8">install.chem.sql</file>-->
+        <!--</sql>-->
+    <!--</install>-->
+
     <administration>
         <!-- Administration Menu Section -->
         <menu>Chem</menu>
