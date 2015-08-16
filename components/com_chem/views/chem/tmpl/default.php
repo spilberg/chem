@@ -51,13 +51,14 @@ $ddd1 = "\n\n\n\n"
 
 //$ddd = "\n\n\n 14 15  0  0  0  0  0  0  0  0999 V2000\n"
 //    . "    0.5089    7.8316    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n";
-//print_r($ddd1);
+//print_r($this->chemoptions);
 
 //echo "</br> Text: " . $ddd1;
 //echo "</br> unserialise: " . base64_encode($ddd1);
 //echo "</br> unserialise: " . base64_decode(base64_encode($ddd1));
 ?>
-<textarea id="molsource-box1"><?php echo $ddd1;?></textarea>
+<!--<textarea id="molsource-box1">--><?php //echo $ddd1;?><!--</textarea>-->
+<textarea id="molsource-box" style="display:none;"><?php echo $this->request[0]->mdl_form;?></textarea>
 <script>
 
     var caffeineSource = "\n\n\n"
@@ -97,10 +98,13 @@ $ddd1 = "\n\n\n\n"
             marvinNameSpace.onReady(function() {
                 marvin = marvinNameSpace;
                 initControl();
+                $("#createButton").click();
             });
         },function (error) {
             alert("Cannot retrieve marvin instance from iframe:"+error);
         });
+
+
     });
 
     function initControl() {
@@ -108,18 +112,33 @@ $ddd1 = "\n\n\n\n"
 
         $("#createButton").on("click", function() {
             var settings = {
-                'carbonLabelVisible' : $("#chbx-carbonVis").is(':checked'),
-                'cpkColoring' : $("#chbx-coloring").is(':checked'),
-                'implicitHydrogen' : $("#implicittype").val(),
-                'displayMode' : $("#displayMode").val(),
-                'background-color': $('#bg').val(),
-                'zoomMode' : $("#zoommode").val(),
-                'width' : parseInt($("#w").val(), 10),
-                'height' : parseInt($("#h").val(), 10)
+                'carbonLabelVisible' : '<?php echo $this->chemoptions->carbonLabelVisible; ?>' ,
+                'cpkColoring' :  '<?php echo $this->chemoptions->cpkColoring; ?>',
+                'implicitHydrogen' :  '<?php echo $this->chemoptions->implicitHydrogen; ?>',
+                'displayMode' : '<?php echo $this->chemoptions->displayMode; ?>',
+                'background-color': '<?php echo $this->chemoptions->bgrcolor; ?>',
+                'zoomMode' : '<?php echo $this->chemoptions->zoomMode; ?>',
+                'width' : '<?php echo $this->chemoptions->width; ?>',
+                'height' : '<?php echo $this->chemoptions->height; ?>'
             };
-            var dataUrl = marvin.ImageExporter.molToDataUrl($("#molsource-box1").val(),"image/png",settings);
+//            var settings = {
+//                'carbonLabelVisible' : $("#chbx-carbonVis").is(':checked'),
+//                'cpkColoring' : $("#chbx-coloring").is(':checked'),
+//                'implicitHydrogen' : $("#implicittype").val(),
+//                'displayMode' : $("#displayMode").val(),
+//                'background-color': $('#bg').val(),
+//                'zoomMode' : $("#zoommode").val(),
+//                'width' : parseInt($("#w").val(), 10),
+//                'height' : parseInt($("#h").val(), 10),
+//                'fff' : ''
+//            };
+            var dataUrl = marvin.ImageExporter.molToDataUrl($("#molsource-box").val(),"image/png",settings);
+//            var dataUrl = marvin.ImageExporter.molToDataUrl(fff,"image/png",settings);
             $("#image").attr("src", dataUrl);
+
             $("#imageContainer").css("display", "inline-block");
+            $("#wait").css("display", "none");
+
         });
     }
 </script>
@@ -130,14 +149,6 @@ $ddd1 = "\n\n\n\n"
     </div>
 <?php endif; ?>
 <div class="contentpane<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
-<?php
-
-
-
-
-?>
-
-
     <!-- --->
     <noscript>
         <div>
@@ -146,7 +157,7 @@ $ddd1 = "\n\n\n\n"
     </noscript>
     <!-- <iframe src="../marvinpack.html" id="marvinjs-iframe" width="100" height="100"></iframe>-->
     <div id="convertStructureInputHeader" class="table-layout">
-        <li><span>Carbon labels</span><input type="checkbox" id="chbx-carbonVis" /></li>
+        <!-- li><span>Carbon labels</span><input type="checkbox" id="chbx-carbonVis" /></li>
         <li><span>CPK coloring</span><input type="checkbox" id="chbx-coloring" checked="checked" /></li>
         <li><span>Implicit Hydrogens</span>
             <select id="implicittype" name="unittype">
@@ -168,30 +179,33 @@ $ddd1 = "\n\n\n\n"
                 <option value="autoshrink">autoshrink</option>
             </select>
         </li>
-        <li><span>Width:</span><input id="w" type="number" name="quantity" min="1"
-                                      value="300" /></li>
-        <li><span>Height:</span><input id="h" type="number" name="quantity" min="1"
-                                       value="300" /></li>
-        <li><span>Background Color:</span><input id="bg" type="color" name="bg" value="#ffffff"/></li>
-        <input id="createButton" type="button" value="Create Image" style="float: right; margin-top: 1em;"/>
+        <li><span>Width:</span><input id="w" type="number" name="quantity" min="1" value="300" /></li>
+        <li><span>Height:</span><input id="h" type="number" name="quantity" min="1" value="300" /></li>
+        <li><span>Background Color:</span><input id="bg" type="color" name="bg" value="#ffffff"/></li -->
+        <input id="createButton" type="button" value="Create Image" style="float: right; margin-top: 1em; visibility: hidden;"/>
     </div>
 <!--    <textarea id="molsource-box">--><?php //echo $ddd1;?><!--</textarea>-->
+    <div id="wait"><h2>Please wait...</h2></div>
     <div id="imageContainer" class="left10" style="display: none;">
+
         <img id="image" class="bordered" />
     </div>
 
     <!-- -->
 
 
-    <?php foreach($this->request as $obj) :
-       // echo $obj->status;
-        //print_r($j);
-        foreach($obj as $k => $v){
-            echo $k . ' : ' . $v . '</br>';
-        }
-    echo '</br>';
-    endforeach; ?>
+<!--    --><?php //foreach($this->request as $obj) :
+//     foreach($obj as $k => $v){
+//            echo $k . ' : ' . $v . '</br>';
+//        }
+//    echo '</br>';
+//    endforeach; ?>
 
- <?php //print_r($this->request[0]->id); ?>
+<?php
+
+$chem = $this->request[0];
+
+
+?>
 
 </div>
