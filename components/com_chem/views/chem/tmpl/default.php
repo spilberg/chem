@@ -191,21 +191,17 @@ $ddd1 = "\n\n\n\n"
         <img id="image" class="bordered" />
     </div>
 
-    <!-- -->
 
+<div>
+    <?php
+    foreach($this->request as $obj) :
+     foreach($obj as $k => $v){
+            echo '<b>' . $k . '</b> : ' . $v . '</br>';
+        }
+    echo '</br>';
+    endforeach;
+    ?>
+</div>
 
-<!--    --><?php //foreach($this->request as $obj) :
-//     foreach($obj as $k => $v){
-//            echo $k . ' : ' . $v . '</br>';
-//        }
-//    echo '</br>';
-//    endforeach; ?>
-
-<?php
-
-$chem = $this->request[0];
-
-
-?>
 
 </div>
