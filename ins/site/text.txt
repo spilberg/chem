@@ -1,0 +1,93 @@
+ Том в устройстве D не имеет метки.
+ Серийный номер тома: A636-797D
+
+ Содержимое папки d:\WebServers\home\chem\www\ins\site
+
+[.]              [..]             chem.php         controller.php
+index.html       [marvin]         [models]         text.txt
+[views]          
+               4 файлов          1 232 байт
+
+ Содержимое папки d:\WebServers\home\chem\www\ins\site\marvin
+
+[.]               [..]              [gui]             [js]
+marvinpack.html   
+               1 файлов            387 байт
+
+ Содержимое папки d:\WebServers\home\chem\www\ins\site\marvin\gui
+
+[.]
+[..]
+0311BAE16F19A3AD36EC493B10B1ECAD.cache.js
+13DC16C4F75D00391F5DB719AE755121.cache.js
+27CB3DEA9F57160BBDC844C31111A716.cache.js
+30674AEE5EC3FD974EB0113B57C30768.cache.js
+7F5DE7AD38A0F5D4FFBB9DC3E4B265C8.cache.js
+clear.cache.gif
+[css]
+E90EA8A0EFDEDACC464705F31B5D3510.cache.txt
+gui.nocache.js
+[lib]
+               8 файлов      4 857 314 байт
+
+ Содержимое папки d:\WebServers\home\chem\www\ins\site\marvin\gui\css
+
+[.]    [..]   [auto] 
+               0 файлов              0 байт
+
+ Содержимое папки d:\WebServers\home\chem\www\ins\site\marvin\gui\css\auto
+
+[.]         [..]        clean.css   gui.css     
+               2 файлов         36 653 байт
+
+ Содержимое папки d:\WebServers\home\chem\www\ins\site\marvin\gui\lib
+
+[.]                    [..]                   promise-1.0.0.min.js
+               1 файлов          5 192 байт
+
+ Содержимое папки d:\WebServers\home\chem\www\ins\site\marvin\js
+
+[.]                   [..]                  [lib]
+marvinjslauncher.js   
+               1 файлов          3 073 байт
+
+ Содержимое папки d:\WebServers\home\chem\www\ins\site\marvin\js\lib
+
+[.]                   [..]                  jquery-1.9.1.min.js
+[rainbow]             
+               1 файлов         92 629 байт
+
+ Содержимое папки d:\WebServers\home\chem\www\ins\site\marvin\js\lib\rainbow
+
+[.]                     [..]                    github.css
+rainbow-custom.min.js   twilight.css            
+               3 файлов          9 997 байт
+
+ Содержимое папки d:\WebServers\home\chem\www\ins\site\models
+
+[.]        [..]       chem.php   
+               1 файлов            280 байт
+
+ Содержимое папки d:\WebServers\home\chem\www\ins\site\views
+
+[.]          [..]         [assets]     [chem]       index.html   
+               1 файлов             44 байт
+
+ Содержимое папки d:\WebServers\home\chem\www\ins\site\views\assets
+
+[.]          [..]         chem.css     index.html   
+               2 файлов            576 байт
+
+ Содержимое папки d:\WebServers\home\chem\www\ins\site\views\chem
+
+[.]             [..]            index.html      [tmpl]          view.html.php
+               2 файлов          2 092 байт
+
+ Содержимое папки d:\WebServers\home\chem\www\ins\site\views\chem\tmpl
+
+[.]           [..]          default.php   index.html    
+               2 файлов         10 457 байт
+
+     Всего файлов:
+              29 файлов      5 019 926 байт
+              41 папок  42 803 167 232 байт свободно

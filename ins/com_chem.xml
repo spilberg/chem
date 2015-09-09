@@ -27,8 +27,26 @@
         <filename>views/chem/tmpl/default.php</filename>
         <filename>views/chem/tmpl/index.html</filename>
         <filename>views/assets/chem.css</filename>
-        <filename>views/assets/index.html</filename> 
-   </files>
+        <filename>views/assets/index.html</filename>
+        <filename>marvin/marvinpack.html</filename>
+        <filename>marvin/gui/0311BAE16F19A3AD36EC493B10B1ECAD.cache.js</filename>
+        <filename>marvin/gui/13DC16C4F75D00391F5DB719AE755121.cache.js</filename>
+        <filename>marvin/gui/27CB3DEA9F57160BBDC844C31111A716.cache.js</filename>
+        <filename>marvin/gui/30674AEE5EC3FD974EB0113B57C30768.cache.js</filename>
+        <filename>marvin/gui/7F5DE7AD38A0F5D4FFBB9DC3E4B265C8.cache.js</filename>
+        <filename>marvin/gui/clear.cache.gif</filename>
+        <filename>marvin/gui/E90EA8A0EFDEDACC464705F31B5D3510.cache.txt</filename>
+        <filename>marvin/gui/gui.nocache.js</filename>
+        <filename>marvin/gui/css/auto/clean.css</filename>
+        <filename>marvin/gui/css/auto/gui.css</filename>
+        <filename>marvin/gui/lib/promise-1.0.0.min.js</filename>
+        <filename>marvin/js/marvinjslauncher.js</filename>
+        <filename>marvin/js/lib/jquery-1.9.1.min.js</filename>
+        <filename>marvin/js/lib/rainbow/github.css</filename>
+        <filename>marvin/js/lib/rainbow/rainbow-custom.min.js</filename>
+        <filename>marvin/js/lib/rainbow/twilight.css</filename>
+        <filename>models/chem.php</filename>
+    </files>
 
     <install>
         <sql>
