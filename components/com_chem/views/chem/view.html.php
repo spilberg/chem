@@ -23,7 +23,7 @@ class ChemViewChem extends JView
         $chemOptions->set('height', JRequest::getVar('height', 300, '', 'int'));
 
 
-
+       // $this->setLayout('jsme');
 
         $db 	  =& JFactory::getDBO();
         $document =& JFactory::getDocument();

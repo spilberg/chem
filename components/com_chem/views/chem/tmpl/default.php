@@ -58,7 +58,7 @@ $ddd1 = "\n\n\n\n"
 //echo "</br> unserialise: " . base64_decode(base64_encode($ddd1));
 ?>
 <!--<textarea id="molsource-box1">--><?php //echo $ddd1;?><!--</textarea>-->
-<textarea id="molsource-box" style="display:none;"><?php echo $this->request[0]->mdl_form;?></textarea>
+<textarea id="molsource-box" ><?php echo $this->request[0]->mdl_form;?></textarea>
 <script>
 
     var caffeineSource = "\n\n\n"
@@ -91,6 +91,7 @@ $ddd1 = "\n\n\n\n"
         // load marvin namespace in a separate frame to avoid css conflict
         // the display attribute of this iframe cannot be "none", but you can hide it somewhere
         $('body').append($('<iframe>', { id: "marvinjs-iframe", src: "/components/com_chem/marvin/marvinpack.html"}));
+//        $('body').append($('<iframe>', { id: "marvinjs-iframe", src: "https://marvinjs-demo.chemaxon.com/latest/marvinpack.html"}));
         // wait for the reference of marvin namespace from the iframe
         MarvinJSUtil.getPackage("#marvinjs-iframe").then(function (marvinNameSpace) {
             // the reference to the namespace is arrived but there is no guaranty that its initalization has been finished
@@ -98,7 +99,7 @@ $ddd1 = "\n\n\n\n"
             marvinNameSpace.onReady(function() {
                 marvin = marvinNameSpace;
                 initControl();
-                $("#createButton").click();
+               $("#createButton").click();
             });
         },function (error) {
             alert("Cannot retrieve marvin instance from iframe:"+error);
@@ -111,27 +112,27 @@ $ddd1 = "\n\n\n\n"
        // $("#molsource-box").val(caffeineSource);
 
         $("#createButton").on("click", function() {
-            var settings = {
-                'carbonLabelVisible' : '<?php echo $this->chemoptions->carbonLabelVisible; ?>' ,
-                'cpkColoring' :  '<?php echo $this->chemoptions->cpkColoring; ?>',
-                'implicitHydrogen' :  '<?php echo $this->chemoptions->implicitHydrogen; ?>',
-                'displayMode' : '<?php echo $this->chemoptions->displayMode; ?>',
-                'background-color': '<?php echo $this->chemoptions->bgrcolor; ?>',
-                'zoomMode' : '<?php echo $this->chemoptions->zoomMode; ?>',
-                'width' : '<?php echo $this->chemoptions->width; ?>',
-                'height' : '<?php echo $this->chemoptions->height; ?>'
-            };
 //            var settings = {
-//                'carbonLabelVisible' : $("#chbx-carbonVis").is(':checked'),
-//                'cpkColoring' : $("#chbx-coloring").is(':checked'),
-//                'implicitHydrogen' : $("#implicittype").val(),
-//                'displayMode' : $("#displayMode").val(),
-//                'background-color': $('#bg').val(),
-//                'zoomMode' : $("#zoommode").val(),
-//                'width' : parseInt($("#w").val(), 10),
-//                'height' : parseInt($("#h").val(), 10),
-//                'fff' : ''
+//                'carbonLabelVisible' : '<?php //echo $this->chemoptions->carbonLabelVisible; ?>//' ,
+//                'cpkColoring' :  '<?php //echo $this->chemoptions->cpkColoring; ?>//',
+//                'implicitHydrogen' :  '<?php //echo $this->chemoptions->implicitHydrogen; ?>//',
+//                'displayMode' : '<?php //echo $this->chemoptions->displayMode; ?>//',
+//                'background-color': '<?php //echo $this->chemoptions->bgrcolor; ?>//',
+//                'zoomMode' : '<?php //echo $this->chemoptions->zoomMode; ?>//',
+//                'width' : '<?php //echo $this->chemoptions->width; ?>//',
+//                'height' : '<?php //echo $this->chemoptions->height; ?>//'
 //            };
+            var settings = {
+                'carbonLabelVisible' : $("#chbx-carbonVis").is(':checked'),
+                'cpkColoring' : $("#chbx-coloring").is(':checked'),
+                'implicitHydrogen' : $("#implicittype").val(),
+                'displayMode' : $("#displayMode").val(),
+                'background-color': $('#bg').val(),
+                'zoomMode' : $("#zoommode").val(),
+                'width' : parseInt($("#w").val(), 10),
+                'height' : parseInt($("#h").val(), 10),
+                'fff' : ''
+            };
             var dataUrl = marvin.ImageExporter.molToDataUrl($("#molsource-box").val(),"image/png",settings);
 //            var dataUrl = marvin.ImageExporter.molToDataUrl(fff,"image/png",settings);
             $("#image").attr("src", dataUrl);
@@ -155,9 +156,9 @@ $ddd1 = "\n\n\n\n"
             <p>Your web browser must have JavaScript enabled in order for this application to display correctly.</p>
         </div>
     </noscript>
-    <!-- <iframe src="../marvinpack.html" id="marvinjs-iframe" width="100" height="100"></iframe>-->
+    <!-- <iframe111 src="../marvinpack.html" id="marvinjs-iframe" width="100" height="100"></iframe>-->
     <div id="convertStructureInputHeader" class="table-layout">
-        <!-- li><span>Carbon labels</span><input type="checkbox" id="chbx-carbonVis" /></li>
+        <li><span>Carbon labels</span><input type="checkbox" id="chbx-carbonVis" /></li>
         <li><span>CPK coloring</span><input type="checkbox" id="chbx-coloring" checked="checked" /></li>
         <li><span>Implicit Hydrogens</span>
             <select id="implicittype" name="unittype">
@@ -181,8 +182,8 @@ $ddd1 = "\n\n\n\n"
         </li>
         <li><span>Width:</span><input id="w" type="number" name="quantity" min="1" value="300" /></li>
         <li><span>Height:</span><input id="h" type="number" name="quantity" min="1" value="300" /></li>
-        <li><span>Background Color:</span><input id="bg" type="color" name="bg" value="#ffffff"/></li -->
-        <input id="createButton" type="button" value="Create Image" style="float: right; margin-top: 1em; visibility: hidden;"/>
+        <li><span>Background Color:</span><input id="bg" type="color" name="bg" value="#ffffff"/></li>
+        <input id="createButton" type="button" value="Create Image" style="float: right; margin-top: 1em;"/>
     </div>
 <!--    <textarea id="molsource-box">--><?php //echo $ddd1;?><!--</textarea>-->
     <div id="wait"><h2>Please wait...</h2></div>
