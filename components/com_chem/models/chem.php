@@ -9,7 +9,7 @@ class ChemModelChem extends JModel{
 
     }
 
-    function grtChem(){
+    function getChem(){
 
     }
 }

@@ -33,7 +33,7 @@ class TableContact extends JTable
 	/** @var string */
 	var $address 			= null;
 	/** @var string */
-	var $suburb 				= null;
+	var $suburb 			= null;
 	/** @var string */
 	var $state 				= null;
 	/** @var string */

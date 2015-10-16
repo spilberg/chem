@@ -36,11 +36,11 @@ class ChemViewChem extends JView
         $menus	= &JSite::getMenu();
         $menu	= $menus->getActive();
 
-        $params->set('page_title','Chem');
+       // $params->set('page_title','Chem');
         $document->setTitle( $params->get( 'page_title' ) );
 
         $params->def( 'show_page_title', 1 );
-        $params->def( 'page_title', 'Chem Title' );
+        //$params->def( 'page_title', 'Chem Title' );
 
 
         $where = ($id!==0) ? ' where id='.$id : '';

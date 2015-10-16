@@ -25,6 +25,7 @@ class HTML_contact
 	{
 		$user =& JFactory::getUser();
 
+
 		//Ordering allowed ?
 		$ordering = ($lists['order'] == 'cd.ordering');
 
