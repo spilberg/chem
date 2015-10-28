@@ -17,6 +17,7 @@ class HTML_chem {
     {
         $user =& JFactory::getUser();
 
+        var_dump($rows);
 
         //Ordering allowed ?
         $ordering = ($lists['order'] == 'cd.ordering');
@@ -35,8 +36,8 @@ class HTML_chem {
                     </td>
                     <td nowrap="nowrap">
                         <?php
-                        echo $lists['catid'];
-                        echo $lists['state'];
+//                        echo $lists['catid'];
+//                        echo $lists['state'];
                         ?>
                     </td>
                 </tr>
@@ -51,28 +52,36 @@ class HTML_chem {
                     <th width="10" class="title">
                         <input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count($rows); ?>);" />
                     </th>
-                    <th class="title">
-                        <?php echo JHTML::_('grid.sort',   'Name', 'cd.name', @$lists['order_Dir'], @$lists['order'] ); ?>
-                    </th>
-                    <th width="5%" class="title" nowrap="nowrap">
-                        <?php echo JHTML::_('grid.sort',   'Published', 'cd.published', @$lists['order_Dir'], @$lists['order'] ); ?>
-                    </th>
-                    <th nowrap="nowrap" width="8%">
-                        <?php echo JHTML::_('grid.sort',   'Order by', 'cd.ordering', @$lists['order_Dir'], @$lists['order'] ); ?>
-                        <?php if ($ordering) echo JHTML::_('grid.order',  $rows ); ?>
-                    </th>
-                    <th width="8%" nowrap="nowrap">
-                        <?php echo JHTML::_('grid.sort',   'Access', 'cd.access', @$lists['order_Dir'], @$lists['order'] ); ?>
-                    </th>
-                    <th width="10%" class="title">
-                        <?php echo JHTML::_('grid.sort',   'Category', 'category', @$lists['order_Dir'], @$lists['order'] ); ?>
-                    </th>
-                    <th class="title" nowrap="nowrap" width="10%">
-                        <?php echo JHTML::_('grid.sort',   'Linked to User', 'user', @$lists['order_Dir'], @$lists['order'] ); ?>
-                    </th>
                     <th width="1%" nowrap="nowrap">
                         <?php echo JHTML::_('grid.sort',   'ID', 'cd.id', @$lists['order_Dir'], @$lists['order'] ); ?>
                     </th>
+
+                    <th>
+                        <?php echo JText::_('cat_namber'); ?>
+                    </th>
+                    <th class="title">
+
+                        <?php echo JTEXT::_('molecular_formula'); ?>
+<!--                        --><?php //echo JHTML::_('grid.sort',   'Name', 'cd.name', @$lists['order_Dir'], @$lists['order'] ); ?>
+                    </th>
+                    <th width="5%" class="title" nowrap="nowrap">
+<!--                        --><?php //echo JHTML::_('grid.sort',   'Published', 'cd.published', @$lists['order_Dir'], @$lists['order'] ); ?>
+                        <?php echo JTEXT::_('Status' ); ?>
+                    </th>
+<!--                    <th nowrap="nowrap" width="8%">-->
+<!--                        --><?php //echo JHTML::_('grid.sort',   'Order by', 'cd.ordering', @$lists['order_Dir'], @$lists['order'] ); ?>
+<!--                        --><?php //if ($ordering) echo JHTML::_('grid.order',  $rows ); ?>
+<!--                    </th>-->
+<!--                    <th width="8%" nowrap="nowrap">-->
+<!--                        --><?php //echo JHTML::_('grid.sort',   'Access', 'cd.access', @$lists['order_Dir'], @$lists['order'] ); ?>
+<!--                    </th>-->
+<!--                    <th width="10%" class="title">-->
+<!--                        --><?php //echo JHTML::_('grid.sort',   'Category', 'category', @$lists['order_Dir'], @$lists['order'] ); ?>
+<!--                    </th>-->
+<!--                    <th class="title" nowrap="nowrap" width="10%">-->
+<!--                        --><?php //echo JHTML::_('grid.sort',   'Linked to User', 'user', @$lists['order_Dir'], @$lists['order'] ); ?>
+<!--                    </th>-->
+
                 </tr>
                 </thead>
                 <tfoot>
@@ -88,7 +97,7 @@ class HTML_chem {
                 for ($i=0, $n=count($rows); $i < $n; $i++) {
                     $row = $rows[$i];
 
-                    $link 		= JRoute::_( 'index.php?option=com_contact&task=edit&cid[]='. $row->id );
+                    $link 		= JRoute::_( 'index.php?option=com_chem&task=edit&cid[]='. $row->id );
 
                     $checked 	= JHTML::_('grid.checkedout',   $row, $i );
                     $access 	= JHTML::_('grid.access',   $row, $i );
@@ -104,42 +113,49 @@ class HTML_chem {
                         <td>
                             <?php echo $checked; ?>
                         </td>
+                        <td align="center">
+                            <?php echo $row->id; ?>
+                        </td>
+
+
+                        <td>
+                            <?php echo $row->cat_namber; ?>
+                        </td>
                         <td>
                             <?php
                             if (JTable::isCheckedOut($user->get ('id'), $row->checked_out )) :
-                                echo htmlspecialchars($row->name);
+                                echo htmlspecialchars($row->molecular_formula);
                             else :
                                 ?>
-                                <span class="editlinktip hasTip" title="<?php echo JText::_( 'Edit Contact' );?>::<?php echo htmlspecialchars($row->name); ?>">
+                                <span class="editlinktip hasTip" title="<?php echo JText::_( 'Edit Element' );?>::<?php echo htmlspecialchars($row->molecular_formula); ?>">
 						<a href="<?php echo $link; ?>">
-                            <?php echo htmlspecialchars($row->name); ?></a> </span>
+                            <?php echo htmlspecialchars($row->molecular_formula); ?></a> </span>
                             <?php
                             endif;
                             ?>
                         </td>
                         <td align="center">
-                            <?php echo $published;?>
+<!--                            --><?php //echo $published;?>
+                            <?php echo $row->status;?>
                         </td>
-                        <td class="order">
-                            <span><?php echo $pageNav->orderUpIcon( $i, ( $row->catid == @$rows[$i-1]->catid ), 'orderup', 'Move Up', $ordering ); ?></span>
-                            <span><?php echo $pageNav->orderDownIcon( $i, $n, ( $row->catid == @$rows[$i+1]->catid ), 'orderdown', 'Move Down', $ordering ); ?></span>
-                            <?php $disabled = $ordering ?  '' : 'disabled="disabled"'; ?>
-                            <input type="text" name="order[]" size="5" value="<?php echo $row->ordering;?>" <?php echo $disabled ?> class="text_area" style="text-align: center" />
-                        </td>
-                        <td align="center">
-                            <?php echo $access;?>
-                        </td>
-                        <td>
-                            <a href="<?php echo $row->cat_link; ?>" title="<?php echo JText::_( 'Edit Category' ); ?>">
-                                <?php echo $row->category; ?></a>
-                        </td>
-                        <td>
-                            <a href="<?php echo $row->user_link; ?>" title="<?php echo JText::_( 'Edit User' ); ?>">
-                                <?php echo $row->user; ?></a>
-                        </td>
-                        <td align="center">
-                            <?php echo $row->id; ?>
-                        </td>
+<!--                        <td class="order">-->
+<!--                            <span>--><?php //echo $pageNav->orderUpIcon( $i, ( $row->catid == @$rows[$i-1]->catid ), 'orderup', 'Move Up', $ordering ); ?><!--</span>-->
+<!--                            <span>--><?php //echo $pageNav->orderDownIcon( $i, $n, ( $row->catid == @$rows[$i+1]->catid ), 'orderdown', 'Move Down', $ordering ); ?><!--</span>-->
+<!--                            --><?php //$disabled = $ordering ?  '' : 'disabled="disabled"'; ?>
+<!--                            <input type="text" name="order[]" size="5" value="--><?php //echo $row->ordering;?><!--" --><?php //echo $disabled ?><!-- class="text_area" style="text-align: center" />-->
+<!--                        </td>-->
+<!--                        <td align="center">-->
+<!--                            --><?php //echo $access;?>
+<!--                        </td>-->
+<!--                        <td>-->
+<!--                            <a href="--><?php //echo $row->cat_link; ?><!--" title="--><?php //echo JText::_( 'Edit Category' ); ?><!--">-->
+<!--                                --><?php //echo $row->category; ?><!--</a>-->
+<!--                        </td>-->
+<!--                        <td>-->
+<!--                            <a href="--><?php //echo $row->user_link; ?><!--" title="--><?php //echo JText::_( 'Edit User' ); ?><!--">-->
+<!--                                --><?php //echo $row->user; ?><!--</a>-->
+<!--                        </td>-->
+
                     </tr>
                     <?php
                     $k = 1 - $k;
