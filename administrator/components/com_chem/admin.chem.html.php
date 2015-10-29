@@ -173,4 +173,374 @@ class HTML_chem {
         </form>
     <?php
     }
+
+    function editMolecule( &$row, &$lists, $option, &$params ) {
+
+        JRequest::setVar( 'hidemainmenu', 1 );
+
+        JHTML::_('script', 'jquery-1.9.1.min.js', 'components/com_chem/marvin/js/lib/');
+        JHTML::_('script', 'jsme.nocache.js', 'components/com_chem/jsme/');
+
+//        if ($row->image == '') {
+//            $row->image = 'blank.png';
+//        }
+
+        JHTML::_('behavior.tooltip');
+        jimport('joomla.html.pane');
+        // TODO: allowAllClose should default true in J!1.6, so remove the array when it does.
+//        $pane = &JPane::getInstance('sliders', array('allowAllClose' => true));
+
+//        JFilterOutput::objectHTMLSafe( $row, ENT_QUOTES, 'misc' );
+//        $cparams = JComponentHelper::getParams ('com_media');
+        ?>
+        <script language="javascript" type="text/javascript">
+            <!--
+            function submitbutton(pressbutton) {
+                var form = document.adminForm;
+                if (pressbutton == 'cancel') {
+                    submitform( pressbutton );
+                    return;
+                }
+
+                // do field validation
+//                if ( form.name.value == "" ) {
+//                    alert( "<?php //echo JText::_( 'You must provide a name.', true ); ?>//" );
+//                } else if ( form.catid.value == 0 ) {
+//                    alert( "<?php //echo JText::_( 'Please select a Category.', true ); ?>//" );
+//                } else {
+//                    submitform( pressbutton );
+//                }
+
+                submitform( pressbutton );
+            }
+            //-->
+        </script>
+
+
+        <script>
+            //this function will be called after the JavaScriptApplet code has been loaded.
+            function jsmeOnLoad() {
+                jsmeApplet = new JSApplet.JSME("jsme_container", "380px", "340px", {
+            "options" : "oldlook,nopaste,border,nostar,polarnitro,noquery,nohydrogens"
+//                    "options" : "<?php //echo $jsme_param; ?>//"
+                });
+                readMOLFromTextArea();
+            }
+
+            function readMOLFromTextArea() {
+                var mol = document.getElementById("mdl_form").value;
+                jsmeApplet.readMolFile(mol);
+            }
+        </script>
+
+        <form action="index.php" method="post" name="adminForm">
+
+            <div class="col width-60">
+
+                <fieldset class="adminform">
+                    <legend><?php echo JText::_( 'Information' ); ?></legend>
+
+                    <table class="admintable">
+
+                        <?php if ($row->id) { ?>
+                            <tr>
+                                <td class="key">
+                                    <label>
+                                        <?php echo JText::_( 'ID' ); ?>:
+                                    </label>
+                                </td>
+                                <td>
+                                    <strong><?php echo $row->id;?></strong>
+                                </td>
+                            </tr>
+                        <?php } ?>
+
+                        <tr>
+                            <td class="key">
+                                <label for="cat_namber">
+                                    <?php echo JText::_( 'cat_namber'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="cat_namber" id="cat_namber" size="60" maxlength="255" value="<?php echo $row->cat_namber; ?>" />
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td class="key">
+                                <label for="mol_weigh">
+                                    <?php echo JText::_( 'mol_weigh'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="mol_weigh" id="mol_weigh" size="60" maxlength="255" value="<?php echo $row->mol_weigh; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="mass">
+                                    <?php echo JText::_( 'mass'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="mass" id="mass" size="60" maxlength="255" value="<?php echo $row->mass; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="cas_number">
+                                    <?php echo JText::_( 'cas_number'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="cas_number" id="cas_number" size="60" maxlength="255" value="<?php echo $row->cas_number; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="mdl_number">
+                                    <?php echo JText::_( 'mdl_number'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="mdl_number" id="mdl_number" size="60" maxlength="255" value="<?php echo $row->mdl_number; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="mdl_form">
+                                    <?php echo JText::_( 'mdl_form'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <textarea name="mdl_form" id="mdl_form" rows="15" cols="70" class="inputbox"><?php echo $row->mdl_form; ?></textarea>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="purity">
+                                    <?php echo JText::_( 'purity'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="purity" id="purity" size="60" maxlength="255" value="<?php echo $row->purity; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="smiles">
+                                    <?php echo JText::_( 'smiles'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="smiles" id="smiles" size="60" maxlength="255" value="<?php echo $row->smiles; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="status">
+                                    <?php echo JText::_( 'status'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="status" id="status" size="60" maxlength="255" value="<?php echo $row->status; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="molecular_formula">
+                                    <?php echo JText::_( 'molecular_formula'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="molecular_formula" id="molecular_formula" size="60" maxlength="255" value="<?php echo $row->molecular_formula; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="iupac_name">
+                                    <?php echo JText::_( 'iupac_name'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="iupac_name" id="iupac_name" size="60" maxlength="255" value="<?php echo $row->iupac_name; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="price1mg">
+                                    <?php echo JText::_( 'price1mg'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="price1mg" id="price1mg" size="60" maxlength="255" value="<?php echo $row->price1mg; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="price2mg">
+                                    <?php echo JText::_( 'price2mg'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="price2mg" id="price2mg" size="60" maxlength="255" value="<?php echo $row->price2mg; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="price3mg">
+                                    <?php echo JText::_( 'price3mg'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="price3mg" id="price3mg" size="60" maxlength="255" value="<?php echo $row->price3mg; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="price4mg">
+                                    <?php echo JText::_( 'price4mg'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="price4mg" id="price4mg" size="60" maxlength="255" value="<?php echo $row->price4mg; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="price5mg">
+                                    <?php echo JText::_( 'price5mg'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="price5mg" id="price5mg" size="60" maxlength="255" value="<?php echo $row->price5mg; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="price10mg">
+                                    <?php echo JText::_( 'price10mg'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="price10mg" id="price10mg" size="60" maxlength="255" value="<?php echo $row->price10mg; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="price15mg">
+                                    <?php echo JText::_( 'price15mg'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="price15mg" id="price15mg" size="60" maxlength="255" value="<?php echo $row->price15mg; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="price20mg">
+                                    <?php echo JText::_( 'price20mg'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="price20mg" id="price20mg" size="60" maxlength="255" value="<?php echo $row->price20mg; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="price25mg">
+                                    <?php echo JText::_( 'price25mg'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="price25mg" id="price25mg" size="60" maxlength="255" value="<?php echo $row->price25mg; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="price5mmol">
+                                    <?php echo JText::_( 'price5mmol'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="price5mmol" id="price5mmol" size="60" maxlength="255" value="<?php echo $row->price5mmol; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="price10mmol">
+                                    <?php echo JText::_( 'price10mmol'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="price10mmol" id="price10mmol" size="60" maxlength="255" value="<?php echo $row->price10mmol; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="price20mmol">
+                                    <?php echo JText::_( 'price20mmol'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="price20mmol" id="price20mmol" size="60" maxlength="255" value="<?php echo $row->price20mmol; ?>" />
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </div>
+
+            <div class="col width-40">
+                <fieldset class="adminform">
+                    <legend><?php echo JText::_( 'Molecule' ); ?></legend>
+
+                    <div id="jsme_container"></div>
+                    <button id="readmol" type="button" onclick="readMOLFromTextArea()">Read Mol</button>
+<!--                    --><?php
+//                    echo $pane->startPane("menu-pane");
+//                    echo $pane->startPanel(JText :: _('Contact Parameters'), "param-page");
+//                    echo $params->render();
+//                    echo $pane->endPanel();
+//                    echo $pane->startPanel(JText :: _('Advanced Parameters'), "param-page");
+//                    echo $params->render('params', 'advanced');
+//                    echo $pane->endPanel();
+//                    echo $pane->startPanel(JText :: _('E-mail Parameters'), "param-page");
+//                    echo $params->render('params', 'email');
+//                    echo $pane->endPanel();
+//                    echo $pane->endPane();
+//                    ?>
+                </fieldset>
+            </div>
+            <div class="clr"></div>
+
+            <input type="hidden" name="option" value="<?php echo $option; ?>" />
+            <input type="hidden" name="id" value="<?php echo $row->id; ?>" />
+            <input type="hidden" name="cid[]" value="<?php echo $row->id; ?>" />
+            <input type="hidden" name="task" value="" />
+            <?php echo JHTML::_( 'form.token' ); ?>
+        </form>
+    <?php
+    }
 }

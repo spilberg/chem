@@ -2,7 +2,7 @@
 
 defined('_JEXEC') or die( 'Restricted access' );
 
-class TablesChem extends JTable
+class TableChem extends JTable
 {
 
     /** @var  int */

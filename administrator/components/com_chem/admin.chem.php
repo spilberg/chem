@@ -29,6 +29,22 @@ switch ($task) {
         editMolecule(true);
         break;
 
+    case 'apply':
+    case 'save':
+    case 'save2new':
+    case 'save2copy':
+        saveMolecule( $task );
+        break;
+
+    case 'remove':
+        removeMolecule( $cid );
+        break;
+
+    case 'cancel':
+        cancelMolecule();
+        break;
+//
+
     default:
         showMolecules($option);
         break;
@@ -51,6 +67,8 @@ function editMolecule($edit )
 
     JArrayHelper::toInteger($cid, array(0));
 
+    JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_chem'.DS.'tables');
+
     $row =& JTable::getInstance('chem', 'Table');
     // load the row from the db table
     if($edit)
@@ -61,51 +79,42 @@ function editMolecule($edit )
         $row->checkout($user->get('id'));
     } else {
         // do stuff for new records
-        $row->imagepos 	= 'top';
-        $row->ordering 	= 0;
+   //     $row->imagepos 	= 'top';
+      //  $row->ordering 	= 0;
         $row->published = 1;
     }
     $lists = array();
+//
+//    // build the html select list for ordering
+//    $query = 'SELECT ordering AS value, name AS text'
+//        . ' FROM #__contact_details'
+//        . ' WHERE published >= 0'
+//        . ' AND catid = '.(int) $row->catid
+//        . ' ORDER BY ordering'
+//    ;
+//    if($edit)
+//        $lists['ordering'] 			= JHTML::_('list.specificordering',  $row, $cid[0], $query );
+//    else
+//        $lists['ordering'] 			= JHTML::_('list.specificordering',  $row, '', $query );
+//
+//    // build list of users
+//    $lists['user_id'] 			= JHTML::_('list.users',  'user_id', $row->user_id, 1, NULL, 'name', 0 );
+//    // build list of categories
+//    $lists['catid'] 			= JHTML::_('list.category',  'catid', 'com_contact_details', intval( $row->catid ) );
+//    // build the html select list for images
+//    $lists['image'] 			= JHTML::_('list.images',  'image', $row->image );
+//    // build the html select list for the group access
+//    $lists['access'] 			= JHTML::_('list.accesslevel',  $row );
+//    // build the html radio buttons for published
+//    $lists['published'] 		= JHTML::_('select.booleanlist',  'published', '', $row->published );
+//    // build the html radio buttons for default
+//    $lists['default_con'] 		= JHTML::_('select.booleanlist',  'default_con', '', $row->default_con );
+//
+//    // get params definitions
+//    $file 	= JPATH_ADMINISTRATOR .'/components/com_contact/contact_items.xml';
+//    $params = new JParameter( $row->params, $file, 'component' );
 
-    // build the html select list for ordering
-    $query = 'SELECT ordering AS value, name AS text'
-        . ' FROM #__contact_details'
-        . ' WHERE published >= 0'
-        . ' AND catid = '.(int) $row->catid
-        . ' ORDER BY ordering'
-    ;
-    if($edit)
-        $lists['ordering'] 			= JHTML::_('list.specificordering',  $row, $cid[0], $query );
-    else
-        $lists['ordering'] 			= JHTML::_('list.specificordering',  $row, '', $query );
-
-    // build list of users
-    $lists['user_id'] 			= JHTML::_('list.users',  'user_id', $row->user_id, 1, NULL, 'name', 0 );
-    // build list of categories
-    $lists['catid'] 			= JHTML::_('list.category',  'catid', 'com_contact_details', intval( $row->catid ) );
-    // build the html select list for images
-    $lists['image'] 			= JHTML::_('list.images',  'image', $row->image );
-    // build the html select list for the group access
-    $lists['access'] 			= JHTML::_('list.accesslevel',  $row );
-    // build the html radio buttons for published
-    $lists['published'] 		= JHTML::_('select.booleanlist',  'published', '', $row->published );
-    // build the html radio buttons for default
-    $lists['default_con'] 		= JHTML::_('select.booleanlist',  'default_con', '', $row->default_con );
-
-    // get params definitions
-    $file 	= JPATH_ADMINISTRATOR .'/components/com_contact/contact_items.xml';
-    $params = new JParameter( $row->params, $file, 'component' );
-
-    HTML_contact::editcontact( $row, $lists, $option, $params );
-}
-
-function showMolecules_2($option)
-{
-    global $mainframe;
-
-    $db = &JFactory::getBDO();
-
-
+    HTML_chem::editMolecule( $row, $lists, $option, $params );
 }
 
 /**
@@ -209,4 +218,113 @@ function showMolecules($option)
     $lists['search'] = $search;
 
     HTML_chem::showMolecules($rows, $pageNav, $option, $lists);
+}
+
+
+/**
+ * Saves the record from an edit form submit
+ * @param string The current GET/POST option
+ */
+function saveMolecule( $task )
+{
+    global $mainframe;
+
+    // Check for request forgeries
+   // JRequest::checkToken() or jexit( 'Invalid Token' );
+
+    // Initialize variables
+    $db		=& JFactory::getDBO();
+
+    JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_chem'.DS.'tables');
+
+    $row	=& JTable::getInstance('chem', 'Table');
+    $post = JRequest::get( 'post' );
+    $post['misc'] = JRequest::getVar('misc', '', 'POST', 'string', JREQUEST_ALLOWHTML);
+    if (!$row->bind( $post )) {
+        JError::raiseError(500, $row->getError() );
+    }
+    // save params
+//    $params = JRequest::getVar( 'params', array(), 'post', 'array' );
+//    if (is_array( $params )) {
+//        $txt = array();
+//        foreach ( $params as $k=>$v) {
+//            $txt[] = "$k=$v";
+//        }
+//        $row->params = implode( "\n", $txt );
+//    }
+
+    // save to a copy, reset the primary key
+    if ($task == 'save2copy') {
+        $row->id = 0;
+    }
+
+    // pre-save checks
+    if (!$row->check()) {
+        JError::raiseError(500, $row->getError() );
+    }
+
+    // if new item, order last in appropriate group
+//    if (!$row->id) {
+//        $where = "catid = " . (int) $row->catid;
+//        $row->ordering = $row->getNextOrder( $where );
+//    }
+
+    // save the changes
+    if (!$row->store()) {
+        JError::raiseError(500, $row->getError() );
+    }
+    $row->checkin();
+//    if ($row->default_con) {
+//        $query = 'UPDATE #__contact_details'
+//            . ' SET default_con = 0'
+//            . ' WHERE id <> '. (int) $row->id
+//            . ' AND default_con = 1'
+//        ;
+//        $db->setQuery( $query );
+//        $db->query();
+//    }
+
+    switch ($task)
+    {
+        case 'apply':
+        case 'save2copy':
+            $msg	= JText::sprintf( 'Changes to X saved', JText::_('Molecule') );
+            $link	= 'index.php?option=com_chem&task=edit&cid[]='. $row->id .'';
+            break;
+
+        case 'save2new':
+            $msg	= JText::sprintf( 'Changes to X saved', JText::_('Molecule') );
+            $link	= 'index.php?option=com_chem&task=edit';
+            break;
+
+        case 'save':
+        default:
+            $msg	= JText::_( 'Molecule saved' );
+            $link	= 'index.php?option=com_chem';
+            break;
+    }
+
+    $mainframe->redirect( $link, $msg );
+}
+
+/** PT
+ * Cancels editing and checks in the record
+ */
+function cancelMolecule()
+{
+    global $mainframe;
+
+    // Check for request forgeries
+    JRequest::checkToken() or jexit( 'Invalid Token' );
+
+    // Initialize variables
+    $db =& JFactory::getDBO();
+
+    JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_chem'.DS.'tables');
+
+    $row =& JTable::getInstance('chem', 'Table');
+    $row->bind( JRequest::get( 'post' ));
+    $row->checkin();
+
+    $mainframe->redirect('index.php?option=com_chem');
 }
