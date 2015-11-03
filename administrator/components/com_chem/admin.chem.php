@@ -142,20 +142,20 @@ function showMolecules($option)
     $where = array();
 
     if ($search) {
-        $where[] = 'ch.name LIKE ' . $db->Quote('%' . $db->getEscaped($search, true) . '%', false);
+        $where[] = 'ch.cat_namber LIKE ' . $db->Quote('%' . $db->getEscaped($search, true) . '%', false);
     }
 
 //    if ( $filter_catid ) {
 //        $where[] = 'cd.catid = '.(int) $filter_catid;
 //    }
-
-    if ($filter_state) {
-        if ($filter_state == 'P') {
-            $where[] = 'cd.published = 1';
-        } else if ($filter_state == 'U') {
-            $where[] = 'cd.published = 0';
-        }
-    }
+//
+//    if ($filter_state) {
+//        if ($filter_state == 'P') {
+//            $where[] = 'cd.published = 1';
+//        } else if ($filter_state == 'U') {
+//            $where[] = 'cd.published = 0';
+//        }
+//    }
 
     // sanitize $filter_order
     if (!in_array($filter_order, array('ch.cat_namber'))) {

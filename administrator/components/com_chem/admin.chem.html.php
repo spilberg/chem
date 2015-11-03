@@ -17,7 +17,7 @@ class HTML_chem {
     {
         $user =& JFactory::getUser();
 
-        var_dump($rows);
+        //var_dump($rows);
 
         //Ordering allowed ?
         $ordering = ($lists['order'] == 'cd.ordering');
@@ -32,7 +32,8 @@ class HTML_chem {
                         <?php echo JText::_( 'Filter' ); ?>:
                         <input type="text" name="search" id="search" value="<?php echo htmlspecialchars($lists['search']);?>" class="text_area" onchange="document.adminForm.submit();" />
                         <button onclick="this.form.submit();"><?php echo JText::_( 'Go' ); ?></button>
-                        <button onclick="document.getElementById('search').value='';this.form.getElementById('filter_catid').value='0';this.form.getElementById('filter_state').value='';this.form.submit();"><?php echo JText::_( 'Reset' ); ?></button>
+<!--                        <button onclick="document.getElementById('search').value='';this.form.getElementById('filter_catid').value='0';this.form.getElementById('filter_state').value='';this.form.submit();">--><?php //echo JText::_( 'Reset' ); ?><!--</button>-->
+                        <button onclick="document.getElementById('search').value='';this.form.submit();"><?php echo JText::_( 'Reset' ); ?></button>
                     </td>
                     <td nowrap="nowrap">
                         <?php
@@ -46,28 +47,70 @@ class HTML_chem {
             <table class="adminlist">
                 <thead>
                 <tr>
-                    <th width="10">
+                    <th width="10" rowspan="2">
                         <?php echo JText::_( 'Num' ); ?>
                     </th>
-                    <th width="10" class="title">
+                    <th width="10" class="title" rowspan="2">
                         <input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count($rows); ?>);" />
                     </th>
-                    <th width="1%" nowrap="nowrap">
-                        <?php echo JHTML::_('grid.sort',   'ID', 'cd.id', @$lists['order_Dir'], @$lists['order'] ); ?>
+                    <th width="1%" nowrap="nowrap" rowspan="2">
+                        <?php echo JTEXT::_('ID'); ?>
                     </th>
 
+                    <th rowspan="2">
+                        <?php echo JHTML::_('grid.sort',   'Catalog number', 'ch.cat_namber', @$lists['order_Dir'], @$lists['order'] ); ?>
+
+
+<!--                        --><?php //echo JText::_('Catalog number'); ?>
+                    </th>
+                    <th class="title" rowspan="2">
+                        <?php echo JTEXT::_('Molecular Weight'); ?>
+                    </th>
+                    <th class="title" nowrap="nowrap" rowspan="2">
+                        <?php echo JTEXT::_('Available from stock' ); ?>
+                    </th>
+
+                    <th colspan="12">Price</th>
+                </tr>
+                <tr>
                     <th>
-                        <?php echo JText::_('cat_namber'); ?>
+                        <?php echo JTEXT::_('1 mg' ); ?>
                     </th>
-                    <th class="title">
+                    <th>
+                        <?php echo JTEXT::_('2 mg' ); ?>
+                    </th>
+                    <th>
+                        <?php echo JTEXT::_('3 mg' ); ?>
+                    </th>
+                    <th>
+                        <?php echo JTEXT::_('4 mg' ); ?>
+                    </th>
+                    <th>
+                        <?php echo JTEXT::_('5 mg' ); ?>
+                    </th>
+                    <th>
+                        <?php echo JTEXT::_('10 mg' ); ?>
+                    </th>
+                    <th>
+                        <?php echo JTEXT::_('15 mg' ); ?>
+                    </th>
+                    <th>
+                        <?php echo JTEXT::_('20 mg' ); ?>
+                    </th>
+                    <th>
+                        <?php echo JTEXT::_('25 mg' ); ?>
+                    </th>
+                    <th>
+                        <?php echo JTEXT::_('5 mmol' ); ?>
+                    </th>
+                    <th>
+                        <?php echo JTEXT::_('10 mmol' ); ?>
+                    </th>
+                    <th>
+                        <?php echo JTEXT::_('20 mmol' ); ?>
+                    </th>
 
-                        <?php echo JTEXT::_('molecular_formula'); ?>
-<!--                        --><?php //echo JHTML::_('grid.sort',   'Name', 'cd.name', @$lists['order_Dir'], @$lists['order'] ); ?>
-                    </th>
-                    <th width="5%" class="title" nowrap="nowrap">
-<!--                        --><?php //echo JHTML::_('grid.sort',   'Published', 'cd.published', @$lists['order_Dir'], @$lists['order'] ); ?>
-                        <?php echo JTEXT::_('Status' ); ?>
-                    </th>
+
 <!--                    <th nowrap="nowrap" width="8%">-->
 <!--                        --><?php //echo JHTML::_('grid.sort',   'Order by', 'cd.ordering', @$lists['order_Dir'], @$lists['order'] ); ?>
 <!--                        --><?php //if ($ordering) echo JHTML::_('grid.order',  $rows ); ?>
@@ -86,7 +129,7 @@ class HTML_chem {
                 </thead>
                 <tfoot>
                 <tr>
-                    <td colspan="11">
+                    <td colspan="18">
                         <?php echo $pageNav->getListFooter(); ?>
                     </td>
                 </tr>
@@ -118,26 +161,77 @@ class HTML_chem {
                         </td>
 
 
-                        <td>
-                            <?php echo $row->cat_namber; ?>
-                        </td>
-                        <td>
+                        <td align="center">
+
                             <?php
                             if (JTable::isCheckedOut($user->get ('id'), $row->checked_out )) :
-                                echo htmlspecialchars($row->molecular_formula);
+                                echo htmlspecialchars($row->cat_namber);
                             else :
                                 ?>
-                                <span class="editlinktip hasTip" title="<?php echo JText::_( 'Edit Element' );?>::<?php echo htmlspecialchars($row->molecular_formula); ?>">
+                                <span class="editlinktip hasTip" title="<?php echo JText::_( 'Edit Element' );?>::<?php echo htmlspecialchars($row->cat_namber); ?>">
 						<a href="<?php echo $link; ?>">
-                            <?php echo htmlspecialchars($row->molecular_formula); ?></a> </span>
+                            <?php echo htmlspecialchars($row->cat_namber); ?></a> </span>
                             <?php
                             endif;
                             ?>
                         </td>
                         <td align="center">
-<!--                            --><?php //echo $published;?>
-                            <?php echo $row->status;?>
+                            <?php echo $row->mol_weigh; ?>
                         </td>
+                        <td align="center">
+<!--                            --><?php //echo $published;?>
+                            <?php echo $row->mass;?>
+                        </td>
+
+
+                        <td align="center">
+                            <?php echo $row->price1mg;?>
+                        </td>
+
+                        <td align="center">
+                            <?php echo $row->price2mg;?>
+                        </td>
+
+                        <td align="center">
+                            <?php echo $row->price3mg;?>
+                        </td>
+
+                        <td align="center">
+                            <?php echo $row->price4mg;?>
+                        </td>
+
+                        <td align="center">
+                            <?php echo $row->price5mg;?>
+                        </td>
+
+                        <td align="center">
+                            <?php echo $row->price10mg;?>
+                        </td>
+
+                        <td align="center">
+                            <?php echo $row->price15mg;?>
+                        </td>
+
+                        <td align="center">
+                            <?php echo $row->price20mg;?>
+                        </td>
+
+                        <td align="center">
+                            <?php echo $row->price25mg;?>
+                        </td>
+
+                        <td align="center">
+                            <?php echo $row->price5mmol;?>
+                        </td>
+
+                        <td align="center">
+                            <?php echo $row->price10mmol;?>
+                        </td>
+
+                        <td align="center">
+                            <?php echo $row->price20mmol;?>
+                        </td>
+
 <!--                        <td class="order">-->
 <!--                            <span>--><?php //echo $pageNav->orderUpIcon( $i, ( $row->catid == @$rows[$i-1]->catid ), 'orderup', 'Move Up', $ordering ); ?><!--</span>-->
 <!--                            <span>--><?php //echo $pageNav->orderDownIcon( $i, $n, ( $row->catid == @$rows[$i+1]->catid ), 'orderdown', 'Move Down', $ordering ); ?><!--</span>-->
@@ -258,7 +352,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="cat_namber">
-                                    <?php echo JText::_( 'cat_namber'); ?>:
+                                    <?php echo JText::_( 'Catalog number'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -270,7 +364,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="mol_weigh">
-                                    <?php echo JText::_( 'mol_weigh'); ?>:
+                                    <?php echo JText::_( 'Molecular Weight'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -281,7 +375,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="mass">
-                                    <?php echo JText::_( 'mass'); ?>:
+                                    <?php echo JText::_( 'Available from stock'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -292,7 +386,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="cas_number">
-                                    <?php echo JText::_( 'cas_number'); ?>:
+                                    <?php echo JText::_( 'CAS-Number'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -303,7 +397,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="mdl_number">
-                                    <?php echo JText::_( 'mdl_number'); ?>:
+                                    <?php echo JText::_( 'MDL-number'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -325,7 +419,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="purity">
-                                    <?php echo JText::_( 'purity'); ?>:
+                                    <?php echo JText::_( 'Purity'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -336,7 +430,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="smiles">
-                                    <?php echo JText::_( 'smiles'); ?>:
+                                    <?php echo JText::_( 'Smiles'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -347,7 +441,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="status">
-                                    <?php echo JText::_( 'status'); ?>:
+                                    <?php echo JText::_( 'Status'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -358,7 +452,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="molecular_formula">
-                                    <?php echo JText::_( 'molecular_formula'); ?>:
+                                    <?php echo JText::_( 'Molecular formula'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -369,7 +463,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="iupac_name">
-                                    <?php echo JText::_( 'iupac_name'); ?>:
+                                    <?php echo JText::_( 'IUPAC name'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -378,9 +472,14 @@ class HTML_chem {
                         </tr>
 
                         <tr>
+                            <td class="key" ><?php echo JText::_( 'Prices'); ?>:</td>
+                            <td>&nbsp;</td>
+                        </tr>
+
+                        <tr>
                             <td class="key">
                                 <label for="price1mg">
-                                    <?php echo JText::_( 'price1mg'); ?>:
+                                    <?php echo JText::_( '1 mg'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -391,7 +490,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="price2mg">
-                                    <?php echo JText::_( 'price2mg'); ?>:
+                                    <?php echo JText::_( '2 mg'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -402,7 +501,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="price3mg">
-                                    <?php echo JText::_( 'price3mg'); ?>:
+                                    <?php echo JText::_( '3 mg'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -413,7 +512,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="price4mg">
-                                    <?php echo JText::_( 'price4mg'); ?>:
+                                    <?php echo JText::_( '4 mg'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -424,7 +523,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="price5mg">
-                                    <?php echo JText::_( 'price5mg'); ?>:
+                                    <?php echo JText::_( '5 mg'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -435,7 +534,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="price10mg">
-                                    <?php echo JText::_( 'price10mg'); ?>:
+                                    <?php echo JText::_( '10 mg'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -446,7 +545,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="price15mg">
-                                    <?php echo JText::_( 'price15mg'); ?>:
+                                    <?php echo JText::_( '15 mg'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -457,7 +556,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="price20mg">
-                                    <?php echo JText::_( 'price20mg'); ?>:
+                                    <?php echo JText::_( '20 mg'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -468,7 +567,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="price25mg">
-                                    <?php echo JText::_( 'price25mg'); ?>:
+                                    <?php echo JText::_( '25 mg'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -479,7 +578,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="price5mmol">
-                                    <?php echo JText::_( 'price5mmol'); ?>:
+                                    <?php echo JText::_( '5 mmol'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -490,7 +589,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="price10mmol">
-                                    <?php echo JText::_( 'price10mmol'); ?>:
+                                    <?php echo JText::_( '10 mmol'); ?>:
                                 </label>
                             </td>
                             <td>
@@ -501,7 +600,7 @@ class HTML_chem {
                         <tr>
                             <td class="key">
                                 <label for="price20mmol">
-                                    <?php echo JText::_( 'price20mmol'); ?>:
+                                    <?php echo JText::_( '20 mmol'); ?>:
                                 </label>
                             </td>
                             <td>
