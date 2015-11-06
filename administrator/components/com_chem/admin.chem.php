@@ -12,7 +12,7 @@ $user = &JFactory::getUser();
 
 require_once(JApplicationHelper::getPath('admin_html'));
 // Set the table directory
-//JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_chem'.DS.'tables');
+JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_chem'.DS.'tables');
 
 $task = JRequest::getCmd('task');
 $id = JRequest::getVar('id', 0, 'get', 'int');
@@ -37,13 +37,29 @@ switch ($task) {
         break;
 
     case 'remove':
-        removeMolecule( $cid );
+        removeMolecules( $cid );
+        break;
+
+    case 'packagedelete':
+    case 'deletepackage':
+        packageDelete($option);
         break;
 
     case 'cancel':
         cancelMolecule();
         break;
-//
+
+    case 'about':
+        aboutComponent();
+        break;
+
+    case 'exportdb':
+        exportDB();
+        break;
+
+    case 'importdb':
+        importDB();
+        break;
 
     default:
         showMolecules($option);
@@ -67,7 +83,7 @@ function editMolecule($edit )
 
     JArrayHelper::toInteger($cid, array(0));
 
-    JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_chem'.DS.'tables');
+  //  JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_chem'.DS.'tables');
 
     $row =& JTable::getInstance('chem', 'Table');
     // load the row from the db table
@@ -126,7 +142,7 @@ function showMolecules($option)
     global $mainframe;
 
     $db =& JFactory::getDBO();
-    $filter_order = $mainframe->getUserStateFromRequest($option . 'filter_order', 'filter_order', 'cd.ordering', 'cmd');
+    $filter_order = $mainframe->getUserStateFromRequest($option . 'filter_order', 'filter_order', 'ch.id', 'cmd');
     $filter_order_Dir = $mainframe->getUserStateFromRequest($option . 'filter_order_Dir', 'filter_order_Dir', '', 'word');
     $filter_state = $mainframe->getUserStateFromRequest($option . 'filter_state', 'filter_state', '', 'word');
     $filter_catid = $mainframe->getUserStateFromRequest($option . 'filter_catid', 'filter_catid', 0, 'int');
@@ -158,8 +174,8 @@ function showMolecules($option)
 //    }
 
     // sanitize $filter_order
-    if (!in_array($filter_order, array('ch.cat_namber'))) {
-        $filter_order = 'ch.cat_namber';
+    if (!in_array($filter_order, array('ch.cat_namber','ch.mol_weigh','ch.mass','ch.id'))) {
+        $filter_order = 'ch.id';
     }
 
     if (!in_array(strtoupper($filter_order_Dir), array('ASC', 'DESC'))) {
@@ -167,10 +183,10 @@ function showMolecules($option)
     }
 
     $where = (count($where) ? ' WHERE ' . implode(' AND ', $where) : '');
-    if ($filter_order == 'ch.cat_namber') {
-        $orderby = ' ORDER BY id, ch.cat_namber';
+    if ($filter_order == 'ch.id') {
+        $orderby = ' ORDER BY ch.id '. ' ' .$filter_order_Dir;
     } else {
-        $orderby = ' ORDER BY ' . $filter_order . ' ' . $filter_order_Dir . ', category, cd.ordering';
+        $orderby = ' ORDER BY ' . $filter_order . ' ' . $filter_order_Dir;
     }
 
     // get the total number of records
@@ -235,7 +251,7 @@ function saveMolecule( $task )
     // Initialize variables
     $db		=& JFactory::getDBO();
 
-    JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_chem'.DS.'tables');
+   // JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_chem'.DS.'tables');
 
     $row	=& JTable::getInstance('chem', 'Table');
     $post = JRequest::get( 'post' );
@@ -320,7 +336,7 @@ function cancelMolecule()
     // Initialize variables
     $db =& JFactory::getDBO();
 
-    JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_chem'.DS.'tables');
+  //  JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_chem'.DS.'tables');
 
     $row =& JTable::getInstance('chem', 'Table');
     $row->bind( JRequest::get( 'post' ));
@@ -328,3 +344,62 @@ function cancelMolecule()
 
     $mainframe->redirect('index.php?option=com_chem');
 }
+
+/**
+ * Removes records
+ * @param array An array of id keys to remove
+ * @param string The current GET/POST option
+ */
+function removeMolecules( &$cid )
+{
+    global $mainframe;
+
+    // Check for request forgeries
+    JRequest::checkToken() or jexit( 'Invalid Token' );
+
+    // Initialize variables
+    $db =& JFactory::getDBO();
+    JArrayHelper::toInteger($cid);
+
+    if (count( $cid )) {
+        $cids = implode( ',', $cid );
+        $query = 'DELETE FROM #__chem'
+            . ' WHERE id IN ( '. $cids .' )'
+        ;
+        $db->setQuery( $query );
+        if (!$db->query()) {
+            echo "<script> alert('".$db->getErrorMsg(true)."'); window.history.go(-1); </script>\n";
+        }
+    }
+
+    $mainframe->redirect( "index.php?option=com_chem", 'Recording has been deleted!' );
+}
+
+function aboutComponent(){
+    HTML_chem::aboutComponent();
+}
+
+function exportDB(){
+    HTML_chem::exportDB();
+}
+
+function importDB(){
+    HTML_chem::importDB();
+}
+
+function packageDelete($option){
+
+    $todelete = JRequest::getVar('itemtodelete');
+
+    if($todelete){
+
+        $list =  explode(PHP_EOL,$todelete);
+
+        HTML_chem::pakageDeleteProcess($list);
+    } else {
+        HTML_chem::pakageDelete($option);
+    }
+
+}
+
+

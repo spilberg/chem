@@ -3,16 +3,6 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 class HTML_chem {
 
-    function showMolecules_1( &$rows, &$pageNav, $option, &$lists )
-//    function showMolecules()
-    {
-        ?>
-        <form action="index.php?option=com_contact" method="post" name="adminForm">
-            <p>The form</p>
-        </form>
-    <?php
-    }
-
     function showMolecules( &$rows, &$pageNav, $option, &$lists )
     {
         $user =& JFactory::getUser();
@@ -24,7 +14,7 @@ class HTML_chem {
 
         JHTML::_('behavior.tooltip');
         ?>
-        <form action="index.php?option=com_contact" method="post" name="adminForm">
+        <form action="index.php?option=com_chem" method="post" name="adminForm">
 
             <table>
                 <tr>
@@ -54,20 +44,22 @@ class HTML_chem {
                         <input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count($rows); ?>);" />
                     </th>
                     <th width="1%" nowrap="nowrap" rowspan="2">
-                        <?php echo JTEXT::_('ID'); ?>
+                        <?php echo JHTML::_('grid.sort',   'ID', 'ch.id', @$lists['order_Dir'], @$lists['order'] ); ?>
+<!--                        --><?php //echo JTEXT::_('ID'); ?>
                     </th>
 
                     <th rowspan="2">
                         <?php echo JHTML::_('grid.sort',   'Catalog number', 'ch.cat_namber', @$lists['order_Dir'], @$lists['order'] ); ?>
-
-
-<!--                        --><?php //echo JText::_('Catalog number'); ?>
                     </th>
                     <th class="title" rowspan="2">
-                        <?php echo JTEXT::_('Molecular Weight'); ?>
+                        <?php echo JHTML::_('grid.sort',   'Molecular Weight', 'ch.mol_weigh', @$lists['order_Dir'], @$lists['order'] ); ?>
+<!--                        --><?php //echo JTEXT::_('Molecular Weight'); ?>
                     </th>
                     <th class="title" nowrap="nowrap" rowspan="2">
-                        <?php echo JTEXT::_('Available from stock' ); ?>
+
+
+                        <?php echo JHTML::_('grid.sort',   'Available from stock', 'ch.mass', @$lists['order_Dir'], @$lists['order'] ); ?>
+<!--                        --><?php //echo JTEXT::_('Available from stock' ); ?>
                     </th>
 
                     <th colspan="12">Price</th>
@@ -146,8 +138,8 @@ class HTML_chem {
                     $access 	= JHTML::_('grid.access',   $row, $i );
                     $published 	= JHTML::_('grid.published', $row, $i );
 
-                    $row->cat_link 	= JRoute::_( 'index.php?option=com_categories&section=com_contact_details&task=edit&type=other&cid[]='. $row->catid );
-                    $row->user_link	= JRoute::_( 'index.php?option=com_users&task=editA&cid[]='. $row->user_id );
+//                    $row->cat_link 	= JRoute::_( 'index.php?option=com_categories&section=com_contact_details&task=edit&type=other&cid[]='. $row->catid );
+//                    $row->user_link	= JRoute::_( 'index.php?option=com_users&task=editA&cid[]='. $row->user_id );
                     ?>
                     <tr class="<?php echo "row$k"; ?>">
                         <td>
@@ -637,6 +629,84 @@ class HTML_chem {
             <input type="hidden" name="option" value="<?php echo $option; ?>" />
             <input type="hidden" name="id" value="<?php echo $row->id; ?>" />
             <input type="hidden" name="cid[]" value="<?php echo $row->id; ?>" />
+            <input type="hidden" name="task" value="" />
+            <?php echo JHTML::_( 'form.token' ); ?>
+        </form>
+    <?php
+    }
+
+    function aboutComponent(){
+    ?>
+        <form action="index.php" method="post" name="adminForm">
+            <p>This is Component view chemical elements for joomla 1.5 (no legacy mode!)
+            <br />This component is specifically designed for "SigmaSoft"
+            To display molecule chemical element used
+            JSME: a free molecule editor in JavaScript
+            <br />
+            Copyright (c) 2013, Novartis Institutes for BioMedical Research Inc and Bruno Bienfait<br/>
+            <a href="license.txt">license.txt</a> contains text of the BSD license under which the JSME is distributed.<br/>
+            B. Bienfait and P. Ertl, <a href="http://www.jcheminf.com/content/5/1/24"><b>JSME: a free molecule editor in JavaScript</b></a>, J. Cheminformatics 5:24 (2013)
+            </p>
+            <p>Programming by Nick Korbut.<br/>
+            email: <a href="mailto:nick.korbut@gmail.com">nick.korbut@gmail.com</a>
+            </p>
+        </form>
+    <?php
+    }
+
+    function exportDB(){
+        ?>
+        <form action="index.php" method="post" name="adminForm">
+            <p>In this place I am planing export DB functionality. Coming soon.</p>
+        </form>
+    <?php
+
+    }
+
+    function importDB(){
+        ?>
+        <form action="index.php" method="post" name="adminForm">
+            <p>In this place I am planing import DB functionality. Coming soon.</p>
+        </form>
+    <?php
+
+    }
+
+    function pakageDelete($option){
+        JRequest::setVar( 'hidemainmenu', 1 );
+        ?>
+        <form action="index.php" method="post" name="adminForm">
+            <p>In this place I am planing package delete functionality. Coming soon.</p>
+            <p>Please insert each item in each line. If You ready press button Delete</p>
+
+            <textarea id="itemtodelete" name="itemtodelete" cols="50" rows="8" class="inputbox"></textarea>
+            <input type="hidden" name="option" value="<?php echo $option; ?>" />
+<!--            <input type="hidden" name="id" value="--><?php //echo $row->id; ?><!--" />-->
+<!--            <input type="hidden" name="cid[]" value="--><?php //echo $row->id; ?><!--" />-->
+            <input type="hidden" name="task" value="" />
+            <?php echo JHTML::_( 'form.token' ); ?>
+        </form>
+    <?php
+    }
+
+    function pakageDeleteProcess($todelete){
+        JRequest::setVar( 'hidemainmenu', 1 );
+
+        ?>
+        <form action="index.php" method="post" name="adminForm">
+            <p>It is a process ...</p>
+            <p><?php
+                foreach($todelete as $value){
+                    echo $value. "<br/>";
+                }
+
+                ?></p>
+
+
+
+            <input type="hidden" name="option" value="<?php echo $option; ?>" />
+            <!--            <input type="hidden" name="id" value="--><?php //echo $row->id; ?><!--" />-->
+            <!--            <input type="hidden" name="cid[]" value="--><?php //echo $row->id; ?><!--" />-->
             <input type="hidden" name="task" value="" />
             <?php echo JHTML::_( 'form.token' ); ?>
         </form>

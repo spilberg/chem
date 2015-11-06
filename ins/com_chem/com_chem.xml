@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="component" version="1.5.0">
+    <name>Chem</name>
+    <!-- The following elements are optional and free of formatting constraints -->
+    <creationDate>2015-07-04</creationDate>
+    <author>Nick Korbut</author>
+    <authorEmail>nick.korbut@gmail.com</authorEmail>
+    <authorUrl>http://katapulta.com.ua</authorUrl>
+    <copyright>SigmaSoft</copyright>
+    <license>SigmaSoft</license>
+    <!--  The version string is recorded in the components table -->
+    <version>1.0.0</version>
+    <!-- The description is optional and defaults to the name -->
+    <description><![CDATA[<p>This is Component view chemical elements for joomla 1.5 (no legacy mode!)
+    <br />This component is specifically designed for "SigmaSoft"
+    To display molecule chemical element used
+    JSME: a free molecule editor in JavaScript
+    <br />
+    Copyright (c) 2013, Novartis Institutes for BioMedical Research Inc and Bruno Bienfait<br/>
+    <a href="license.txt">license.txt</a> contains text of the BSD license under which the JSME is distributed.<br/>
+    B. Bienfait and P. Ertl, <a href="http://www.jcheminf.com/content/5/1/24"><b>JSME: a free molecule editor in JavaScript</b></a>, J. Cheminformatics 5:24 (2013)
+    </p>
+    <p>Programming by Nick Korbut.<br/>
+     email: <a href="mailto:nick.korbut@gmail.com">nick.korbut@gmail.com</a>
+    </p>
+    ]]></description>
+
+    <!-- Site Main File Copy Section -->
+    <!-- Note the folder attribute: This attribute describes the folder
+         to copy FROM in the package to install therefore files copied
+         in this section are copied from /site/ in the package -->
+    <files folder="site">
+        <filename>controller.php</filename>
+        <filename>chem.php</filename>
+        <filename>index.html</filename>
+        <filename>views/index.html</filename>
+        <filename>views/chem/index.html</filename>
+        <filename>views/chem/view.html.php</filename>
+        <filename>views/chem/tmpl/default.php</filename>
+        <filename>views/chem/tmpl/jsme.php</filename>
+        <filename>views/chem/tmpl/index.html</filename>
+        <filename>views/assets/chem.css</filename>
+        <filename>views/assets/index.html</filename>
+        <filename>models/chem.php</filename>\
+        <folder>jsme</folder>
+    </files>
+
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.sql</file>
+        </sql>
+    </install>
+
+    <!-- Uninstall Database Section -->
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.sql</file>
+        </sql>
+    </uninstall>
+
+    <administration>
+        <!-- Administration Menu Section -->
+        <menu img="components/com_chem/images/molecule.png">Chem</menu>
+        <submenu>
+            <!-- Note that all & must be escaped to &amp; for the file to be valid XML and be parsed by the installer -->
+            <menu link="option=com_chem&amp;task=exportdb">Export DB</menu>
+            <menu link="option=com_chem&amp;task=importdb">Import DB</menu>
+            <menu link="option=com_chem&amp;task=about">About</menu>
+        </submenu>
+
+        <!-- Administration Main File Copy Section -->
+        <files folder="admin">
+            <filename>sql/install.mysql.sql</filename>
+            <filename>sql/uninstall.mysql.sql</filename>
+            <filename>tables/chem.php</filename>
+            <filename>images/molecule.png</filename>
+            <filename>images/icon-48-molecule.png</filename>
+            <filename>css/admin.stylesheet.css</filename>
+            <filename>admin.chem.html.php</filename>
+            <filename>admin.chem.php</filename>
+            <filename>toolbar.chem.html.php</filename>
+            <filename>toolbar.chem.php</filename>
+            <filename>config.xml</filename>
+            <filename>chem.php</filename>
+            <filename>index.html</filename>
+        </files>
+
+    </administration>
+</install>

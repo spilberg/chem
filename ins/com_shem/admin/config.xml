@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <params>
+        <param name="@spacer" type="spacer" default="Params for page" label="" description="" />
+
+        <param name="show_page_title" type="radio" default="1" label="Show/hide page title" description="Show/hide page title">
+            <option value="0">Hide</option>
+            <option value="1">Show</option>
+        </param>
+
+        <param name="pageclass_sfx" type="text" default="" label="Page css class" description="Page css class (leave blank)" />
+        <param name="page_title" type="text" default="My Chem Title" label="Page Title" description="Page Title" />
+
+        <param name="@spacer" type="spacer" default="Params for JSME editor" label="" description="" />
+        <param name="jsme_height" type="text" default="380" label="JSME height (px)" description="JSME height in pixel" />
+
+        <param name="jsme_width" type="text" default="340" label="JSME width (px)" description="JSME width in pixel" />
+
+
+
+        <param name="jsme_xbutton" type="radio" default="xbutton" label="Show/hide the X button" description="Show / hide the X button (default is xbutton)">
+            <option value="xbutton">xbutton</option>
+            <option value="noxbutton">noxbutton</option>
+        </param>
+
+
+        <param name="jsme_rbutton" type="radio" default="rbutton" label="Show/hide the R button" description="Show / hide the R button (to mark connection of substituent with the main scaffold)">
+            <option value="rbutton">rbutton</option>
+            <option value="norbutton">norbutton</option>
+        </param>
+
+        <param name="jsme_atommovebutton" type="radio" default="noatommovebutton" label="Show/hide the atom move button" description="Show / hide the atom move button (default is noatommovebutton)">
+            <option value="atommovebutton">atommovebutton</option>
+            <option value="noatommovebutton">noatommovebutton</option>
+        </param>
+
+        <param name="jsme_hydrogens" type="radio" default="hydrogens" label="Display/hide hydrogens" description="Display/hide hydrogens on heteroatom labels (default is hydrogens)">
+            <option value="hydrogens">hydrogens</option>
+            <option value="nohydrogens">nohydrogens</option>
+        </param>
+
+        <param name="jsme_keephs" type="radio" default="keephs" label="Remove hydrogens when reading a molecule" description="Remove hydrogens when reading a molecule with explicit hydrogens (default is keephs). This option can be used to remove hydrogens when pasting a structure with explicit hydrogens comning from e.g. the Pubchem database">
+            <option value="keephs">keephs</option>
+            <option value="removehs">removehs</option>
+        </param>
+
+        <param name="jsme_keephs1" type="radio" default="keephs" label="Remove hydrogens bounded to C" description="Remove hydrogens bounded to C when reading a molecule with explicit hydrogens (default is keephs). This option can be used to remove hydrogens when pasting a structure with explicit hydrogens comning from e.g. the Pubchem database">
+            <option value="keephs">keephs</option>
+            <option value="removehsc">removehsc</option>
+        </param>
+
+        <param name="jsme_noquery" type="radio" default="noquery" label="Enable/disable query features" description="Enable/disable query features (default is noquery). In query mode, a SMARTS is generated when a smiles is requested.">
+            <option value="query">query</option>
+            <option value="noquery">noquery</option>
+        </param>
+
+        <param name="jsme_autoez" type="radio" default="noautoez" label="Automatic generation of SMILES" description="Automatic generation of SMILES with E,Z stereochemistry">
+            <option value="autoez">autoez</option>
+            <option value="noautoez">noautoez</option>
+        </param>
+
+        <param name="jsme_canonize" type="radio" default="canonize" label="SMILES canonicalization" description="SMILES canonicalization and detection of aromaticity supressed (default is canonize)">
+            <option value="canonize">canonize</option>
+            <option value="nocanonize">nocanonize</option>
+        </param>
+
+        <param name="jsme_stereo" type="radio" default="stereo" label="Stereochemistry not considered" description="Stereochemistry not considered when creating SMILES (default is stereo)">
+            <option value="stereo">stereo</option>
+            <option value="nostereo">nostereo</option>
+        </param>
+
+        <param name="jsme_reaction" type="radio" default="noreaction" label="Enable/disable reaction input" description="Enable/disable reaction input">
+            <option value="reaction">reaction</option>
+            <option value="noreaction">noreaction</option>
+        </param>
+
+        <param name="jsme_multipart" type="radio" default="nomultipart" label="Possibility to enter multipart structures" description="Possibility to enter multipart structures (default nomultipart)">
+            <option value="multipart">multipart</option>
+            <option value="nomultipart">nomultipart</option>
+        </param>
+
+        <param name="jsme_polarnitro" type="radio" default="nopolarnitro" label="Prevent automatic conversion of nitro" description="Prevent automatic conversion of nitro (and similar) groups into nonpolar form (default is nopolarnitro)">
+            <option value="polarnitro">polarnitro</option>
+            <option value="nopolarnitro">nopolarnitro</option>
+        </param>
+
+        <param name="jsme_number" type="radio" default="autonumber" label="Mark atoms" description="Possibility to number (mark) atoms">
+            <option value="number">number</option>
+            <option value="autonumber">autonumber</option>
+        </param>
+
+        <param name="jsme_star" type="radio" default="nostar" label="Possibility to highlight an atom" description="Possibility to highlight an atom (default is nostar). All highlighted atoms will have an atom number equal to 1. The atom numbers are included in the exported SMILES and MOL.">
+            <option value="star">star</option>
+            <option value="nostar">nostar</option>
+        </param>
+
+        <param name="jsme_depict" type="radio" default="depict" label="Show/hide editing buttons" description="The applet will appear without editing buttons, this is used for structure display only (default nodepict)">
+            <option value="depict">depict</option>
+            <option value="nodepict">nodepict</option>
+        </param>
+
+        <param name="jsme_paste" type="radio" default="nopaste" label="Enabling or disabling the paste action" description="enabling and disabling the paste action including drop of a MOL/RXN on the applet., can be used together with the depict option to have a read only depiction">
+            <option value="paste">paste</option>
+            <option value="nopaste">nopaste</option>
+        </param>
+        <param name="jsme_border" type="radio" default="border" label="Displays a border" description="(used together with the depict option) - displays a border around depicted molecule (default is noborder)">
+            <option value="border">border</option>
+            <option value="noborder">noborder</option>
+        </param>
+
+        <param name="jsme_look" type="radio" default="oldlook" label="JME look" description="Turn on/off the old Java based JME look (default is newlook)">
+            <option value="newlook">newlook</option>
+            <option value="oldlook">oldlook</option>
+        </param>
+    </params>
+</config>
