@@ -40,6 +40,11 @@ switch ($task) {
         removeMolecules( $cid );
         break;
 
+    case 'packagedelete':
+    case 'deletepackage':
+        packageDelete($option);
+        break;
+
     case 'cancel':
         cancelMolecule();
         break;
@@ -381,3 +386,20 @@ function exportDB(){
 function importDB(){
     HTML_chem::importDB();
 }
+
+function packageDelete($option){
+
+    $todelete = JRequest::getVar('itemtodelete');
+
+    if($todelete){
+
+        $list =  explode(PHP_EOL,$todelete);
+
+        HTML_chem::pakageDeleteProcess($list);
+    } else {
+        HTML_chem::pakageDelete($option);
+    }
+
+}
+
+

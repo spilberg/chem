@@ -673,13 +673,14 @@ class HTML_chem {
     }
 
     function pakageDelete($option){
-        JRequest::setVar( 'hidemainmenu', 1 );
+       // JRequest::setVar( 'hidemainmenu', 1 );
         ?>
         <form action="index.php" method="post" name="adminForm">
             <p>In this place I am planing package delete functionality. Coming soon.</p>
             <p>Please insert each item in each line. If You ready press button Delete</p>
 
             <textarea id="itemtodelete" name="itemtodelete" cols="50" rows="8" class="inputbox"></textarea>
+
             <input type="hidden" name="option" value="<?php echo $option; ?>" />
 <!--            <input type="hidden" name="id" value="--><?php //echo $row->id; ?><!--" />-->
 <!--            <input type="hidden" name="cid[]" value="--><?php //echo $row->id; ?><!--" />-->
@@ -690,26 +691,87 @@ class HTML_chem {
     }
 
     function pakageDeleteProcess($todelete){
-        JRequest::setVar( 'hidemainmenu', 1 );
+       // JRequest::setVar( 'hidemainmenu', 1 );
+
+        $db = & JFactory::getDBO();
 
         ?>
         <form action="index.php" method="post" name="adminForm">
             <p>It is a process ...</p>
             <p><?php
-                foreach($todelete as $value){
-                    echo $value. "<br/>";
+
+                $endofstring = "',";
+                $endofstring1 = ";";
+
+                $in = '';
+
+//                $queries = '';
+//
+//                for($i= 0; $i < count($todelete); $i++){
+//
+//                    if (count($todelete) - 1  == $i) $endofstring1 = "";
+//                    $queries .= 'DELETE FROM jos_chem WHERE id = '.trim($todelete[$i]).$endofstring1;
+//
+//                }
+
+                for($i= 0; $i < count($todelete); $i++){
+
+                 echo HTML_chem::delRec(trim($todelete[$i])) . '<br/>';
+//                    if (count($todelete) - 1  == $i) $endofstring = "'";
+//                    $in .= "'".trim($todelete[$i]).$endofstring;
+
                 }
+
+//                for($i= 0; $i < count($todelete); $i++){
+//
+//                    if (count($todelete) - 1  == $i) $endofstring = "'";
+//                    $in .= "'".trim($todelete[$i]).$endofstring;
+//
+//                }
+//
+//
+//                $query = 'SELECT * FROM jos_chem WHERE id IN ('. $in .')';
+//
+////                $db->setQuery($queries);
+//                $db->setQuery($query);
+//
+//                $db->query();
+////                $db->queryBatch(false);
+//
+//                echo "Complete " . $db->getAffectedRows();
 
                 ?></p>
 
 
 
-            <input type="hidden" name="option" value="<?php echo $option; ?>" />
+            <input type="hidden" name="option" value="com_chem" />
             <!--            <input type="hidden" name="id" value="--><?php //echo $row->id; ?><!--" />-->
             <!--            <input type="hidden" name="cid[]" value="--><?php //echo $row->id; ?><!--" />-->
             <input type="hidden" name="task" value="" />
             <?php echo JHTML::_( 'form.token' ); ?>
         </form>
     <?php
+    }
+
+    function delRec($myid){
+
+
+        $retData = '';
+
+        $db = & JFactory::getDBO();
+
+        $query = 'DELETE FROM jos_chem WHERE id = '. $myid;
+//        $query = 'SELECT * FROM jos_chem WHERE id = '. $myid;
+
+        $db->setQuery($query);
+
+        if($db->query()) {
+            $retData = 'Selected row with id: '. $myid;
+        } else {
+            $retData = 'Don`t selected row with id: '. $myid;
+        }
+
+
+        return $retData;
     }
 }

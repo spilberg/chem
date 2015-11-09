@@ -66,6 +66,7 @@
             <menu link="option=com_chem">Manage Molecules</menu>
             <menu link="option=com_chem&amp;task=exportdb">Export DB</menu>
             <menu link="option=com_chem&amp;task=importdb">Import DB</menu>
+            <menu link="option=com_chem&amp;task=packagedelete">Delete package</menu>
             <menu link="option=com_chem&amp;task=about">About</menu>
         </submenu>
 
