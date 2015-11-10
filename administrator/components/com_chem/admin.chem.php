@@ -41,8 +41,11 @@ switch ($task) {
         break;
 
     case 'packagedelete':
-    case 'deletepackage':
         packageDelete($option);
+        break;
+
+    case 'deletepackage':
+        pakageDeleteProcess();
         break;
 
     case 'cancel':
@@ -388,18 +391,29 @@ function importDB(){
 }
 
 function packageDelete($option){
-
-    $todelete = JRequest::getVar('itemtodelete');
-
-    if($todelete){
-
-        $list =  explode(PHP_EOL,$todelete);
-
-        HTML_chem::pakageDeleteProcess($list);
-    } else {
-        HTML_chem::pakageDelete($option);
-    }
-
+    HTML_chem::pakageDelete($option);
 }
 
+function pakageDeleteProcess(){
+    $todelete     = JRequest::getVar('itemtodelete');
+    $filetodelete = JRequest::getVar('filetodelete',null,'FILES');
+
+
+    if($filetodelete['name'] !== '') $list_from_file = file($filetodelete['tmp_name']);
+
+    if($todelete !== '') $list_from_field =  explode(PHP_EOL,$todelete);
+
+
+    if($list_from_field !== '' && $list_from_file !== '')
+        $all_list = array_merge_recursive($list_from_field,$list_from_file);
+
+    if($list_from_field !== '' && $list_from_file == '')
+        $all_list = $list_from_field;
+
+    if($list_from_field == '' && $list_from_file !== '')
+        $all_list = $list_from_file;
+
+
+    HTML_chem::pakageDeleteProcess($all_list);
+}
 
