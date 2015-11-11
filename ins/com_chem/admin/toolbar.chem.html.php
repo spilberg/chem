@@ -16,13 +16,12 @@ class TOOLBAR_chem
         JToolBarHelper::preferences('com_chem', '500');
     }
 
-    function _PACKAGEDELETE() {
+    function _PACKAGEDELETE($task) {
 
         JToolBarHelper::title( JText::_( 'Chem component' ) .': <small><small>[ '. JText::_( 'Package delete') .' ]</small></small>', 'molecule' );
 
 
-//        JToolBarHelper::deleteList();
-        JToolBarHelper::custom('deletepackage', 'delete.png', 'delete_f2.png', 'Delete Package', false, false);
+        if($task == 'packagedelete') JToolBarHelper::custom('deletepackage', 'delete.png', 'delete_f2.png', 'Delete Package', false, false);
       //  JToolBarHelper::addNewX();
 //        JToolBarHelper::custom('config', 'config.png', 'config_f2.png', 'Settings', false, false);
       //  JToolBarHelper::preferences('com_chem', '500');

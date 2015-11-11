@@ -675,11 +675,41 @@ class HTML_chem {
     function pakageDelete($option){
        // JRequest::setVar( 'hidemainmenu', 1 );
         ?>
-        <form action="index.php" method="post" name="adminForm">
-            <p>In this place I am planing package delete functionality. Coming soon.</p>
-            <p>Please insert each item in each line. If You ready press button Delete</p>
 
+        <script language="javascript" type="text/javascript">
+            <!--
+            function submitbutton(pressbutton) {
+                var form = document.adminForm;
+                if (pressbutton == 'cancel') {
+                   // submitform( pressbutton );
+                    return;
+                }
+
+                // do field validation
+                if ( form.filetodelete.value == '' && form.itemtodelete.value == '' ) {
+                    alert( "<?php echo JText::_( 'You must select a file.', true ); ?>" );
+//                } else if (  ) {
+//                    alert( "<?php //echo JText::_( 'Please select a Category.', true ); ?>//" );
+                } else {
+                    submitform( pressbutton );
+                }
+
+                //submitform( pressbutton );
+            }
+            //-->
+        </script>
+
+        <form action="index.php" method="post" enctype="multipart/form-data" name="adminForm">
+
+        <p>For delete list of records You can select file with list or write catalog numbers in field below.</br>
+                One catalog number in one line.</p>
+            <p>You can choose both methods. In this case data in file and data in text field will be concatenated. </p>
+
+            <p>Select file: <input type="file" name="filetodelete"/></p>
+            <p>or/and insert each item in each line.</p>
             <textarea id="itemtodelete" name="itemtodelete" cols="50" rows="8" class="inputbox"></textarea>
+            <p>If You ready press button "Delete Package".</p>
+
             <input type="hidden" name="option" value="<?php echo $option; ?>" />
 <!--            <input type="hidden" name="id" value="--><?php //echo $row->id; ?><!--" />-->
 <!--            <input type="hidden" name="cid[]" value="--><?php //echo $row->id; ?><!--" />-->
@@ -698,48 +728,40 @@ class HTML_chem {
         <form action="index.php" method="post" name="adminForm">
             <p>It is a process ...</p>
             <p><?php
-
-                $endofstring = "',";
-                $endofstring1 = ";";
-
-                $in = '';
-
-                $queries = '';
-
-                for($i= 0; $i < count($todelete); $i++){
-
-                    if (count($todelete) - 1  == $i) $endofstring1 = "";
-                    $queries .= 'DELETE FROM jos_chem WHERE id = '.trim($todelete[$i]).$endofstring1;
-
-                }
-
-//                for($i= 0; $i < count($todelete); $i++){
-//
-//                    if (count($todelete) - 1  == $i) $endofstring = "'";
-//                    $in .= "'".trim($todelete[$i]).$endofstring;
-//
-//                }
+                    for($i= 0; $i < count($todelete); $i++){
+                      echo HTML_chem::delRec(trim($todelete[$i])) . '<br/>';
+                    }
+                ?>
+            </p>
+<p>Operation is completed!</p>
 
 
-               // $query = 'SELECT * FROM jos_chem WHERE id IN ('. $in .')';
-
-                $db->setQuery($queries);
-//                $db->setQuery($query);
-
-                $db->queryBatch(false);
-
-                echo "Complete " . $db->getAffectedRows();
-
-                ?></p>
-
-
-
-            <input type="hidden" name="option" value="<?php echo $option; ?>" />
+            <input type="hidden" name="option" value="com_chem" />
             <!--            <input type="hidden" name="id" value="--><?php //echo $row->id; ?><!--" />-->
             <!--            <input type="hidden" name="cid[]" value="--><?php //echo $row->id; ?><!--" />-->
             <input type="hidden" name="task" value="" />
             <?php echo JHTML::_( 'form.token' ); ?>
         </form>
     <?php
+    }
+
+    function delRec($myid){
+
+        $retData = '';
+
+        $db = & JFactory::getDBO();
+
+        $query = 'DELETE FROM jos_chem WHERE id = '. $myid;
+//        $query = 'SELECT * FROM jos_chem WHERE id = '. $myid;
+
+        $db->setQuery($query);
+
+        if($db->query()) {
+            $retData = 'Try to delete row with id: '. $myid . '&nbsp;&nbsp;&nbsp;&nbsp;--> ' .($db->getAffectedRows() ? ' Row '. $myid .' <span style="color:#00ff00;">delete now</span>' : ' Row '. $myid .' <span style="color:#ff0000;">not delete</span>');
+        } else {
+            $retData = 'Errors ';
+        }
+
+        return $retData;
     }
 }

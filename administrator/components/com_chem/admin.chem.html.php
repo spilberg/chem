@@ -260,24 +260,19 @@ class HTML_chem {
     <?php
     }
 
-    function editMolecule( &$row, &$lists, $option, &$params ) {
+//    function editMolecule( &$row, &$lists, $option, &$params ) {
+    function editMolecule( &$row, $option ) {
 
         JRequest::setVar( 'hidemainmenu', 1 );
 
         JHTML::_('script', 'jquery-1.9.1.min.js', 'components/com_chem/marvin/js/lib/');
         JHTML::_('script', 'jsme.nocache.js', 'components/com_chem/jsme/');
 
-//        if ($row->image == '') {
-//            $row->image = 'blank.png';
-//        }
 
         JHTML::_('behavior.tooltip');
         jimport('joomla.html.pane');
         // TODO: allowAllClose should default true in J!1.6, so remove the array when it does.
-//        $pane = &JPane::getInstance('sliders', array('allowAllClose' => true));
 
-//        JFilterOutput::objectHTMLSafe( $row, ENT_QUOTES, 'misc' );
-//        $cparams = JComponentHelper::getParams ('com_media');
         ?>
         <script language="javascript" type="text/javascript">
             <!--
@@ -288,6 +283,7 @@ class HTML_chem {
                     return;
                 }
 
+                // TODO: write validation field before submit дописать проверку формы перед отправкой
                 // do field validation
 //                if ( form.name.value == "" ) {
 //                    alert( "<?php //echo JText::_( 'You must provide a name.', true ); ?>//" );
@@ -606,22 +602,8 @@ class HTML_chem {
             <div class="col width-40">
                 <fieldset class="adminform">
                     <legend><?php echo JText::_( 'Molecule' ); ?></legend>
-
                     <div id="jsme_container"></div>
                     <button id="readmol" type="button" onclick="readMOLFromTextArea()">Read Mol</button>
-<!--                    --><?php
-//                    echo $pane->startPane("menu-pane");
-//                    echo $pane->startPanel(JText :: _('Contact Parameters'), "param-page");
-//                    echo $params->render();
-//                    echo $pane->endPanel();
-//                    echo $pane->startPanel(JText :: _('Advanced Parameters'), "param-page");
-//                    echo $params->render('params', 'advanced');
-//                    echo $pane->endPanel();
-//                    echo $pane->startPanel(JText :: _('E-mail Parameters'), "param-page");
-//                    echo $params->render('params', 'email');
-//                    echo $pane->endPanel();
-//                    echo $pane->endPane();
-//                    ?>
                 </fieldset>
             </div>
             <div class="clr"></div>
@@ -711,8 +693,6 @@ class HTML_chem {
             <p>If You ready press button "Delete Package".</p>
 
             <input type="hidden" name="option" value="<?php echo $option; ?>" />
-<!--            <input type="hidden" name="id" value="--><?php //echo $row->id; ?><!--" />-->
-<!--            <input type="hidden" name="cid[]" value="--><?php //echo $row->id; ?><!--" />-->
             <input type="hidden" name="task" value="" />
             <?php echo JHTML::_( 'form.token' ); ?>
         </form>
@@ -721,8 +701,6 @@ class HTML_chem {
 
     function pakageDeleteProcess($todelete){
        // JRequest::setVar( 'hidemainmenu', 1 );
-
-        $db = & JFactory::getDBO();
 
         ?>
         <form action="index.php" method="post" name="adminForm">
@@ -733,12 +711,9 @@ class HTML_chem {
                     }
                 ?>
             </p>
-<p>Operation is completed!</p>
-
+            <p>Operation is completed!</p>
 
             <input type="hidden" name="option" value="com_chem" />
-            <!--            <input type="hidden" name="id" value="--><?php //echo $row->id; ?><!--" />-->
-            <!--            <input type="hidden" name="cid[]" value="--><?php //echo $row->id; ?><!--" />-->
             <input type="hidden" name="task" value="" />
             <?php echo JHTML::_( 'form.token' ); ?>
         </form>

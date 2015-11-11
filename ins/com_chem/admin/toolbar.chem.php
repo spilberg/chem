@@ -18,7 +18,7 @@ switch ( $task ) {
 
     case 'packagedelete':
     case 'deletepackage':
-        TOOLBAR_chem::_PACKAGEDELETE();
+        TOOLBAR_chem::_PACKAGEDELETE($task);
         break;
 
 
