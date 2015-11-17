@@ -260,24 +260,19 @@ class HTML_chem {
     <?php
     }
 
-    function editMolecule( &$row, &$lists, $option, &$params ) {
+//    function editMolecule( &$row, &$lists, $option, &$params ) {
+    function editMolecule( &$row, $option ) {
 
         JRequest::setVar( 'hidemainmenu', 1 );
 
         JHTML::_('script', 'jquery-1.9.1.min.js', 'components/com_chem/marvin/js/lib/');
         JHTML::_('script', 'jsme.nocache.js', 'components/com_chem/jsme/');
 
-//        if ($row->image == '') {
-//            $row->image = 'blank.png';
-//        }
 
         JHTML::_('behavior.tooltip');
         jimport('joomla.html.pane');
         // TODO: allowAllClose should default true in J!1.6, so remove the array when it does.
-//        $pane = &JPane::getInstance('sliders', array('allowAllClose' => true));
 
-//        JFilterOutput::objectHTMLSafe( $row, ENT_QUOTES, 'misc' );
-//        $cparams = JComponentHelper::getParams ('com_media');
         ?>
         <script language="javascript" type="text/javascript">
             <!--
@@ -288,6 +283,7 @@ class HTML_chem {
                     return;
                 }
 
+                // TODO: write validation field before submit дописать проверку формы перед отправкой
                 // do field validation
 //                if ( form.name.value == "" ) {
 //                    alert( "<?php //echo JText::_( 'You must provide a name.', true ); ?>//" );
@@ -606,22 +602,8 @@ class HTML_chem {
             <div class="col width-40">
                 <fieldset class="adminform">
                     <legend><?php echo JText::_( 'Molecule' ); ?></legend>
-
                     <div id="jsme_container"></div>
                     <button id="readmol" type="button" onclick="readMOLFromTextArea()">Read Mol</button>
-<!--                    --><?php
-//                    echo $pane->startPane("menu-pane");
-//                    echo $pane->startPanel(JText :: _('Contact Parameters'), "param-page");
-//                    echo $params->render();
-//                    echo $pane->endPanel();
-//                    echo $pane->startPanel(JText :: _('Advanced Parameters'), "param-page");
-//                    echo $params->render('params', 'advanced');
-//                    echo $pane->endPanel();
-//                    echo $pane->startPanel(JText :: _('E-mail Parameters'), "param-page");
-//                    echo $params->render('params', 'email');
-//                    echo $pane->endPanel();
-//                    echo $pane->endPane();
-//                    ?>
                 </fieldset>
             </div>
             <div class="clr"></div>
@@ -663,10 +645,102 @@ class HTML_chem {
 
     }
 
-    function importDB(){
+    function importDB($option){
+
+        define('RECORD_DELIMITER', "$$$$");
+        define('FIELD_DELIMITER', ">  ");
+
+        $naming_fields = array('id' => 'id',
+            'Formula' => 'molecular_formula',
+                        'Mol Weight' => 'mol_weigh',
+                        'Catalog_namber' => 'cat_namber',
+                        'Purity' => 'purity',
+                        'Molecular_Formula' =>'molecular_formula',
+                        'Available_from_stock' => 'mass',
+                        'CAS_number' => 'cas_number',
+                        'MDL_number' => 'mdl_number',
+                        'SMILES' => 'smiles',
+                        'Status' => 'status',
+                        'price1mg' => 'price1mg',
+                        'price2mg' => 'price2mg',
+                        'price3mg' => 'price3mg',
+                        'price4mg' => 'price4mg',
+                        'price5mg' => 'price5mg',
+                        'price10mg' => 'price10mg',
+                        'price15mg' => 'price15mg',
+                        'price20mg' => 'price20mg',
+                        'price25mg' => 'price25mg',
+                        'price5umol' => 'price5umol',
+                        'price10umol' => 'price10umol',
+                        'price20umol' => 'price20umol');
+
+
+        $array_chem_object = array();
+
         ?>
         <form action="index.php" method="post" name="adminForm">
             <p>In this place I am planing import DB functionality. Coming soon.</p>
+
+            <?php
+
+                $sdf_file = fopen(JPATH_SITE.DS.'ins'.DS.'progr_new.sdf', 'r');
+
+                $file_content = fread($sdf_file,filesize(JPATH_SITE.DS.'ins'.DS.'progr_new.sdf'));
+
+                fclose($sdf_file);
+
+                $elements_array = explode(RECORD_DELIMITER,$file_content);
+
+
+
+
+                for($j=0; $j<count($elements_array); $j++){
+
+                    $item_array = explode(FIELD_DELIMITER,$elements_array[0]);
+
+                    $objItem = new JObject();
+
+                    for($i=0; $i < count($item_array); $i++){
+                        if($i == 0) {
+                            echo "<br/><br/> mdl_file: " . $item_array[$i] . "<br/>";
+                            $objItem->set('mdl_form',$item_array[$i]);
+                        } else {
+                            $item = explode(">", trim($item_array[$i], "\n\r<"));
+                            echo $item[0] . ": " . trim($item[1]) . "<br/>";
+                            if($naming_fields[$item[0]])
+                            $objItem->set($naming_fields[$item[0]],trim($item[1]));
+                        }
+                    }
+
+                    $array_chem_object[$j] = $objItem;
+                    echo "<----------------------------> <br/><br/>";
+                }
+
+            var_dump($array_chem_object);
+
+//            $row	=& JTable::getInstance('chem', 'Table');
+//
+//            if (!$row->bind( $array_chem_object[0] )) {
+//                JError::raiseError(500, $row->getError() );
+//            }
+//
+//            if (!$row->check()) {
+//                JError::raiseError(500, $row->getError() );
+//            }
+//
+//            if (!$row->store()) {
+//                JError::raiseError(500, $row->getError() );
+//            }
+
+
+
+                echo "THE END!";
+
+            ?>
+
+            <input type="hidden" name="option" value="<?php echo $option; ?>" />
+            <input type="hidden" name="task" value="" />
+            <?php echo JHTML::_( 'form.token' ); ?>
         </form>
     <?php
 
@@ -711,8 +785,6 @@ class HTML_chem {
             <p>If You ready press button "Delete Package".</p>
 
             <input type="hidden" name="option" value="<?php echo $option; ?>" />
-<!--            <input type="hidden" name="id" value="--><?php //echo $row->id; ?><!--" />-->
-<!--            <input type="hidden" name="cid[]" value="--><?php //echo $row->id; ?><!--" />-->
             <input type="hidden" name="task" value="" />
             <?php echo JHTML::_( 'form.token' ); ?>
         </form>
@@ -721,8 +793,6 @@ class HTML_chem {
 
     function pakageDeleteProcess($todelete){
        // JRequest::setVar( 'hidemainmenu', 1 );
-
-        $db = & JFactory::getDBO();
 
         ?>
         <form action="index.php" method="post" name="adminForm">
@@ -733,12 +803,9 @@ class HTML_chem {
                     }
                 ?>
             </p>
-<p>Operation is completed!</p>
-
+            <p>Operation is completed!</p>
 
             <input type="hidden" name="option" value="com_chem" />
-            <!--            <input type="hidden" name="id" value="--><?php //echo $row->id; ?><!--" />-->
-            <!--            <input type="hidden" name="cid[]" value="--><?php //echo $row->id; ?><!--" />-->
             <input type="hidden" name="task" value="" />
             <?php echo JHTML::_( 'form.token' ); ?>
         </form>

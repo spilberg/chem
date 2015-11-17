@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="511c7652-8d0d-48d7-a1d1-aecbe2a2e301" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/administrator/cache/3c788c8140c244baa4de05cad390c937.spc" afterPath="$PROJECT_DIR$/administrator/cache/3c788c8140c244baa4de05cad390c937.spc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ins/com_chem/com_chem.zip" afterPath="$PROJECT_DIR$/ins/com_chem/com_chem.zip" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/administrator/components/com_chem/admin.chem.html.php" afterPath="$PROJECT_DIR$/administrator/components/com_chem/admin.chem.html.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/administrator/components/com_chem/admin.chem.php" afterPath="$PROJECT_DIR$/administrator/components/com_chem/admin.chem.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ins/com_chem/admin/admin.chem.html.php" afterPath="$PROJECT_DIR$/ins/com_chem/admin/admin.chem.html.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ins/com_chem/admin/admin.chem.php" afterPath="$PROJECT_DIR$/ins/com_chem/admin/admin.chem.php" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -116,39 +116,39 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.chem.html.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="admin.chem.html.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/admin.chem.html.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.8333335" vertical-offset="9956" max-vertical-offset="12264">
-              <caret line="736" column="0" selection-start-line="736" selection-start-column="0" selection-end-line="736" selection-end-column="0" />
+            <state vertical-scroll-proportion="-1.0450237" vertical-offset="9891" max-vertical-offset="12264">
+              <caret line="705" column="1" selection-start-line="705" selection-start-column="1" selection-end-line="705" selection-end-column="1" />
               <folding>
                 <element signature="n#showMolecules#0;n#HTML_chem#0;n#!!top" expanded="false" />
-                <marker date="1447785520119" expanded="true" signature="29947:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="30005:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="30059:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="30113:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="30159:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="30194:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="30245:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="30331:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="30381:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="30431:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="30481:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="30533:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="30585:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="30637:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="30689:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="30743:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="30799:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="30871:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="30946:31099" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="33209:33358" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="33275:33358" placeholder="{...}" />
-                <marker date="1447785520119" expanded="true" signature="35083:35273" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="35138:35273" placeholder="..." />
-                <marker date="1447785520119" expanded="true" signature="35708:35734" placeholder="SELECT * FRO..jos_chem..." />
-                <marker date="1447785520119" expanded="true" signature="35708:35742" placeholder="SELECT * FRO..jos_chem..." />
-                <marker date="1447785520119" expanded="true" signature="35764:35798" placeholder="SELECT * FRO..jos_chem..." />
+                <marker date="1447786006875" expanded="true" signature="29947:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="30005:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="30059:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="30113:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="30159:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="30194:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="30245:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="30331:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="30381:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="30431:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="30481:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="30533:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="30585:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="30637:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="30689:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="30743:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="30799:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="30871:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="30946:31099" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="33229:33378" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="33295:33378" placeholder="{...}" />
+                <marker date="1447786006875" expanded="true" signature="35103:35293" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="35158:35293" placeholder="..." />
+                <marker date="1447786006875" expanded="true" signature="35728:35754" placeholder="SELECT * FRO..jos_chem..." />
+                <marker date="1447786006875" expanded="true" signature="35728:35762" placeholder="SELECT * FRO..jos_chem..." />
+                <marker date="1447786006875" expanded="true" signature="35784:35818" placeholder="SELECT * FRO..jos_chem..." />
               </folding>
             </state>
           </provider>
@@ -177,10 +177,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="progr_new.sdf" pinned="false" current-in-tab="true">
+      <file leaf-file-name="progr_new.sdf" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ins/progr_new.sdf">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.4656863" vertical-offset="6090" max-vertical-offset="53592">
+            <state vertical-scroll-proportion="0.0" vertical-offset="6090" max-vertical-offset="53592">
               <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="9" />
               <folding />
             </state>
@@ -384,8 +384,8 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/w/Витраж w009 - Grand.html" />
         <option value="$PROJECT_DIR$/administrator/components/com_chem/admin.chem.php" />
-        <option value="$PROJECT_DIR$/administrator/components/com_chem/admin.chem.html.php" />
         <option value="$PROJECT_DIR$/ins/progr_new.sdf" />
+        <option value="$PROJECT_DIR$/administrator/components/com_chem/admin.chem.html.php" />
       </list>
     </option>
   </component>
@@ -640,19 +640,19 @@
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32963374" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29078802" sideWeight="0.6903991" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29078802" sideWeight="0.6903991" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35516092" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27669904" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11866235" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4372919" sideWeight="0.85976267" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29078802" sideWeight="0.30960086" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.45394006" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12567422" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12567422" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16936354" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45394006" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16936354" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.45394006" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3862375" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24306326" sideWeight="0.6467098" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1130,42 +1130,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/admin.chem.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.8333335" vertical-offset="9956" max-vertical-offset="12264">
-          <caret line="736" column="0" selection-start-line="736" selection-start-column="0" selection-end-line="736" selection-end-column="0" />
-          <folding>
-            <element signature="n#showMolecules#0;n#HTML_chem#0;n#!!top" expanded="false" />
-            <marker date="1447785520119" expanded="true" signature="29947:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="30005:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="30059:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="30113:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="30159:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="30194:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="30245:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="30331:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="30381:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="30431:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="30481:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="30533:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="30585:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="30637:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="30689:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="30743:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="30799:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="30871:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="30946:31099" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="33209:33358" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="33275:33358" placeholder="{...}" />
-            <marker date="1447785520119" expanded="true" signature="35083:35273" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="35138:35273" placeholder="..." />
-            <marker date="1447785520119" expanded="true" signature="35708:35734" placeholder="SELECT * FRO..jos_chem..." />
-            <marker date="1447785520119" expanded="true" signature="35708:35742" placeholder="SELECT * FRO..jos_chem..." />
-            <marker date="1447785520119" expanded="true" signature="35764:35798" placeholder="SELECT * FRO..jos_chem..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/681f5cdc/97ded17c-4b64-4fb0-8ca3-f6fe93120466/chem..jos_chem">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1181,9 +1145,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ins/progr_new.sdf">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.4656863" vertical-offset="6090" max-vertical-offset="53592">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6090" max-vertical-offset="53592">
           <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/admin.chem.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.0450237" vertical-offset="9891" max-vertical-offset="12264">
+          <caret line="705" column="1" selection-start-line="705" selection-start-column="1" selection-end-line="705" selection-end-column="1" />
+          <folding>
+            <element signature="n#showMolecules#0;n#HTML_chem#0;n#!!top" expanded="false" />
+            <marker date="1447786006875" expanded="true" signature="29947:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="30005:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="30059:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="30113:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="30159:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="30194:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="30245:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="30331:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="30381:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="30431:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="30481:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="30533:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="30585:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="30637:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="30689:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="30743:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="30799:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="30871:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="30946:31099" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="33229:33378" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="33295:33378" placeholder="{...}" />
+            <marker date="1447786006875" expanded="true" signature="35103:35293" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="35158:35293" placeholder="..." />
+            <marker date="1447786006875" expanded="true" signature="35728:35754" placeholder="SELECT * FRO..jos_chem..." />
+            <marker date="1447786006875" expanded="true" signature="35728:35762" placeholder="SELECT * FRO..jos_chem..." />
+            <marker date="1447786006875" expanded="true" signature="35784:35818" placeholder="SELECT * FRO..jos_chem..." />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -702,35 +702,35 @@ class HTML_chem {
 
                     for($i=0; $i < count($item_array); $i++){
                         if($i == 0) {
-//                            echo "<br/><br/> mdl_file: " . $item_array[$i] . "<br/>";
+                            echo "<br/><br/> mdl_file: " . $item_array[$i] . "<br/>";
                             $objItem->set('mdl_form',$item_array[$i]);
                         } else {
                             $item = explode(">", trim($item_array[$i], "\n\r<"));
-//                            echo $item[0] . ": " . trim($item[1]) . "<br/>";
+                            echo $item[0] . ": " . trim($item[1]) . "<br/>";
                             if($naming_fields[$item[0]])
                             $objItem->set($naming_fields[$item[0]],trim($item[1]));
                         }
                     }
 
                     $array_chem_object[$j] = $objItem;
-//                    echo "<----------------------------> <br/><br/>";
+                    echo "<----------------------------> <br/><br/>";
                 }
 
             var_dump($array_chem_object);
 
-            $row	=& JTable::getInstance('chem', 'Table');
-
-            if (!$row->bind( $array_chem_object[0] )) {
-                JError::raiseError(500, $row->getError() );
-            }
-
-            if (!$row->check()) {
-                JError::raiseError(500, $row->getError() );
-            }
-
-            if (!$row->store()) {
-                JError::raiseError(500, $row->getError() );
-            }
+//            $row	=& JTable::getInstance('chem', 'Table');
+//
+//            if (!$row->bind( $array_chem_object[0] )) {
+//                JError::raiseError(500, $row->getError() );
+//            }
+//
+//            if (!$row->check()) {
+//                JError::raiseError(500, $row->getError() );
+//            }
+//
+//            if (!$row->store()) {
+//                JError::raiseError(500, $row->getError() );
+//            }
 
 
 
