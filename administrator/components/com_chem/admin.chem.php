@@ -61,7 +61,7 @@ switch ($task) {
         break;
 
     case 'importdb':
-        importDB();
+        importDB($option);
         break;
 
     default:
@@ -282,8 +282,8 @@ function exportDB(){
     HTML_chem::exportDB();
 }
 
-function importDB(){
-    HTML_chem::importDB();
+function importDB($option){
+    HTML_chem::importDB($option);
 }
 
 function packageDelete($option){
