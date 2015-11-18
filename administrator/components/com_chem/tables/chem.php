@@ -62,4 +62,47 @@ class TableChem extends JTable
         parent::__construct( '#__chem', 'id', $db );
     }
 
+    /**
+     * Inserts a new row if id is zero or updates an existing row in the database table
+     *
+     * Can be overloaded/supplemented by the child class
+     *
+     * @access public
+     * @param boolean If false, null object variables are not updated
+     * @return null|string null if successful otherwise returns and error message
+     */
+    function store( $updateNulls=false )
+    {
+
+
+        $k = $this->_tbl_key;
+
+        $this->_db->setQuery('SELECT count(*) FROM jos_chem Where id ='. $this->id);
+        $numrows = $this->_db->loadResult();
+
+        if( $numrows )
+        {
+            $ret = $this->_db->updateObject( $this->_tbl, $this, $this->_tbl_key, $updateNulls );
+        }
+        else
+        {
+           // $this->id = null;
+            $ret = $this->_db->insertObject( $this->_tbl, $this, $this->_tbl_key );
+        }
+        if( !$ret )
+        {
+            $this->setError(get_class( $this ).'::store failed - '.$this->_db->getErrorMsg());
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+//    function check(){
+//        if($this->cat_namber && $this->mdl_form) return true;
+//
+//        return false;
+//    }
 }

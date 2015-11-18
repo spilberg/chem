@@ -647,102 +647,72 @@ class HTML_chem {
 
     function importDB($option){
 
-        define('RECORD_DELIMITER', "$$$$");
-        define('FIELD_DELIMITER', ">  ");
+            ?>
 
-        $naming_fields = array('id' => 'id',
-            'Formula' => 'molecular_formula',
-                        'Mol Weight' => 'mol_weigh',
-                        'Catalog_namber' => 'cat_namber',
-                        'Purity' => 'purity',
-                        'Molecular_Formula' =>'molecular_formula',
-                        'Available_from_stock' => 'mass',
-                        'CAS_number' => 'cas_number',
-                        'MDL_number' => 'mdl_number',
-                        'SMILES' => 'smiles',
-                        'Status' => 'status',
-                        'price1mg' => 'price1mg',
-                        'price2mg' => 'price2mg',
-                        'price3mg' => 'price3mg',
-                        'price4mg' => 'price4mg',
-                        'price5mg' => 'price5mg',
-                        'price10mg' => 'price10mg',
-                        'price15mg' => 'price15mg',
-                        'price20mg' => 'price20mg',
-                        'price25mg' => 'price25mg',
-                        'price5umol' => 'price5umol',
-                        'price10umol' => 'price10umol',
-                        'price20umol' => 'price20umol');
-
-
-        $array_chem_object = array();
-
-        ?>
-        <form action="index.php" method="post" name="adminForm">
-            <p>In this place I am planing import DB functionality. Coming soon.</p>
-
-            <?php
-
-                $sdf_file = fopen(JPATH_SITE.DS.'ins'.DS.'progr_new.sdf', 'r');
-
-                $file_content = fread($sdf_file,filesize(JPATH_SITE.DS.'ins'.DS.'progr_new.sdf'));
-
-                fclose($sdf_file);
-
-                $elements_array = explode(RECORD_DELIMITER,$file_content);
-
-
-
-
-                for($j=0; $j<count($elements_array); $j++){
-
-                    $item_array = explode(FIELD_DELIMITER,$elements_array[0]);
-
-                    $objItem = new JObject();
-
-                    for($i=0; $i < count($item_array); $i++){
-                        if($i == 0) {
-                            echo "<br/><br/> mdl_file: " . $item_array[$i] . "<br/>";
-                            $objItem->set('mdl_form',$item_array[$i]);
-                        } else {
-                            $item = explode(">", trim($item_array[$i], "\n\r<"));
-                            echo $item[0] . ": " . trim($item[1]) . "<br/>";
-                            if($naming_fields[$item[0]])
-                            $objItem->set($naming_fields[$item[0]],trim($item[1]));
-                        }
-                    }
-
-                    $array_chem_object[$j] = $objItem;
-                    echo "<----------------------------> <br/><br/>";
+        <script language="javascript" type="text/javascript">
+            <!--
+            function submitbutton(pressbutton) {
+                var form = document.adminForm;
+                if (pressbutton == 'cancel') {
+                    // submitform( pressbutton );
+                    return;
                 }
 
-            var_dump($array_chem_object);
+                // do field validation
+                if ( form.filetodelete.value == '' ) {
+                    alert( "<?php echo JText::_( 'You must select a file.', true ); ?>" );
+//                } else if (  ) {
+//                    alert( "<?php //echo JText::_( 'Please select a Category.', true ); ?>//" );
+                } else {
+                    submitform( pressbutton );
+                }
 
-//            $row	=& JTable::getInstance('chem', 'Table');
-//
-//            if (!$row->bind( $array_chem_object[0] )) {
-//                JError::raiseError(500, $row->getError() );
-//            }
-//
-//            if (!$row->check()) {
-//                JError::raiseError(500, $row->getError() );
-//            }
-//
-//            if (!$row->store()) {
-//                JError::raiseError(500, $row->getError() );
-//            }
+                //submitform( pressbutton );
+            }
+            //-->
+        </script>
 
+        <form action="index.php" method="post" enctype="multipart/form-data" name="adminForm">
+            <p>In this place I am planing import DB functionality. Coming soon.</p>
 
-
-                echo "THE END!";
-
-            ?>
+            <p>Select file: <input type="file" name="filetodelete"/></p>
+            <p>and presss button "ImportDB"</p>
 
             <input type="hidden" name="option" value="<?php echo $option; ?>" />
             <input type="hidden" name="task" value="" />
             <?php echo JHTML::_( 'form.token' ); ?>
         </form>
     <?php
+
+    }
+
+    function importDBProcess($array_chem_object){
+
+
+     //   var_dump($array_chem_object);
+
+           $row =& JTable::getInstance('chem', 'Table');
+
+           for($j = 0; $j < count($array_chem_object); $j++){
+
+               if($array_chem_object[$j]->cat_namber) {
+
+                   if (!$row->bind($array_chem_object[$j])) {
+                       JError::raiseError(500, $row->getError());
+                   }
+
+//                 if (!$row->check()) {
+//                     JError::raiseError(500, $row->getError() );
+//                 }
+
+                   if (!$row->store()) {
+                       JError::raiseError(500, $row->getError());
+                   }
+
+                   echo "Insert of update element with cat_namber: " . $array_chem_object[$j]->cat_namber . "<br/>";
+               }
+           }
+
 
     }
 
@@ -775,7 +745,7 @@ class HTML_chem {
 
         <form action="index.php" method="post" enctype="multipart/form-data" name="adminForm">
 
-        <p>For delete list of records You can select file with list or write catalog numbers in field below.</br>
+            <p>For delete list of records You can select file with list or write catalog numbers in field below.</br>
                 One catalog number in one line.</p>
             <p>You can choose both methods. In this case data in file and data in text field will be concatenated. </p>
 

@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="511c7652-8d0d-48d7-a1d1-aecbe2a2e301" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ins/com_chem/com_chem.zip" afterPath="$PROJECT_DIR$/ins/com_chem/com_chem.zip" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/administrator/cache/3c788c8140c244baa4de05cad390c937.spc" afterPath="$PROJECT_DIR$/administrator/cache/3c788c8140c244baa4de05cad390c937.spc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/administrator/components/com_chem/admin.chem.html.php" afterPath="$PROJECT_DIR$/administrator/components/com_chem/admin.chem.html.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ins/com_chem/admin/admin.chem.html.php" afterPath="$PROJECT_DIR$/ins/com_chem/admin/admin.chem.html.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ins/com_chem/admin/admin.chem.php" afterPath="$PROJECT_DIR$/ins/com_chem/admin/admin.chem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/administrator/components/com_chem/admin.chem.php" afterPath="$PROJECT_DIR$/administrator/components/com_chem/admin.chem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/administrator/components/com_chem/tables/chem.php" afterPath="$PROJECT_DIR$/administrator/components/com_chem/tables/chem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/administrator/components/com_chem/toolbar.chem.html.php" afterPath="$PROJECT_DIR$/administrator/components/com_chem/toolbar.chem.html.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/administrator/components/com_chem/toolbar.chem.php" afterPath="$PROJECT_DIR$/administrator/components/com_chem/toolbar.chem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,45 +65,10 @@
       <file leaf-file-name="admin.chem.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/admin.chem.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.3" vertical-offset="840" max-vertical-offset="2625">
-              <caret line="202" column="2" selection-start-line="202" selection-start-column="2" selection-end-line="202" selection-end-column="2" />
+            <state vertical-scroll-proportion="-4.8333335" vertical-offset="6617" max-vertical-offset="8505">
+              <caret line="322" column="0" selection-start-line="322" selection-start-column="0" selection-end-line="322" selection-end-column="0" />
               <folding>
-                <element signature="e#55#115#0#PHP" expanded="false" />
-                <element signature="e#626#1410#0#PHP" expanded="false" />
-                <element signature="e#648#704#0#PHP" expanded="false" />
-                <element signature="e#709#764#0#PHP" expanded="false" />
-                <element signature="e#826#889#0#PHP" expanded="false" />
-                <element signature="e#895#957#0#PHP" expanded="false" />
-                <element signature="e#963#1031#0#PHP" expanded="false" />
-                <element signature="e#1037#1104#0#PHP" expanded="false" />
-                <element signature="e#1110#1165#0#PHP" expanded="false" />
-                <element signature="e#1171#1225#0#PHP" expanded="false" />
-                <element signature="e#1231#1282#0#PHP" expanded="false" />
-                <element signature="e#1288#1346#0#PHP" expanded="false" />
-                <element signature="e#1352#1407#0#PHP" expanded="false" />
-                <element signature="e#1413#1569#0#PHP" expanded="false" />
-                <element signature="n#editMolecule#0;n#!!top" expanded="false" />
-                <element signature="e#1999#2071#0#PHP" expanded="false" />
-                <element signature="n#showMolecules#0;n#!!top" expanded="false" />
-                <element signature="e#2722#2826#0#PHP" expanded="false" />
-                <element signature="e#3125#3251#0#PHP" expanded="false" />
-                <element signature="e#3287#3414#0#PHP" expanded="false" />
-                <element signature="e#3420#3527#0#PHP" expanded="false" />
-                <element signature="e#3607#3795#0#PHP" expanded="false" />
-                <element signature="e#3708#3795#0#PHP" expanded="false" />
-                <element signature="e#4565#4662#0#PHP" expanded="false" />
-                <element signature="e#5156#5211#0#PHP" expanded="false" />
-                <element signature="e#5506#5703#0#PHP" expanded="false" />
-                <element signature="e#5713#5888#0#PHP" expanded="false" />
-                <element signature="e#6096#6150#0#PHP" expanded="false" />
-                <element signature="n#cancelMolecule#0;n#!!top" expanded="false" />
-                <element signature="e#6496#6613#0#PHP" expanded="false" />
-                <element signature="n#removeMolecules#0;n#!!top" expanded="false" />
-                <element signature="e#6865#7196#0#PHP" expanded="false" />
-                <element signature="e#7059#7190#0#PHP" expanded="false" />
-                <element signature="n#aboutComponent#0;n#!!top" expanded="false" />
-                <element signature="n#exportDB#0;n#!!top" expanded="false" />
-                <marker date="1447769977643" expanded="false" signature="6942:7006" placeholder="DELETE FROM ..." />
+                <marker date="1447862693883" expanded="true" signature="7013:7077" placeholder="DELETE FROM ..." />
               </folding>
             </state>
           </provider>
@@ -116,50 +84,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.chem.html.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="admin.chem.html.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/admin.chem.html.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.0450237" vertical-offset="9891" max-vertical-offset="12264">
-              <caret line="705" column="1" selection-start-line="705" selection-start-column="1" selection-end-line="705" selection-end-column="1" />
+            <state vertical-scroll-proportion="-6.233333" vertical-offset="1157" max-vertical-offset="3612">
+              <caret line="697" column="15" selection-start-line="697" selection-start-column="15" selection-end-line="697" selection-end-column="15" />
               <folding>
                 <element signature="n#showMolecules#0;n#HTML_chem#0;n#!!top" expanded="false" />
-                <marker date="1447786006875" expanded="true" signature="29947:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="30005:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="30059:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="30113:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="30159:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="30194:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="30245:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="30331:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="30381:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="30431:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="30481:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="30533:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="30585:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="30637:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="30689:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="30743:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="30799:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="30871:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="30946:31099" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="33229:33378" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="33295:33378" placeholder="{...}" />
-                <marker date="1447786006875" expanded="true" signature="35103:35293" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="35158:35293" placeholder="..." />
-                <marker date="1447786006875" expanded="true" signature="35728:35754" placeholder="SELECT * FRO..jos_chem..." />
-                <marker date="1447786006875" expanded="true" signature="35728:35762" placeholder="SELECT * FRO..jos_chem..." />
-                <marker date="1447786006875" expanded="true" signature="35784:35818" placeholder="SELECT * FRO..jos_chem..." />
+                <element signature="e#5876#11250#0#PHP" expanded="false" />
+                <element signature="e#7106#7678#0#PHP" expanded="false" />
+                <element signature="e#7274#7643#0#PHP" expanded="false" />
+                <element signature="n#editMolecule#0;n#HTML_chem#0;n#!!top" expanded="false" />
+                <element signature="e#14222#14739#0#PHP" expanded="false" />
+                <element signature="n#aboutComponent#0;n#HTML_chem#0;n#!!top" expanded="false" />
+                <element signature="n#exportDB#0;n#HTML_chem#0;n#!!top" expanded="false" />
+                <element signature="e#34550#34885#0#PHP" expanded="false" />
+                <element signature="e#34835#34885#0#PHP" expanded="false" />
+                <marker date="1447863445783" expanded="false" signature="34403:34435" placeholder="DELETE FROM ..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chem.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/tables/chem.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.8" vertical-offset="0" max-vertical-offset="1470">
-              <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -167,8 +109,8 @@
       <file leaf-file-name="table.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libraries/joomla/database/table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.033334" vertical-offset="12686" max-vertical-offset="18228">
-              <caret line="617" column="13" selection-start-line="617" selection-start-column="13" selection-end-line="617" selection-end-column="13" />
+            <state vertical-scroll-proportion="-4.8333335" vertical-offset="5399" max-vertical-offset="18228">
+              <caret line="264" column="13" selection-start-line="264" selection-start-column="13" selection-end-line="264" selection-end-column="13" />
               <folding>
                 <marker date="1442999369426" expanded="true" signature="6735:6773" placeholder="SELECT ${$th..." />
                 <marker date="1442999369426" expanded="true" signature="12206:12292" placeholder="DELETE FROM ..." />
@@ -177,97 +119,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="progr_new.sdf" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ins/progr_new.sdf">
+      <file leaf-file-name="chem.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/tables/chem.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6090" max-vertical-offset="53592">
-              <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="defines.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/defines.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.0" vertical-offset="267" max-vertical-offset="861">
-              <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xmlrpc/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.8" vertical-offset="0" max-vertical-offset="1323">
-              <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="defines.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/administrator/includes/defines.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.4" vertical-offset="216" max-vertical-offset="798">
-              <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="735" max-vertical-offset="1008">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Витраж w009 - Grand.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/w/Витраж w009 - Grand.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.5" vertical-offset="1743" max-vertical-offset="18900">
-              <caret line="98" column="12" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chem.jos_users" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/681f5cdc/97ded17c-4b64-4fb0-8ca3-f6fe93120466/chem..jos_users">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="126">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="toolbar.chem.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/toolbar.chem.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="111" max-vertical-offset="693">
-              <caret line="18" column="23" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="toolbar.chem.html.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/toolbar.chem.html.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="252" max-vertical-offset="1260">
-              <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
-              <folding />
+            <state vertical-scroll-proportion="0.33333334" vertical-offset="1467" max-vertical-offset="2373">
+              <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+              <folding>
+                <marker date="1447863445791" expanded="true" signature="2555:2584" placeholder="SELECT count..jos_chem..." />
+                <marker date="1447863445791" expanded="true" signature="2555:2595" placeholder="SELECT count..jos_chem..." />
+                <marker date="1447863445791" expanded="true" signature="2555:2785" placeholder="SELECT count..jos_chem..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -275,8 +136,8 @@
       <file leaf-file-name="mysql.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libraries/joomla/database/database/mysql.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4272" max-vertical-offset="14658">
-              <caret line="212" column="0" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
+            <state vertical-scroll-proportion="-4.8333335" vertical-offset="11132" max-vertical-offset="14658">
+              <caret line="537" column="0" selection-start-line="537" selection-start-column="0" selection-end-line="537" selection-end-column="0" />
               <folding>
                 <marker date="1442999369426" expanded="true" signature="11904:11965" placeholder="INSERT INTO ..." />
               </folding>
@@ -287,8 +148,8 @@
       <file leaf-file-name="database.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libraries/joomla/database/database.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="7838" max-vertical-offset="23016">
-              <caret line="381" column="0" selection-start-line="381" selection-start-column="0" selection-end-line="381" selection-end-column="0" />
+            <state vertical-scroll-proportion="228.9" vertical-offset="6867" max-vertical-offset="23016">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -297,13 +158,32 @@
       <file leaf-file-name="mysqli.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libraries/joomla/database/database/mysqli.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6799" max-vertical-offset="14028">
-              <caret line="271" column="15" selection-start-line="271" selection-start-column="13" selection-end-line="271" selection-end-column="23" />
+            <state vertical-scroll-proportion="-6.266667" vertical-offset="6847" max-vertical-offset="14322">
+              <caret line="368" column="13" selection-start-line="368" selection-start-column="13" selection-end-line="368" selection-end-column="25" />
               <folding>
                 <element signature="n#explain#0;n#JDatabaseMySQLi#0;n#!!top" expanded="false" />
-                <element signature="n#getNumRows#0;n#JDatabaseMySQLi#0;n#!!top" expanded="false" />
-                <element signature="n#loadResult#0;n#JDatabaseMySQLi#0;n#!!top" expanded="false" />
-                <marker date="1442999369426" expanded="true" signature="12507:12568" placeholder="INSERT INTO ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="toolbar.chem.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/toolbar.chem.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="111" max-vertical-offset="777">
+              <caret line="24" column="25" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="toolbar.chem.html.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/toolbar.chem.html.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.3" vertical-offset="267" max-vertical-offset="1134">
+              <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+              <folding>
+                <element signature="n#_EDIT#0;n#TOOLBAR_chem#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -324,11 +204,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MySQL - chem@localhost" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://db-console:/681f5cdc/97ded17c-4b64-4fb0-8ca3-f6fe93120466/">
+      <file leaf-file-name="test_jchem.bin" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ins/sdf/test_jchem.bin">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="42" max-vertical-offset="168">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="15144" max-vertical-offset="15687">
+              <caret line="740" column="0" selection-start-line="740" selection-start-column="0" selection-end-line="740" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Test_isis.bin" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ins/sdf/Test_isis.bin">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="49332" max-vertical-offset="49812">
+              <caret line="2366" column="0" selection-start-line="2366" selection-start-column="0" selection-end-line="2366" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -372,20 +262,21 @@
         <option value="$PROJECT_DIR$/components/com_chem/views/chem/view.html.php" />
         <option value="$PROJECT_DIR$/components/com_chem/dirtext.txt" />
         <option value="$PROJECT_DIR$/ins/com_shem/com_chem.xml" />
-        <option value="$PROJECT_DIR$/administrator/components/com_chem/tables/chem.php" />
         <option value="$PROJECT_DIR$/com_chem.sh" />
         <option value="$PROJECT_DIR$/administrator/components/com_chem/css/admin.stylesheet.css" />
         <option value="$PROJECT_DIR$/administrator/components/com_chem/com_chem.xml" />
-        <option value="$PROJECT_DIR$/administrator/components/com_chem/toolbar.chem.php" />
-        <option value="$PROJECT_DIR$/administrator/components/com_chem/toolbar.chem.html.php" />
         <option value="db-console:/681f5cdc/97ded17c-4b64-4fb0-8ca3-f6fe93120466/" />
         <option value="dbtable:/681f5cdc/97ded17c-4b64-4fb0-8ca3-f6fe93120466/chem..jos_chem" />
         <option value="$PROJECT_DIR$/ins/com_chem/recordtodel.txt" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/w/Витраж w009 - Grand.html" />
-        <option value="$PROJECT_DIR$/administrator/components/com_chem/admin.chem.php" />
         <option value="$PROJECT_DIR$/ins/progr_new.sdf" />
+        <option value="$PROJECT_DIR$/administrator/components/com_chem/toolbar.chem.php" />
+        <option value="$PROJECT_DIR$/administrator/components/com_chem/toolbar.chem.html.php" />
+        <option value="$PROJECT_DIR$/ins/sdf/test_jchem.bin" />
+        <option value="$PROJECT_DIR$/administrator/components/com_chem/admin.chem.php" />
         <option value="$PROJECT_DIR$/administrator/components/com_chem/admin.chem.html.php" />
+        <option value="$PROJECT_DIR$/administrator/components/com_chem/tables/chem.php" />
       </list>
     </option>
   </component>
@@ -473,73 +364,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="administrator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
+              <option name="myItemId" value="ins" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="administrator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="administrator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com_chem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="administrator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com_chem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tables" />
+              <option name="myItemId" value="sdf" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -641,23 +470,23 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32963374" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29078802" sideWeight="0.6903991" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35516092" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27669904" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11866235" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4372919" sideWeight="0.85976267" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.45394006" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12567422" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27669904" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14886731" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16936354" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.45394006" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11866235" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17098166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4372919" sideWeight="0.85976267" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45394006" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4372919" sideWeight="0.14023733" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3862375" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24306326" sideWeight="0.6467098" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35516092" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -691,21 +520,26 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/administrator/components/com_chem/admin.chem.html.php</url>
-          <line>685</line>
-          <option name="timeStamp" value="42" />
+          <line>733</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/administrator/components/com_chem/admin.chem.php</url>
+          <line>322</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/administrator/components/com_chem/tables/chem.php</url>
+          <line>77</line>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/administrator/components/com_chem/admin.chem.html.php</url>
-          <line>736</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/administrator/components/com_chem/admin.chem.html.php</url>
-          <line>718</line>
-          <option name="timeStamp" value="44" />
+          <line>703</line>
+          <option name="timeStamp" value="52" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="45" />
+      <option name="time" value="53" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="index.php">
@@ -714,20 +548,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/administrator/components/com_helloworld/com_helloworld.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="2688">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="43" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com_chem.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.12" vertical-offset="0" max-vertical-offset="504">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/libraries/joomla/html/html.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.9333334" vertical-offset="3812" max-vertical-offset="7098">
@@ -861,14 +681,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://db-console:/681f5cdc/97ded17c-4b64-4fb0-8ca3-f6fe93120466/">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="42" max-vertical-offset="168">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ins/com_chem/recordtodel.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="189">
@@ -877,65 +689,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/joomla/database/database/mysqli.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6799" max-vertical-offset="14028">
-          <caret line="271" column="15" selection-start-line="271" selection-start-column="13" selection-end-line="271" selection-end-column="23" />
-          <folding>
-            <element signature="n#explain#0;n#JDatabaseMySQLi#0;n#!!top" expanded="false" />
-            <element signature="n#getNumRows#0;n#JDatabaseMySQLi#0;n#!!top" expanded="false" />
-            <element signature="n#loadResult#0;n#JDatabaseMySQLi#0;n#!!top" expanded="false" />
-            <marker date="1442999369426" expanded="true" signature="12507:12568" placeholder="INSERT INTO ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/joomla/database/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="7838" max-vertical-offset="23016">
-          <caret line="381" column="0" selection-start-line="381" selection-start-column="0" selection-end-line="381" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/joomla/database/database/mysql.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4272" max-vertical-offset="14658">
-          <caret line="212" column="0" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
-          <folding>
-            <marker date="1442999369426" expanded="true" signature="11904:11965" placeholder="INSERT INTO ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/toolbar.chem.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="252" max-vertical-offset="1260">
-          <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/toolbar.chem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="111" max-vertical-offset="693">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/libraries/joomla/session/storage/database.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3041237" vertical-offset="1566" max-vertical-offset="3129">
           <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="735" max-vertical-offset="1008">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -948,7 +705,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="376" max-vertical-offset="1134">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -956,18 +712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="33.6" vertical-offset="1008" max-vertical-offset="5733">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1442999369206" expanded="true" signature="-1:-1" placeholder="SELECT id FR..#__users..." />
-            <marker date="1442999369206" expanded="true" signature="-1:-1" placeholder="SELECT id, a..#__users..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/w/Витраж w009 - Grand.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.5" vertical-offset="1743" max-vertical-offset="18900">
-          <caret line="98" column="12" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -975,15 +719,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.033334" vertical-offset="14228" max-vertical-offset="24171">
           <caret line="699" column="31" selection-start-line="699" selection-start-column="31" selection-end-line="699" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administrator/includes/defines.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.4" vertical-offset="216" max-vertical-offset="798">
-          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -991,15 +726,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.8" vertical-offset="132" max-vertical-offset="1953">
           <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xmlrpc/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.8" vertical-offset="0" max-vertical-offset="1323">
-          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1007,15 +733,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.4666667" vertical-offset="142" max-vertical-offset="1974">
           <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/defines.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0" vertical-offset="267" max-vertical-offset="861">
-          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1023,9 +740,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.8399311" vertical-offset="1069" max-vertical-offset="2394">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1442999369206" expanded="true" signature="-1:-1" placeholder="SELECT usern..#__users..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1033,7 +747,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8674699" vertical-offset="7602" max-vertical-offset="11403">
           <caret line="386" column="68" selection-start-line="386" selection-start-column="42" selection-end-line="386" selection-end-column="68" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1041,20 +754,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.2020202" vertical-offset="120" max-vertical-offset="714">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/681f5cdc/97ded17c-4b64-4fb0-8ca3-f6fe93120466/chem..jos_users">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="126">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1062,84 +773,35 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3425129" vertical-offset="14816" max-vertical-offset="28497">
           <caret line="715" column="9" selection-start-line="715" selection-start-column="9" selection-end-line="715" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5349233" vertical-offset="421" max-vertical-offset="1008">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrator/includes/defines.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2783505" vertical-offset="216" max-vertical-offset="798">
+          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xmlrpc/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="294" max-vertical-offset="1323">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/tables/chem.php">
+    <entry file="file://$PROJECT_DIR$/w/Витраж w009 - Grand.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.8" vertical-offset="0" max-vertical-offset="1470">
-          <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/joomla/database/table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.033334" vertical-offset="12686" max-vertical-offset="18228">
-          <caret line="617" column="13" selection-start-line="617" selection-start-column="13" selection-end-line="617" selection-end-column="13" />
-          <folding>
-            <marker date="1442999369426" expanded="true" signature="6735:6773" placeholder="SELECT ${$th..." />
-            <marker date="1442999369426" expanded="true" signature="12206:12292" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/admin.chem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.3" vertical-offset="840" max-vertical-offset="2625">
-          <caret line="202" column="2" selection-start-line="202" selection-start-column="2" selection-end-line="202" selection-end-column="2" />
-          <folding>
-            <element signature="e#55#115#0#PHP" expanded="false" />
-            <element signature="e#626#1410#0#PHP" expanded="false" />
-            <element signature="e#648#704#0#PHP" expanded="false" />
-            <element signature="e#709#764#0#PHP" expanded="false" />
-            <element signature="e#826#889#0#PHP" expanded="false" />
-            <element signature="e#895#957#0#PHP" expanded="false" />
-            <element signature="e#963#1031#0#PHP" expanded="false" />
-            <element signature="e#1037#1104#0#PHP" expanded="false" />
-            <element signature="e#1110#1165#0#PHP" expanded="false" />
-            <element signature="e#1171#1225#0#PHP" expanded="false" />
-            <element signature="e#1231#1282#0#PHP" expanded="false" />
-            <element signature="e#1288#1346#0#PHP" expanded="false" />
-            <element signature="e#1352#1407#0#PHP" expanded="false" />
-            <element signature="e#1413#1569#0#PHP" expanded="false" />
-            <element signature="n#editMolecule#0;n#!!top" expanded="false" />
-            <element signature="e#1999#2071#0#PHP" expanded="false" />
-            <element signature="n#showMolecules#0;n#!!top" expanded="false" />
-            <element signature="e#2722#2826#0#PHP" expanded="false" />
-            <element signature="e#3125#3251#0#PHP" expanded="false" />
-            <element signature="e#3287#3414#0#PHP" expanded="false" />
-            <element signature="e#3420#3527#0#PHP" expanded="false" />
-            <element signature="e#3607#3795#0#PHP" expanded="false" />
-            <element signature="e#3708#3795#0#PHP" expanded="false" />
-            <element signature="e#4565#4662#0#PHP" expanded="false" />
-            <element signature="e#5156#5211#0#PHP" expanded="false" />
-            <element signature="e#5506#5703#0#PHP" expanded="false" />
-            <element signature="e#5713#5888#0#PHP" expanded="false" />
-            <element signature="e#6096#6150#0#PHP" expanded="false" />
-            <element signature="n#cancelMolecule#0;n#!!top" expanded="false" />
-            <element signature="e#6496#6613#0#PHP" expanded="false" />
-            <element signature="n#removeMolecules#0;n#!!top" expanded="false" />
-            <element signature="e#6865#7196#0#PHP" expanded="false" />
-            <element signature="e#7059#7190#0#PHP" expanded="false" />
-            <element signature="n#aboutComponent#0;n#!!top" expanded="false" />
-            <element signature="n#exportDB#0;n#!!top" expanded="false" />
-            <marker date="1447769977643" expanded="false" signature="6942:7006" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/681f5cdc/97ded17c-4b64-4fb0-8ca3-f6fe93120466/chem..jos_chem">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="126">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.5536028" vertical-offset="1743" max-vertical-offset="18900">
+          <caret line="98" column="12" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -1147,42 +809,147 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="6090" max-vertical-offset="53592">
           <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/defines.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5154639" vertical-offset="267" max-vertical-offset="861">
+          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://db-console:/681f5cdc/97ded17c-4b64-4fb0-8ca3-f6fe93120466/">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.072164945" vertical-offset="0" max-vertical-offset="582">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/toolbar.chem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="111" max-vertical-offset="777">
+          <caret line="24" column="25" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/toolbar.chem.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.3" vertical-offset="267" max-vertical-offset="1134">
+          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+          <folding>
+            <element signature="n#_EDIT#0;n#TOOLBAR_chem#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/joomla/database/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="228.9" vertical-offset="6867" max-vertical-offset="23016">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/joomla/database/database/mysqli.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.266667" vertical-offset="6847" max-vertical-offset="14322">
+          <caret line="368" column="13" selection-start-line="368" selection-start-column="13" selection-end-line="368" selection-end-column="25" />
+          <folding>
+            <element signature="n#explain#0;n#JDatabaseMySQLi#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ins/sdf/Test_isis.bin">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="49332" max-vertical-offset="49812">
+          <caret line="2366" column="0" selection-start-line="2366" selection-start-column="0" selection-end-line="2366" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/681f5cdc/97ded17c-4b64-4fb0-8ca3-f6fe93120466/chem..jos_chem">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="126">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/joomla/database/database/mysql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.8333335" vertical-offset="11132" max-vertical-offset="14658">
+          <caret line="537" column="0" selection-start-line="537" selection-start-column="0" selection-end-line="537" selection-end-column="0" />
+          <folding>
+            <marker date="1442999369426" expanded="true" signature="11904:11965" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ins/sdf/test_jchem.bin">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="15144" max-vertical-offset="15687">
+          <caret line="740" column="0" selection-start-line="740" selection-start-column="0" selection-end-line="740" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraries/joomla/database/table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.8333335" vertical-offset="5399" max-vertical-offset="18228">
+          <caret line="264" column="13" selection-start-line="264" selection-start-column="13" selection-end-line="264" selection-end-column="13" />
+          <folding>
+            <marker date="1442999369426" expanded="true" signature="6735:6773" placeholder="SELECT ${$th..." />
+            <marker date="1442999369426" expanded="true" signature="12206:12292" placeholder="DELETE FROM ..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/admin.chem.html.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0450237" vertical-offset="9891" max-vertical-offset="12264">
-          <caret line="705" column="1" selection-start-line="705" selection-start-column="1" selection-end-line="705" selection-end-column="1" />
+        <state vertical-scroll-proportion="-6.233333" vertical-offset="1157" max-vertical-offset="3612">
+          <caret line="697" column="15" selection-start-line="697" selection-start-column="15" selection-end-line="697" selection-end-column="15" />
           <folding>
             <element signature="n#showMolecules#0;n#HTML_chem#0;n#!!top" expanded="false" />
-            <marker date="1447786006875" expanded="true" signature="29947:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="30005:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="30059:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="30113:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="30159:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="30194:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="30245:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="30331:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="30381:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="30431:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="30481:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="30533:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="30585:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="30637:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="30689:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="30743:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="30799:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="30871:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="30946:31099" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="33229:33378" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="33295:33378" placeholder="{...}" />
-            <marker date="1447786006875" expanded="true" signature="35103:35293" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="35158:35293" placeholder="..." />
-            <marker date="1447786006875" expanded="true" signature="35728:35754" placeholder="SELECT * FRO..jos_chem..." />
-            <marker date="1447786006875" expanded="true" signature="35728:35762" placeholder="SELECT * FRO..jos_chem..." />
-            <marker date="1447786006875" expanded="true" signature="35784:35818" placeholder="SELECT * FRO..jos_chem..." />
+            <element signature="e#5876#11250#0#PHP" expanded="false" />
+            <element signature="e#7106#7678#0#PHP" expanded="false" />
+            <element signature="e#7274#7643#0#PHP" expanded="false" />
+            <element signature="n#editMolecule#0;n#HTML_chem#0;n#!!top" expanded="false" />
+            <element signature="e#14222#14739#0#PHP" expanded="false" />
+            <element signature="n#aboutComponent#0;n#HTML_chem#0;n#!!top" expanded="false" />
+            <element signature="n#exportDB#0;n#HTML_chem#0;n#!!top" expanded="false" />
+            <element signature="e#34550#34885#0#PHP" expanded="false" />
+            <element signature="e#34835#34885#0#PHP" expanded="false" />
+            <marker date="1447863445783" expanded="false" signature="34403:34435" placeholder="DELETE FROM ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/admin.chem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.8333335" vertical-offset="6617" max-vertical-offset="8505">
+          <caret line="322" column="0" selection-start-line="322" selection-start-column="0" selection-end-line="322" selection-end-column="0" />
+          <folding>
+            <marker date="1447862693883" expanded="true" signature="7013:7077" placeholder="DELETE FROM ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrator/components/com_chem/tables/chem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="1467" max-vertical-offset="2373">
+          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding>
+            <marker date="1447863445791" expanded="true" signature="2555:2584" placeholder="SELECT count..jos_chem..." />
+            <marker date="1447863445791" expanded="true" signature="2555:2595" placeholder="SELECT count..jos_chem..." />
+            <marker date="1447863445791" expanded="true" signature="2555:2785" placeholder="SELECT count..jos_chem..." />
           </folding>
         </state>
       </provider>

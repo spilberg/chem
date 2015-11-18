@@ -29,6 +29,19 @@ class TOOLBAR_chem
         JToolBarHelper::cancel( 'cancel', 'Close' );
     }
 
+    function _IMPORTDB($task) {
+
+        JToolBarHelper::title( JText::_( 'Chem component' ) .': <small><small>[ '. JText::_( 'Import DB') .' ]</small></small>', 'molecule' );
+
+
+        if($task == 'importdb') JToolBarHelper::custom('importdbprocess', 'import.png', 'delete_f2.png', 'Import DB', false, false);
+        //  JToolBarHelper::addNewX();
+//        JToolBarHelper::custom('config', 'config.png', 'config_f2.png', 'Settings', false, false);
+        //  JToolBarHelper::preferences('com_chem', '500');
+
+        JToolBarHelper::cancel( 'cancel', 'Close' );
+    }
+
 
     function _EDIT($edit) {
     //    $cid = JRequest::getVar( 'cid', array(0), '', 'array' );
