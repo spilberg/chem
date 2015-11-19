@@ -191,20 +191,21 @@ function saveMolecule( $task )
     }
 
     // save to a copy, reset the primary key
-    if ($task == 'save2copy') {
-        $row->id = 0;
-    }
+//    if ($task == 'save2copy') {
+//        $row->id = 0;
+//    }
 
     // pre-save checks
-    if (!$row->check()) {
-        JError::raiseError(500, $row->getError() );
-    }
+//    if (!$row->check()) {
+//        JError::raiseError(500, $row->getError() );
+//    }
 
     // save the changes
     if (!$row->store()) {
         JError::raiseError(500, $row->getError() );
     }
-    $row->checkin();
+
+//    $row->checkin();
 
     switch ($task)
     {
@@ -316,9 +317,9 @@ function importDBProcess(){
         'price15mg' => 'price15mg',
         'price20mg' => 'price20mg',
         'price25mg' => 'price25mg',
-        'price5umol' => 'price5umol',
-        'price10umol' => 'price10umol',
-        'price20umol' => 'price20umol');
+        'price5umol' => 'price5mmol',
+        'price10umol' => 'price10mmol',
+        'price20umol' => 'price20mmol');
 
     $array_chem_object = array();
 
@@ -383,7 +384,7 @@ function pakageDeleteProcess(){
 
     if($todelete !== '') $list_from_field =  explode(PHP_EOL,$todelete);
 
-
+//TODO: Warning: array_merge_recursive() [function.array-merge-recursive]: Argument #2 is not an array in Z:\home\chem\www\administrator\components\com_chem\admin.chem.php on line 389
     if($list_from_field !== '' && $list_from_file !== '')
         $all_list = array_merge_recursive($list_from_field,$list_from_file);
 

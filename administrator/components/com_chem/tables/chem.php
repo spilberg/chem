@@ -71,11 +71,18 @@ class TableChem extends JTable
      * @param boolean If false, null object variables are not updated
      * @return null|string null if successful otherwise returns and error message
      */
-    function store( $updateNulls=false )
+
+    function storeDB( $updateNulls=false )
     {
+        jimport('joomla.error.log');
 
+        $_format = "{DATE}\t{TIME}\t{C-IP}\t{LEVEL}\t{STATUS}\t{COMMENT}";
+            $options['format'] = $_format;
+        $log = & JLog::getInstance('impotrprocess.'.date('Y_m_d').'.php',null, JPATH_ROOT.DS.'logs'.DS);
+        $log->setOptions($options);
+//        $log = & JLog::getInstance('impotrprocess.php', null, JPATH_ADMINISTRATOR.DS);
 
-        $k = $this->_tbl_key;
+//        $k = $this->_tbl_key;
 
         $this->_db->setQuery('SELECT count(*) FROM jos_chem Where id ='. $this->id);
         $numrows = $this->_db->loadResult();
@@ -83,11 +90,13 @@ class TableChem extends JTable
         if( $numrows )
         {
             $ret = $this->_db->updateObject( $this->_tbl, $this, $this->_tbl_key, $updateNulls );
+            $log->addEntry(array('level' => 'Import DB', 'status' => 'Update', 'comment' => "element with cat_namber: " . $this->cat_namber));
         }
         else
         {
-           // $this->id = null;
+            // $this->id = null;
             $ret = $this->_db->insertObject( $this->_tbl, $this, $this->_tbl_key );
+            $log->addEntry(array('level' => 'Import DB', 'status' => 'Insert', 'comment' => "element with cat_namber: " . $this->cat_namber));
         }
         if( !$ret )
         {
@@ -100,9 +109,66 @@ class TableChem extends JTable
         }
     }
 
-//    function check(){
-//        if($this->cat_namber && $this->mdl_form) return true;
-//
-//        return false;
-//    }
+    /**
+     * Default delete method
+     *
+     * can be overloaded/supplemented by the child class
+     *
+     * @access public
+     * @return true if successful otherwise returns and error message
+     */
+    function deletePackage( $oid=null )
+    {
+        //if (!$this->canDelete( $msg ))
+        //{
+        //	return $msg;
+        //}
+
+        $k = $this->_tbl_key;
+        if ($oid) {
+            $this->$k = intval( $oid );
+        }
+
+        $query = 'DELETE FROM '.$this->_db->nameQuote( $this->_tbl ).
+            ' WHERE '.$this->_tbl_key.' = '. $this->_db->Quote($this->$k);
+        $this->_db->setQuery( $query );
+
+        if ($this->_db->query())
+        {
+
+            'Try to delete row with id: '. $myid . '&nbsp;&nbsp;&nbsp;&nbsp;--> ' .($db->getAffectedRows() ? ' Row '. $myid .' <span style="color:#00ff00;">delete now</span>' : ' Row '. $myid .' <span style="color:#ff0000;">not delete</span>');
+           // return true;
+        }
+        else
+        {
+            $this->setError($this->_db->getErrorMsg());
+            return false;
+        }
+    }
+
+    function delRec($myid){
+        jimport('joomla.error.log');
+
+        $_format = "{DATE}\t{TIME}\t{C-IP}\t{LEVEL}\t{STATUS}\t{COMMENT}";
+        $options['format'] = $_format;
+        $log = & JLog::getInstance('impotrprocess.'.date('Y_m_d').'.php',null, JPATH_ROOT.DS.'logs'.DS);
+        $log->setOptions($options);
+        $retData = '';
+
+      //  $db = & JFactory::getDBO();
+
+        $query = 'DELETE FROM jos_chem WHERE id = '. $myid;
+//        $query = 'SELECT * FROM jos_chem WHERE id = '. $myid;
+
+        $this->_db->setQuery($query);
+
+        if($this->_db->query()) {
+            $log->addEntry(array('level' => 'Delete Package', 'status' => ($this->_db->getAffectedRows() ? 'delete now' : 'not delete'), 'comment' => ' Row '. $myid));
+            $retData = 'Try to delete row with id: '. $myid . '&nbsp;&nbsp;&nbsp;&nbsp;--> ' .($this->_db->getAffectedRows() ? ' Row '. $myid .' <span style="color:#00ff00;">delete now</span>' : ' Row '. $myid .' <span style="color:#ff0000;">not delete</span>');
+        } else {
+            $retData = 'Errors ';
+        }
+
+        return $retData;
+    }
 }

@@ -688,7 +688,6 @@ class HTML_chem {
 
     function importDBProcess($array_chem_object){
 
-
      //   var_dump($array_chem_object);
 
            $row =& JTable::getInstance('chem', 'Table');
@@ -705,9 +704,11 @@ class HTML_chem {
 //                     JError::raiseError(500, $row->getError() );
 //                 }
 
-                   if (!$row->store()) {
+                   if (!$row->storeDB()) {
                        JError::raiseError(500, $row->getError());
                    }
+
+
 
                    echo "Insert of update element with cat_namber: " . $array_chem_object[$j]->cat_namber . "<br/>";
                }
@@ -763,13 +764,13 @@ class HTML_chem {
 
     function pakageDeleteProcess($todelete){
        // JRequest::setVar( 'hidemainmenu', 1 );
-
+        $row =& JTable::getInstance('chem', 'Table');
         ?>
         <form action="index.php" method="post" name="adminForm">
             <p>It is a process ...</p>
             <p><?php
                     for($i= 0; $i < count($todelete); $i++){
-                      echo HTML_chem::delRec(trim($todelete[$i])) . '<br/>';
+                      echo $row->delRec(trim($todelete[$i])) . '<br/>';
                     }
                 ?>
             </p>
