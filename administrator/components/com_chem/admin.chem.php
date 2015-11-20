@@ -296,77 +296,62 @@ function importDBProcess(){
     define('RECORD_DELIMITER', "$$$$");
     define('FIELD_DELIMITER', ">  ");
 
-    $naming_fields = array('id' => 'id',
-        'Formula' => 'molecular_formula',
-        'Mol Weight' => 'mol_weigh',
-        'Catalog_namber' => 'cat_namber',
-        'Purity' => 'purity',
-        'Molecular_Formula' =>'molecular_formula',
-        'Available_from_stock' => 'mass',
-        'CAS_number' => 'cas_number',
-        'MDL_number' => 'mdl_number',
-        'SMILES' => 'smiles',
-        'Status' => 'status',
-        'iupac_name' => 'iupac_name',
-        'price1mg' => 'price1mg',
-        'price2mg' => 'price2mg',
-        'price3mg' => 'price3mg',
-        'price4mg' => 'price4mg',
-        'price5mg' => 'price5mg',
-        'price10mg' => 'price10mg',
-        'price15mg' => 'price15mg',
-        'price20mg' => 'price20mg',
-        'price25mg' => 'price25mg',
-        'price5umol' => 'price5mmol',
-        'price10umol' => 'price10mmol',
-        'price20umol' => 'price20mmol');
+    $mapping_fields  = array('id' => 'id',
+                            'Formula' => 'molecular_formula',
+                            'Mol Weight' => 'mol_weigh',
+                            'Catalog_namber' => 'cat_namber',
+                            'Purity' => 'purity',
+                            'Molecular_Formula' =>'molecular_formula',
+                            'Available_from_stock' => 'mass',
+                            'CAS_number' => 'cas_number',
+                            'MDL_number' => 'mdl_number',
+                            'SMILES' => 'smiles',
+                            'Status' => 'status',
+                            'iupac_name' => 'iupac_name',
+                            'price1mg' => 'price1mg',
+                            'price2mg' => 'price2mg',
+                            'price3mg' => 'price3mg',
+                            'price4mg' => 'price4mg',
+                            'price5mg' => 'price5mg',
+                            'price10mg' => 'price10mg',
+                            'price15mg' => 'price15mg',
+                            'price20mg' => 'price20mg',
+                            'price25mg' => 'price25mg',
+                            'price5umol' => 'price5mmol',
+                            'price10umol' => 'price10mmol',
+                            'price20umol' => 'price20mmol');
 
     $array_chem_object = array();
 
-
-    $filetodelete = JRequest::getVar('filetodelete',null,'FILES');
-
-//    if($filetodelete['name'] !== '') $list_from_file = file($filetodelete['tmp_name']);
-
-
-//    $sdf_file = fopen(JPATH_SITE.DS.'ins'.DS.'progr_new.sdf', 'r');
-    $sdf_file = fopen($filetodelete['tmp_name'], 'r');
-
-//    $file_content = fread($sdf_file,filesize(JPATH_SITE.DS.'ins'.DS.'progr_new.sdf'));
-    $file_content = fread($sdf_file,filesize($filetodelete['tmp_name']));
-
+    //read content of file
+    $file_to_delete     = JRequest::getVar('filetodelete',null,'FILES');
+    $sdf_file         = fopen($file_to_delete['tmp_name'], 'r');
+    $sdf_file_content = fread($sdf_file,filesize($file_to_delete['tmp_name']));
     fclose($sdf_file);
 
-    $elements_array = explode(RECORD_DELIMITER,$file_content);
+    $records_array   = explode(RECORD_DELIMITER,$sdf_file_content);
 
 
+    for($j=0; $j<count($records_array); $j++){
 
-
-    for($j=0; $j<count($elements_array); $j++){
-
-        $item_array = explode(FIELD_DELIMITER,$elements_array[$j]);
-
-        $objItem = new JObject();
+        $item_array = explode(FIELD_DELIMITER,$records_array[$j]);
+        $objItem    = new JObject();
 
         for($i=0; $i < count($item_array); $i++){
             if($i == 0) {
                // echo "<br/><br/> mdl_file: " . $item_array[$i] . "<br/>";
-
                 $objItem->set('mdl_form',PHP_EOL.PHP_EOL.ltrim($item_array[$i]));
             } else {
                 $item = explode(">", trim($item_array[$i], "\n\r<"));
               //  echo $item[0] . ": " . trim($item[1]) . "<br/>";
-                if($naming_fields[$item[0]])
-                    $objItem->set($naming_fields[$item[0]],trim($item[1]));
+                if($mapping_fields[$item[0]]) // существует ли такое поле в таблице
+                    $objItem->set($mapping_fields[$item[0]],trim($item[1]));
             }
         }
 
         $array_chem_object[$j] = $objItem;
-        // echo "<----------------------------> <br/><br/>";
+
     }
-
-   // var_dump($array_chem_object);
-
 
     HTML_chem::importDBProcess($array_chem_object);
 }

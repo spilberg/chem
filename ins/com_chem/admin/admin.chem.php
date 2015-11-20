@@ -64,6 +64,10 @@ switch ($task) {
         importDB($option);
         break;
 
+    case 'importdbprocess':
+        importDBProcess();
+        break;
+
     default:
         showMolecules($option);
         break;
@@ -187,20 +191,21 @@ function saveMolecule( $task )
     }
 
     // save to a copy, reset the primary key
-    if ($task == 'save2copy') {
-        $row->id = 0;
-    }
+//    if ($task == 'save2copy') {
+//        $row->id = 0;
+//    }
 
     // pre-save checks
-    if (!$row->check()) {
-        JError::raiseError(500, $row->getError() );
-    }
+//    if (!$row->check()) {
+//        JError::raiseError(500, $row->getError() );
+//    }
 
     // save the changes
     if (!$row->store()) {
         JError::raiseError(500, $row->getError() );
     }
-    $row->checkin();
+
+//    $row->checkin();
 
     switch ($task)
     {
@@ -286,6 +291,71 @@ function importDB($option){
     HTML_chem::importDB($option);
 }
 
+function importDBProcess(){
+
+    define('RECORD_DELIMITER', "$$$$");
+    define('FIELD_DELIMITER', ">  ");
+
+    $mapping_fields  = array('id' => 'id',
+                            'Formula' => 'molecular_formula',
+                            'Mol Weight' => 'mol_weigh',
+                            'Catalog_namber' => 'cat_namber',
+                            'Purity' => 'purity',
+                            'Molecular_Formula' =>'molecular_formula',
+                            'Available_from_stock' => 'mass',
+                            'CAS_number' => 'cas_number',
+                            'MDL_number' => 'mdl_number',
+                            'SMILES' => 'smiles',
+                            'Status' => 'status',
+                            'iupac_name' => 'iupac_name',
+                            'price1mg' => 'price1mg',
+                            'price2mg' => 'price2mg',
+                            'price3mg' => 'price3mg',
+                            'price4mg' => 'price4mg',
+                            'price5mg' => 'price5mg',
+                            'price10mg' => 'price10mg',
+                            'price15mg' => 'price15mg',
+                            'price20mg' => 'price20mg',
+                            'price25mg' => 'price25mg',
+                            'price5umol' => 'price5mmol',
+                            'price10umol' => 'price10mmol',
+                            'price20umol' => 'price20mmol');
+
+    $array_chem_object = array();
+
+    //read content of file
+    $file_to_delete     = JRequest::getVar('filetodelete',null,'FILES');
+    $sdf_file         = fopen($file_to_delete['tmp_name'], 'r');
+    $sdf_file_content = fread($sdf_file,filesize($file_to_delete['tmp_name']));
+    fclose($sdf_file);
+
+    $records_array   = explode(RECORD_DELIMITER,$sdf_file_content);
+
+
+    for($j=0; $j<count($records_array); $j++){
+
+        $item_array = explode(FIELD_DELIMITER,$records_array[$j]);
+        $objItem    = new JObject();
+
+        for($i=0; $i < count($item_array); $i++){
+            if($i == 0) {
+               // echo "<br/><br/> mdl_file: " . $item_array[$i] . "<br/>";
+                $objItem->set('mdl_form',PHP_EOL.PHP_EOL.ltrim($item_array[$i]));
+            } else {
+                $item = explode(">", trim($item_array[$i], "\n\r<"));
+              //  echo $item[0] . ": " . trim($item[1]) . "<br/>";
+                if($mapping_fields[$item[0]]) // существует ли такое поле в таблице
+                    $objItem->set($mapping_fields[$item[0]],trim($item[1]));
+            }
+        }
+
+        $array_chem_object[$j] = $objItem;
+
+    }
+
+    HTML_chem::importDBProcess($array_chem_object);
+}
+
 function packageDelete($option){
     HTML_chem::pakageDelete($option);
 }
@@ -299,7 +369,7 @@ function pakageDeleteProcess(){
 
     if($todelete !== '') $list_from_field =  explode(PHP_EOL,$todelete);
 
-
+//TODO: Warning: array_merge_recursive() [function.array-merge-recursive]: Argument #2 is not an array in Z:\home\chem\www\administrator\components\com_chem\admin.chem.php on line 389
     if($list_from_field !== '' && $list_from_file !== '')
         $all_list = array_merge_recursive($list_from_field,$list_from_file);
 

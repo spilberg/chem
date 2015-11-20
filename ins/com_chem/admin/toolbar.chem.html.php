@@ -26,7 +26,20 @@ class TOOLBAR_chem
 //        JToolBarHelper::custom('config', 'config.png', 'config_f2.png', 'Settings', false, false);
       //  JToolBarHelper::preferences('com_chem', '500');
 
-        JToolBarHelper::cancel( 'cancel', 'Close' );
+        JToolBarHelper::cancel( 'close', 'Close' );
+    }
+
+    function _IMPORTDB($task) {
+
+        JToolBarHelper::title( JText::_( 'Chem component' ) .': <small><small>[ '. JText::_( 'Import DB') .' ]</small></small>', 'molecule' );
+
+
+        if($task == 'importdb') JToolBarHelper::custom('importdbprocess', 'download', 'download_f2', 'Import DB', false, false);
+        //  JToolBarHelper::addNewX();
+//        JToolBarHelper::custom('config', 'config.png', 'config_f2.png', 'Settings', false, false);
+        //  JToolBarHelper::preferences('com_chem', '500');
+
+        JToolBarHelper::cancel( 'close', 'Close' );
     }
 
 

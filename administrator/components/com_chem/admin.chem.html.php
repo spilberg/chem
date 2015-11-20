@@ -783,23 +783,23 @@ class HTML_chem {
     <?php
     }
 
-    function delRec($myid){
-
-        $retData = '';
-
-        $db = & JFactory::getDBO();
-
-        $query = 'DELETE FROM jos_chem WHERE id = '. $myid;
-//        $query = 'SELECT * FROM jos_chem WHERE id = '. $myid;
-
-        $db->setQuery($query);
-
-        if($db->query()) {
-            $retData = 'Try to delete row with id: '. $myid . '&nbsp;&nbsp;&nbsp;&nbsp;--> ' .($db->getAffectedRows() ? ' Row '. $myid .' <span style="color:#00ff00;">delete now</span>' : ' Row '. $myid .' <span style="color:#ff0000;">not delete</span>');
-        } else {
-            $retData = 'Errors ';
-        }
-
-        return $retData;
-    }
+//    function delRec($myid){
+//
+//        $retData = '';
+//
+//        $db = & JFactory::getDBO();
+//
+//        $query = 'DELETE FROM jos_chem WHERE id = '. $myid;
+////        $query = 'SELECT * FROM jos_chem WHERE id = '. $myid;
+//
+//        $db->setQuery($query);
+//
+//        if($db->query()) {
+//            $retData = 'Try to delete row with id: '. $myid . '&nbsp;&nbsp;&nbsp;&nbsp;--> ' .($db->getAffectedRows() ? ' Row '. $myid .' <span style="color:#00ff00;">delete now</span>' : ' Row '. $myid .' <span style="color:#ff0000;">not delete</span>');
+//        } else {
+//            $retData = 'Errors ';
+//        }
+//
+//        return $retData;
+//    }
 }
