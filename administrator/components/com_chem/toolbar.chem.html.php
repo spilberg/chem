@@ -42,6 +42,11 @@ class TOOLBAR_chem
         JToolBarHelper::cancel( 'close', 'Close' );
     }
 
+    function _LISTOFFILES() {
+        JToolBarHelper::title( JText::_( 'Chem component' ) .': <small><small>[ '. JText::_( 'List of log files') .' ]</small></small>', 'molecule' );
+
+        JToolBarHelper::custom('delfiles', 'delete', 'delete_f2', 'Delete file(s)', false, false);
+    }
 
     function _EDIT($edit) {
     //    $cid = JRequest::getVar( 'cid', array(0), '', 'array' );

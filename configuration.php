@@ -13,8 +13,8 @@ var $debug_lang = '0';
 /* Database Settings */
 var $dbtype = 'mysql';
 var $host = 'localhost';
-var $user = 'chem';
-var $password = 'chem';
+var $user = 'root';
+var $password = '';
 var $db = 'chem';
 var $dbprefix = 'jos_';
 /* Server Settings */

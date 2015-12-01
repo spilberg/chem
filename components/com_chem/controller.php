@@ -19,4 +19,3 @@ class ChemController extends JController
 
 }
 
-?>

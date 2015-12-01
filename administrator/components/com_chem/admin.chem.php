@@ -1,5 +1,4 @@
 <?php
-
 defined('_JEXEC') or die('Restricted access');
 
 /*
@@ -17,6 +16,7 @@ JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_chem'.DS.'tab
 $task = JRequest::getCmd('task');
 $id = JRequest::getVar('id', 0, 'get', 'int');
 $cid = JRequest::getVar('cid', array(0), 'post', 'array');
+$fid = JRequest::getVar('fid',array(),'post','array');
 JArrayHelper::toInteger($cid, array(0));
 
 
@@ -66,6 +66,18 @@ switch ($task) {
 
     case 'importdbprocess':
         importDBProcess();
+        break;
+
+    case 'listoffiles':
+        listOfFiles($option);
+        break;
+
+    case 'viewlog':
+        showLogFile();
+        break;
+
+    case 'delfiles':
+        delFiles($fid);
         break;
 
     default:
@@ -364,13 +376,12 @@ function pakageDeleteProcess(){
     $todelete     = JRequest::getVar('itemtodelete');
     $filetodelete = JRequest::getVar('filetodelete',null,'FILES');
 
-
     if($filetodelete['name'] !== '') $list_from_file = file($filetodelete['tmp_name']);
 
     if($todelete !== '') $list_from_field =  explode(PHP_EOL,$todelete);
 
-//TODO: Warning: array_merge_recursive() [function.array-merge-recursive]: Argument #2 is not an array in Z:\home\chem\www\administrator\components\com_chem\admin.chem.php on line 389
-    if($list_from_field !== '' && $list_from_file !== '')
+
+    if($list_from_field !== '' && !is_null($list_from_file))
         $all_list = array_merge_recursive($list_from_field,$list_from_file);
 
     if($list_from_field !== '' && $list_from_file == '')
@@ -383,3 +394,46 @@ function pakageDeleteProcess(){
     HTML_chem::pakageDeleteProcess($all_list);
 }
 
+function listOfFiles($option){
+    jimport('joomla.filesystem.folder');
+
+    $filelist = JFolder::files(JPATH_ROOT.DS.'logs', '.', false, false, array('index.html'));
+
+    HTML_chem::showFileList($filelist, $option);
+
+}
+
+function showLogFile(){
+    $fid 	= JRequest::getVar('f');
+    $option = JRequest::getCmd('option');
+
+    jimport('joomla.filesystem.file');
+
+    $filecontent = JFile::read(JPATH_ROOT.DS.'logs'.DS.$fid);
+
+    HTML_chem::showLogFile($filecontent);
+
+}
+
+function delFiles(&$fid){
+    global $mainframe;
+
+    jimport('joomla.filesystem.file');
+
+    // Check for request forgeries
+    JRequest::checkToken() or jexit( 'Invalid Token' );
+
+    array_walk($fid,'glue');
+
+
+    JFile::delete($fid);
+
+
+    $mainframe->redirect( "index.php?option=com_chem&amp;task=listoffiles", 'Recording has been deleted!' );
+
+}
+
+function glue(&$value,$key){
+    $fp = JPATH_ROOT.DS.'logs'.DS;
+    $value = $fp.$value;
+}

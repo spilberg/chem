@@ -40,26 +40,25 @@ class HTML_chem {
                     <th width="10" rowspan="2">
                         <?php echo JText::_( 'Num' ); ?>
                     </th>
+
                     <th width="10" class="title" rowspan="2">
                         <input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count($rows); ?>);" />
                     </th>
+
                     <th width="1%" nowrap="nowrap" rowspan="2">
                         <?php echo JHTML::_('grid.sort',   'ID', 'ch.id', @$lists['order_Dir'], @$lists['order'] ); ?>
-<!--                        --><?php //echo JTEXT::_('ID'); ?>
                     </th>
 
                     <th rowspan="2">
                         <?php echo JHTML::_('grid.sort',   'Catalog number', 'ch.cat_namber', @$lists['order_Dir'], @$lists['order'] ); ?>
                     </th>
+
                     <th class="title" rowspan="2">
                         <?php echo JHTML::_('grid.sort',   'Molecular Weight', 'ch.mol_weigh', @$lists['order_Dir'], @$lists['order'] ); ?>
-<!--                        --><?php //echo JTEXT::_('Molecular Weight'); ?>
                     </th>
+
                     <th class="title" nowrap="nowrap" rowspan="2">
-
-
                         <?php echo JHTML::_('grid.sort',   'Available from stock', 'ch.mass', @$lists['order_Dir'], @$lists['order'] ); ?>
-<!--                        --><?php //echo JTEXT::_('Available from stock' ); ?>
                     </th>
 
                     <th colspan="12">Price</th>
@@ -102,21 +101,6 @@ class HTML_chem {
                         <?php echo JTEXT::_('20 mmol' ); ?>
                     </th>
 
-
-<!--                    <th nowrap="nowrap" width="8%">-->
-<!--                        --><?php //echo JHTML::_('grid.sort',   'Order by', 'cd.ordering', @$lists['order_Dir'], @$lists['order'] ); ?>
-<!--                        --><?php //if ($ordering) echo JHTML::_('grid.order',  $rows ); ?>
-<!--                    </th>-->
-<!--                    <th width="8%" nowrap="nowrap">-->
-<!--                        --><?php //echo JHTML::_('grid.sort',   'Access', 'cd.access', @$lists['order_Dir'], @$lists['order'] ); ?>
-<!--                    </th>-->
-<!--                    <th width="10%" class="title">-->
-<!--                        --><?php //echo JHTML::_('grid.sort',   'Category', 'category', @$lists['order_Dir'], @$lists['order'] ); ?>
-<!--                    </th>-->
-<!--                    <th class="title" nowrap="nowrap" width="10%">-->
-<!--                        --><?php //echo JHTML::_('grid.sort',   'Linked to User', 'user', @$lists['order_Dir'], @$lists['order'] ); ?>
-<!--                    </th>-->
-
                 </tr>
                 </thead>
                 <tfoot>
@@ -145,16 +129,17 @@ class HTML_chem {
                         <td>
                             <?php echo $pageNav->getRowOffset( $i ); ?>
                         </td>
+
                         <td>
                             <?php echo $checked; ?>
                         </td>
+
                         <td align="center">
                             <?php echo $row->id; ?>
                         </td>
 
 
                         <td align="center">
-
                             <?php
                             if (JTable::isCheckedOut($user->get ('id'), $row->checked_out )) :
                                 echo htmlspecialchars($row->cat_namber);
@@ -167,11 +152,12 @@ class HTML_chem {
                             endif;
                             ?>
                         </td>
+
                         <td align="center">
                             <?php echo $row->mol_weigh; ?>
                         </td>
+
                         <td align="center">
-<!--                            --><?php //echo $published;?>
                             <?php echo $row->mass;?>
                         </td>
 
@@ -224,24 +210,6 @@ class HTML_chem {
                             <?php echo $row->price20mmol;?>
                         </td>
 
-<!--                        <td class="order">-->
-<!--                            <span>--><?php //echo $pageNav->orderUpIcon( $i, ( $row->catid == @$rows[$i-1]->catid ), 'orderup', 'Move Up', $ordering ); ?><!--</span>-->
-<!--                            <span>--><?php //echo $pageNav->orderDownIcon( $i, $n, ( $row->catid == @$rows[$i+1]->catid ), 'orderdown', 'Move Down', $ordering ); ?><!--</span>-->
-<!--                            --><?php //$disabled = $ordering ?  '' : 'disabled="disabled"'; ?>
-<!--                            <input type="text" name="order[]" size="5" value="--><?php //echo $row->ordering;?><!--" --><?php //echo $disabled ?><!-- class="text_area" style="text-align: center" />-->
-<!--                        </td>-->
-<!--                        <td align="center">-->
-<!--                            --><?php //echo $access;?>
-<!--                        </td>-->
-<!--                        <td>-->
-<!--                            <a href="--><?php //echo $row->cat_link; ?><!--" title="--><?php //echo JText::_( 'Edit Category' ); ?><!--">-->
-<!--                                --><?php //echo $row->category; ?><!--</a>-->
-<!--                        </td>-->
-<!--                        <td>-->
-<!--                            <a href="--><?php //echo $row->user_link; ?><!--" title="--><?php //echo JText::_( 'Edit User' ); ?><!--">-->
-<!--                                --><?php //echo $row->user; ?><!--</a>-->
-<!--                        </td>-->
-
                     </tr>
                     <?php
                     $k = 1 - $k;
@@ -272,7 +240,7 @@ class HTML_chem {
         JHTML::_('behavior.tooltip');
         jimport('joomla.html.pane');
         // TODO: allowAllClose should default true in J!1.6, so remove the array when it does.
-
+// TODO: дописать проверку заполненых полей
         ?>
         <script language="javascript" type="text/javascript">
             <!--
@@ -636,6 +604,14 @@ class HTML_chem {
     <?php
     }
 
+    function showLogFile($filecontent){
+        ?>
+        <form action="index.php" method="post" name="adminForm">
+            <textarea rows="20" cols="150"><?php echo htmlspecialchars($filecontent);?></textarea>
+        </form>
+        <?php
+    }
+
     function exportDB(){
         ?>
         <form action="index.php" method="post" name="adminForm">
@@ -647,7 +623,7 @@ class HTML_chem {
 
     function importDB($option){
 
-            ?>
+        ?>
 
         <script language="javascript" type="text/javascript">
             <!--
@@ -732,7 +708,7 @@ class HTML_chem {
 
                 // do field validation
                 if ( form.filetodelete.value == '' && form.itemtodelete.value == '' ) {
-                    alert( "<?php echo JText::_( 'You must select a file.', true ); ?>" );
+                    alert( "<?php echo JText::_( 'For delete list of records You can select file with list or write catalog numbers in field below.', true ); ?>" );
 //                } else if (  ) {
 //                    alert( "<?php //echo JText::_( 'Please select a Category.', true ); ?>//" );
                 } else {
@@ -783,23 +759,66 @@ class HTML_chem {
     <?php
     }
 
-//    function delRec($myid){
-//
-//        $retData = '';
-//
-//        $db = & JFactory::getDBO();
-//
-//        $query = 'DELETE FROM jos_chem WHERE id = '. $myid;
-////        $query = 'SELECT * FROM jos_chem WHERE id = '. $myid;
-//
-//        $db->setQuery($query);
-//
-//        if($db->query()) {
-//            $retData = 'Try to delete row with id: '. $myid . '&nbsp;&nbsp;&nbsp;&nbsp;--> ' .($db->getAffectedRows() ? ' Row '. $myid .' <span style="color:#00ff00;">delete now</span>' : ' Row '. $myid .' <span style="color:#ff0000;">not delete</span>');
-//        } else {
-//            $retData = 'Errors ';
-//        }
-//
-//        return $retData;
-//    }
+    function showFileList($filelist, $option){
+      //  var_dump($filelist);
+        ?>
+        <form action="index.php" method="post" name="adminForm">
+
+            <table class="adminlist">
+                <thead>
+                    <tr>
+                        <th width="10" rowspan="2">
+                            <?php echo JText::_( 'Num' ); ?>
+                        </th>
+                        <th width="10" class="title" rowspan="2">
+                            <input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count($filelist); ?>);" />
+                        </th>
+
+                        <th>File name</th>
+                        <th>Commands</th>
+                    </tr>
+                </thead>
+                <tbody>
+<?php
+                $k = 0;
+                for ($i=0; $i < count($filelist); $i++) {
+//                $row = $rows[$i];
+
+                $link 		= JRoute::_( 'index.php?option=com_chem&task=viewlog&f='. $filelist[$i] );
+
+                $checked 	= JHTML::_('grid.id', $i, $filelist[$i], false, 'fid');
+                $access 	= JHTML::_('grid.access',   $row, $i );
+                $published 	= JHTML::_('grid.published', $row, $i );
+
+                //                    $row->cat_link 	= JRoute::_( 'index.php?option=com_categories&section=com_contact_details&task=edit&type=other&cid[]='. $row->catid );
+                //                    $row->user_link	= JRoute::_( 'index.php?option=com_users&task=editA&cid[]='. $row->user_id );
+                ?>
+                <tr class="<?php echo "row$k"; ?>">
+                    <td><?php echo $i + 1;?></td>
+                    <td>
+                        <?php echo $checked; ?>
+                    </td>
+                    <td>
+                        <span class="editlinktip hasTip" title="<?php echo JText::_( 'View log' );?>::<?php echo htmlspecialchars($filelist[$i]); ?>">
+						<a href="<?php echo $link; ?>">
+                            <?php echo htmlspecialchars($filelist[$i]); ?></a> </span>
+
+                        </td>
+                    <td>dh</td>
+                </tr>
+                <?php
+                        $k = 1 - $k;
+                        } ?>
+                </tbody>
+
+            </table>
+
+
+                    <input type="hidden" name="option" value="<?php echo $option; ?>" />
+                    <input type="hidden" name="task" value="" />
+                    <?php echo JHTML::_( 'form.token' ); ?>
+        </form>
+      <?php
+    }
+
 }

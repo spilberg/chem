@@ -368,9 +368,9 @@ function pakageDeleteProcess(){
     if($filetodelete['name'] !== '') $list_from_file = file($filetodelete['tmp_name']);
 
     if($todelete !== '') $list_from_field =  explode(PHP_EOL,$todelete);
-
+print_r($list_from_file); exit;
 //TODO: Warning: array_merge_recursive() [function.array-merge-recursive]: Argument #2 is not an array in Z:\home\chem\www\administrator\components\com_chem\admin.chem.php on line 389
-    if($list_from_field !== '' && $list_from_file !== '')
+    if($list_from_field !== '' && !is_null($list_from_file))
         $all_list = array_merge_recursive($list_from_field,$list_from_file);
 
     if($list_from_field !== '' && $list_from_file == '')
