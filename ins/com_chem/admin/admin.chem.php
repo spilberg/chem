@@ -1,5 +1,4 @@
 <?php
-
 defined('_JEXEC') or die('Restricted access');
 
 /*
@@ -17,6 +16,7 @@ JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_chem'.DS.'tab
 $task = JRequest::getCmd('task');
 $id = JRequest::getVar('id', 0, 'get', 'int');
 $cid = JRequest::getVar('cid', array(0), 'post', 'array');
+$fid = JRequest::getVar('fid',array(),'post','array');
 JArrayHelper::toInteger($cid, array(0));
 
 
@@ -66,6 +66,18 @@ switch ($task) {
 
     case 'importdbprocess':
         importDBProcess();
+        break;
+
+    case 'listoffiles':
+        listOfFiles($option);
+        break;
+
+    case 'viewlog':
+        showLogFile();
+        break;
+
+    case 'delfiles':
+        delFiles($fid);
         break;
 
     default:
@@ -121,11 +133,11 @@ function showMolecules($option)
     $where = array();
 
     if ($search) {
-        $where[] = 'ch.cat_namber LIKE ' . $db->Quote('%' . $db->getEscaped($search, true) . '%', false);
+        $where[] = 'ch.cat_number LIKE ' . $db->Quote('%' . $db->getEscaped($search, true) . '%', false);
     }
 
     // sanitize $filter_order
-    if (!in_array($filter_order, array('ch.cat_namber','ch.mol_weigh','ch.mass','ch.id'))) {
+    if (!in_array($filter_order, array('ch.cat_number','ch.mol_weigh','ch.mass','ch.id'))) {
         $filter_order = 'ch.id';
     }
 
@@ -185,7 +197,8 @@ function saveMolecule( $task )
     $row	=& JTable::getInstance('chem', 'Table');
     $post = JRequest::get( 'post' );
     $post['misc'] = JRequest::getVar('misc', '', 'POST', 'string', JREQUEST_ALLOWHTML);
-
+$post['mdl_form'] = PHP_EOL.PHP_EOL.ltrim($post['mdl_form']);
+ //   var_dump($post); exit;
     if (!$row->bind( $post )) {
         JError::raiseError(500, $row->getError() );
     }
@@ -299,7 +312,7 @@ function importDBProcess(){
     $mapping_fields  = array('id' => 'id',
                             'Formula' => 'molecular_formula',
                             'Mol Weight' => 'mol_weigh',
-                            'Catalog_namber' => 'cat_namber',
+                            'Catalog_namber' => 'cat_number',
                             'Purity' => 'purity',
                             'Molecular_Formula' =>'molecular_formula',
                             'Available_from_stock' => 'mass',
@@ -364,12 +377,11 @@ function pakageDeleteProcess(){
     $todelete     = JRequest::getVar('itemtodelete');
     $filetodelete = JRequest::getVar('filetodelete',null,'FILES');
 
-
     if($filetodelete['name'] !== '') $list_from_file = file($filetodelete['tmp_name']);
 
     if($todelete !== '') $list_from_field =  explode(PHP_EOL,$todelete);
-print_r($list_from_file); exit;
-//TODO: Warning: array_merge_recursive() [function.array-merge-recursive]: Argument #2 is not an array in Z:\home\chem\www\administrator\components\com_chem\admin.chem.php on line 389
+
+
     if($list_from_field !== '' && !is_null($list_from_file))
         $all_list = array_merge_recursive($list_from_field,$list_from_file);
 
@@ -383,3 +395,46 @@ print_r($list_from_file); exit;
     HTML_chem::pakageDeleteProcess($all_list);
 }
 
+function listOfFiles($option){
+    jimport('joomla.filesystem.folder');
+
+    $filelist = JFolder::files(JPATH_ROOT.DS.'logs', '.', false, false, array('index.html'));
+
+    HTML_chem::showFileList($filelist, $option);
+
+}
+
+function showLogFile(){
+    $fid 	= JRequest::getVar('f');
+    $option = JRequest::getCmd('option');
+
+    jimport('joomla.filesystem.file');
+
+    $filecontent = JFile::read(JPATH_ROOT.DS.'logs'.DS.$fid);
+
+    HTML_chem::showLogFile($filecontent);
+
+}
+
+function delFiles(&$fid){
+    global $mainframe;
+
+    jimport('joomla.filesystem.file');
+
+    // Check for request forgeries
+    JRequest::checkToken() or jexit( 'Invalid Token' );
+
+    array_walk($fid,'glue');
+
+
+    JFile::delete($fid);
+
+
+    $mainframe->redirect( "index.php?option=com_chem&amp;task=listoffiles", 'Recording has been deleted!' );
+
+}
+
+function glue(&$value,$key){
+    $fp = JPATH_ROOT.DS.'logs'.DS;
+    $value = $fp.$value;
+}

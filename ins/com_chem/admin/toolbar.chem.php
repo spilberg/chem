@@ -21,6 +21,10 @@ switch ( $task ) {
         TOOLBAR_chem::_PACKAGEDELETE($task);
         break;
 
+    case 'listoffiles':
+        TOOLBAR_chem::_LISTOFFILES();
+        break;
+
     case 'importdb':
     case 'importdbprocess':
         TOOLBAR_chem::_IMPORTDB($task);

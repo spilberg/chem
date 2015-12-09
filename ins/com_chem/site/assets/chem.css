@@ -1,0 +1,51 @@
+
+#jsme_container{
+    float: left;
+}
+
+#list_of_prop {
+    float: left;
+    width: 47%;
+    margin-right: 10px;
+}
+
+#formula_price {
+    float: left;
+    width: 47%;
+}
+
+#podval, div.mass, div.navigate {
+    clear: both;
+    padding-top: 10px;
+}
+
+.otstup {
+    clear: both; margin-bottom: 30px;
+}
+
+div.mass p {
+    font-weight: bold;
+}
+
+table.molecula_property {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.molecula_property td,th{
+    padding: 4px;
+    border: 1px solid #cccccc;
+}
+
+table.molecula_property th {
+    text-align: center;
+    border-bottom: solid 1px #808080;
+}
+
+table.molecula_property td:nth-child(1){
+    font-weight: bold;
+}
+
+table.molecula_property tr:nth-child(odd) {
+    background-color: #e4e4e4;
+}

@@ -39,8 +39,8 @@
         <filename>views/chem/tmpl/default.php</filename>
         <filename>views/chem/tmpl/jsme.php</filename>
         <filename>views/chem/tmpl/index.html</filename>
-        <filename>views/assets/chem.css</filename>
-        <filename>views/assets/index.html</filename>
+        <filename>assets/chem.css</filename>
+        <filename>assets/index.html</filename>
         <filename>models/chem.php</filename>\
         <folder>jsme</folder>
     </files>

@@ -133,11 +133,11 @@ function showMolecules($option)
     $where = array();
 
     if ($search) {
-        $where[] = 'ch.cat_namber LIKE ' . $db->Quote('%' . $db->getEscaped($search, true) . '%', false);
+        $where[] = 'ch.cat_number LIKE ' . $db->Quote('%' . $db->getEscaped($search, true) . '%', false);
     }
 
     // sanitize $filter_order
-    if (!in_array($filter_order, array('ch.cat_namber','ch.mol_weigh','ch.mass','ch.id'))) {
+    if (!in_array($filter_order, array('ch.cat_number','ch.mol_weigh','ch.mass','ch.id'))) {
         $filter_order = 'ch.id';
     }
 
@@ -197,7 +197,8 @@ function saveMolecule( $task )
     $row	=& JTable::getInstance('chem', 'Table');
     $post = JRequest::get( 'post' );
     $post['misc'] = JRequest::getVar('misc', '', 'POST', 'string', JREQUEST_ALLOWHTML);
-
+$post['mdl_form'] = PHP_EOL.PHP_EOL.ltrim($post['mdl_form']);
+ //   var_dump($post); exit;
     if (!$row->bind( $post )) {
         JError::raiseError(500, $row->getError() );
     }
@@ -311,7 +312,7 @@ function importDBProcess(){
     $mapping_fields  = array('id' => 'id',
                             'Formula' => 'molecular_formula',
                             'Mol Weight' => 'mol_weigh',
-                            'Catalog_namber' => 'cat_namber',
+                            'Catalog_number' => 'cat_number',
                             'Purity' => 'purity',
                             'Molecular_Formula' =>'molecular_formula',
                             'Available_from_stock' => 'mass',

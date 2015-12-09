@@ -50,7 +50,7 @@ class HTML_chem {
                     </th>
 
                     <th rowspan="2">
-                        <?php echo JHTML::_('grid.sort',   'Catalog number', 'ch.cat_namber', @$lists['order_Dir'], @$lists['order'] ); ?>
+                        <?php echo JHTML::_('grid.sort',   'Catalog number', 'ch.cat_number', @$lists['order_Dir'], @$lists['order'] ); ?>
                     </th>
 
                     <th class="title" rowspan="2">
@@ -142,12 +142,12 @@ class HTML_chem {
                         <td align="center">
                             <?php
                             if (JTable::isCheckedOut($user->get ('id'), $row->checked_out )) :
-                                echo htmlspecialchars($row->cat_namber);
+                                echo htmlspecialchars($row->cat_number);
                             else :
                                 ?>
-                                <span class="editlinktip hasTip" title="<?php echo JText::_( 'Edit Element' );?>::<?php echo htmlspecialchars($row->cat_namber); ?>">
+                                <span class="editlinktip hasTip" title="<?php echo JText::_( 'Edit Element' );?>::<?php echo htmlspecialchars($row->cat_number); ?>">
 						<a href="<?php echo $link; ?>">
-                            <?php echo htmlspecialchars($row->cat_namber); ?></a> </span>
+                            <?php echo htmlspecialchars($row->cat_number); ?></a> </span>
                             <?php
                             endif;
                             ?>
@@ -307,12 +307,12 @@ class HTML_chem {
 
                         <tr>
                             <td class="key">
-                                <label for="cat_namber">
+                                <label for="cat_number">
                                     <?php echo JText::_( 'Catalog number'); ?>:
                                 </label>
                             </td>
                             <td>
-                                <input class="inputbox" type="text" name="cat_namber" id="cat_namber" size="60" maxlength="255" value="<?php echo $row->cat_namber; ?>" />
+                                <input class="inputbox" type="text" name="cat_number" id="cat_number" size="60" maxlength="255" value="<?php echo $row->cat_number; ?>" />
                             </td>
                         </tr>
 
@@ -670,7 +670,7 @@ class HTML_chem {
 
            for($j = 0; $j < count($array_chem_object); $j++){
 
-               if($array_chem_object[$j]->cat_namber) {
+               if($array_chem_object[$j]->cat_number) {
 
                    if (!$row->bind($array_chem_object[$j])) {
                        JError::raiseError(500, $row->getError());
@@ -686,7 +686,7 @@ class HTML_chem {
 
 
 
-                   echo "Insert of update element with cat_namber: " . $array_chem_object[$j]->cat_namber . "<br/>";
+                   echo "Insert of update element with cat_number: " . $array_chem_object[$j]->cat_number . "<br/>";
                }
            }
 

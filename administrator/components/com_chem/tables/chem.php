@@ -6,7 +6,7 @@ class TableChem extends JTable
 {
 
     /** @var  int */
-    var $cat_namber = null; // char(20) DEFAULT NULL,
+    var $cat_number = null; // char(20) DEFAULT NULL,
     /** @var null  */
     var $id = null;   // ` int(11) DEFAULT NULL,
     /** @var null  */
@@ -96,13 +96,13 @@ class TableChem extends JTable
         if( $numrows )
         {
             $ret = $this->_db->updateObject( $this->_tbl, $this, $this->_tbl_key, $updateNulls );
-            $this->_log->addEntry(array('level' => 'Import DB', 'status' => 'Update', 'comment' => "element with cat_namber: " . $this->cat_namber));
+            $this->_log->addEntry(array('level' => 'Import DB', 'status' => 'Update', 'comment' => "element with cat_number: " . $this->cat_number));
         }
         else
         {
             // $this->id = null;
             $ret = $this->_db->insertObject( $this->_tbl, $this, $this->_tbl_key );
-            $this->_log->addEntry(array('level' => 'Import DB', 'status' => 'Insert', 'comment' => "element with cat_namber: " . $this->cat_namber));
+            $this->_log->addEntry(array('level' => 'Import DB', 'status' => 'Insert', 'comment' => "element with cat_number: " . $this->cat_number));
         }
         if( !$ret )
         {
