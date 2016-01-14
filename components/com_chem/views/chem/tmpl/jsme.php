@@ -87,6 +87,7 @@ $valuta = $this->params->get('valuta');
     </div>
 
     <div id="formula_price">
+        <p><a href="http://peter-ertl.com/jsme/index.html" target="_blank">"JSME Molecular Editor By B. Bienfait and P. Ertl"</a></p>
          <div id="jsme_container">
 
     </div>
@@ -94,7 +95,7 @@ $valuta = $this->params->get('valuta');
         <div id="podval">
 
             <div class="navigate">
-                <a href="/?option=<?php echo $option;?>&id=<?php echo $this->request[0]->cat_number;?>&task=getsdf" >Download SDF</a> &nbsp; <a href="/?option=<?php echo $option;?>&id=<?php echo $this->request[0]->cat_number;?>&task=getpdf" target="_blank" >Download PDF</a>
+                <a href="/?option=<?php echo $option;?>&id=<?php echo $this->request[0]->cat_number;?>&task=getsdf" >Download SDF</a> &nbsp; <a href="/?option=<?php echo $option;?>&id=<?php echo $this->request[0]->cat_number;?>&task=getpdf">Download PDF</a>
             </div>
 
             <?php
@@ -106,45 +107,86 @@ $valuta = $this->params->get('valuta');
             ?>
 
         <table class="molecula_property">
+<!--            --><?php
+//            if(!is_null($this->request[0]->price1mg ))
+//                echo '<tr><td>1 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price1mg.'</td></tr>';
+//
+//            if(!is_null($this->request[0]->price2mg))
+//                echo '<tr><td>2 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price2mg.'</td></tr>';
+//
+//            if(!is_null($this->request[0]->price3mg))
+//                echo '<tr><td>3 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price3mg.'</td></tr>';
+//
+//            if(!is_null($this->request[0]->price4mg))
+//                echo '<tr><td>4 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price4mg.'</td></tr>';
+//
+//            if(!is_null($this->request[0]->price5mg))
+//                echo '<tr><td>5 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price5mg.'</td></tr>';
+//
+//            if(!is_null($this->request[0]->price10mg))
+//                echo '<tr><td>10 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price10mg.'</td></tr>';
+//
+//            if(!is_null($this->request[0]->price15mg))
+//                echo '<tr><td>15 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price15mg.'</td></tr>';
+//
+//            if(!is_null($this->request[0]->price20mg))
+//                echo '<tr><td>20 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price20mg.'</td></tr>';
+//
+//            if(!is_null($this->request[0]->price25mg))
+//                echo '<tr><td>25 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price25mg.'</td></tr>';
+//
+//            if(!is_null($this->request[0]->price15mg))
+//                echo '<tr><td>15 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price15mg.'</td></tr>';
+//
+//            if(!is_null($this->request[0]->price5mmol))
+//                echo '<tr><td>5 mmol</td><td>'.$valuta.'</td><td>'.$this->request[0]->price5mmol.'</td></tr>';
+//
+//            if(!is_null($this->request[0]->price10mmol))
+//                echo '<tr><td>10 mmol</td><td>'.$valuta.'</td><td>'.$this->request[0]->price10mmol.'</td></tr>';
+//
+//            if(!is_null($this->request[0]->price20mmol))
+//                echo '<tr><td>20 mmol</td><td>'.$valuta.'</td><td>'.$this->request[0]->price20mmol.'</td></tr>';
+//            ?>
+
             <?php
             if(!is_null($this->request[0]->price1mg ))
-                echo '<tr><td>1 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price1mg.'</td></tr>';
+                echo '<tr><td>1 mg</td><td>'.$this->request[0]->price1mg.'&nbsp;'.$valuta.'</td></tr>';
 
             if(!is_null($this->request[0]->price2mg))
-                echo '<tr><td>2 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price2mg.'</td></tr>';
+                echo '<tr><td>2 mg</td><td>'.$this->request[0]->price2mg.'&nbsp;'.$valuta.'</td></tr>';
 
             if(!is_null($this->request[0]->price3mg))
-                echo '<tr><td>3 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price3mg.'</td></tr>';
+                echo '<tr><td>3 mg</td><td>'.$this->request[0]->price3mg.'&nbsp;'.$valuta.'</td></tr>';
 
             if(!is_null($this->request[0]->price4mg))
-                echo '<tr><td>4 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price4mg.'</td></tr>';
+                echo '<tr><td>4 mg</td><td>'.$this->request[0]->price4mg.'&nbsp;'.$valuta.'</td></tr>';
 
             if(!is_null($this->request[0]->price5mg))
-                echo '<tr><td>5 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price5mg.'</td></tr>';
+                echo '<tr><td>5 mg</td><td>'.$this->request[0]->price5mg.'&nbsp;'.$valuta.'</td></tr>';
 
             if(!is_null($this->request[0]->price10mg))
-                echo '<tr><td>10 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price10mg.'</td></tr>';
+                echo '<tr><td>10 mg</td><td>'.$this->request[0]->price10mg.'&nbsp;'.$valuta.'</td></tr>';
 
             if(!is_null($this->request[0]->price15mg))
-                echo '<tr><td>15 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price15mg.'</td></tr>';
+                echo '<tr><td>15 mg</td><td>'.$this->request[0]->price15mg.'&nbsp;'.$valuta.'</td></tr>';
 
             if(!is_null($this->request[0]->price20mg))
-                echo '<tr><td>20 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price20mg.'</td></tr>';
+                echo '<tr><td>20 mg</td><td>'.$this->request[0]->price20mg.'&nbsp;'.$valuta.'</td></tr>';
 
             if(!is_null($this->request[0]->price25mg))
-                echo '<tr><td>25 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price25mg.'</td></tr>';
+                echo '<tr><td>25 mg</td><td>'.$this->request[0]->price25mg.'&nbsp;'.$valuta.'</td></tr>';
 
             if(!is_null($this->request[0]->price15mg))
-                echo '<tr><td>15 mg</td><td>'.$valuta.'</td><td>'.$this->request[0]->price15mg.'</td></tr>';
+                echo '<tr><td>15 mg</td><td>'.$this->request[0]->price15mg.'&nbsp;'.$valuta.'</td></tr>';
 
             if(!is_null($this->request[0]->price5mmol))
-                echo '<tr><td>5 mmol</td><td>'.$valuta.'</td><td>'.$this->request[0]->price5mmol.'</td></tr>';
+                echo '<tr><td>5 mmol</td><td>'.$this->request[0]->price5mmol.'&nbsp;'.$valuta.'</td></tr>';
 
             if(!is_null($this->request[0]->price10mmol))
-                echo '<tr><td>10 mmol</td><td>'.$valuta.'</td><td>'.$this->request[0]->price10mmol.'</td></tr>';
+                echo '<tr><td>10 mmol</td><td>'.$this->request[0]->price10mmol.'&nbsp;'.$valuta.'</td></tr>';
 
             if(!is_null($this->request[0]->price20mmol))
-                echo '<tr><td>20 mmol</td><td>'.$valuta.'</td><td>'.$this->request[0]->price20mmol.'</td></tr>';
+                echo '<tr><td>20 mmol</td><td>'.$this->request[0]->price20mmol.'&nbsp;'.$valuta.'</td></tr>';
             ?>
 
         </table>
