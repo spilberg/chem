@@ -30,6 +30,10 @@ switch ( $task ) {
         TOOLBAR_chem::_IMPORTDB($task);
         break;
 
+    case 'exportdb':
+        TOOLBAR_chem::_EXPORTDB($task);
+        break;
+
     default:
         TOOLBAR_chem::_DEFAULT();
         break;

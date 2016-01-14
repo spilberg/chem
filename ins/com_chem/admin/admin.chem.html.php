@@ -615,11 +615,44 @@ class HTML_chem {
         <?php
     }
 
-    function exportDB(){
+    function exportDB($option){
         ?>
-        <form action="index.php" method="post" name="adminForm">
-            <p>In this place I am planing export DB functionality. Coming soon.</p>
+
+
+        <script language="javascript" type="text/javascript">
+            <!--
+            function submitbutton(pressbutton) {
+                var form = document.adminForm;
+                if (pressbutton == 'cancel') {
+                    // submitform( pressbutton );
+                    return;
+                }
+
+                // do field validation
+                if ( form.filetodelete.value == '' ) {
+                    alert( "<?php echo JText::_( 'You must select a file.', true ); ?>" );
+//                } else if (  ) {
+//                    alert( "<?php //echo JText::_( 'Please select a Category.', true ); ?>//" );
+                } else {
+                    submitform( pressbutton );
+                }
+
+                //submitform( pressbutton );
+            }
+            //-->
+        </script>
+
+        <form action="index.php" method="post" enctype="multipart/form-data" name="adminForm">
+            <p>In this place I am planing import DB functionality. Coming soon.</p>
+
+            <p>Select file: <input type="file" name="filetodelete"/></p>
+            <p>and presss button "ImportDB"</p>
+
+            <input type="hidden" name="option" value="<?php echo $option; ?>" />
+            <input type="hidden" name="task" value="" />
+            <?php echo JHTML::_( 'form.token' ); ?>
         </form>
+
     <?php
 
     }
