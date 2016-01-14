@@ -20,5 +20,7 @@ class ChemModelChem extends JModel{
 
         return $chem;
     }
+
+
 }
 

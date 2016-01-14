@@ -94,7 +94,7 @@ $valuta = $this->params->get('valuta');
         <div id="podval">
 
             <div class="navigate">
-                <a href="#" >Download SDF</a> &nbsp; <a href="#" >Download PDF</a>
+                <a href="/?option=<?php echo $option;?>&id=<?php echo $this->request[0]->cat_number;?>&task=getsdf" >Download SDF</a> &nbsp; <a href="/?option=<?php echo $option;?>&id=<?php echo $this->request[0]->cat_number;?>&task=getpdf" target="_blank" >Download PDF</a>
             </div>
 
             <?php
