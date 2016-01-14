@@ -6,6 +6,7 @@ jimport( 'joomla.application.component.view');
 
 class ChemViewChem extends JView
 {
+
     function display($tpl = null)
     {
         global $mainframe;
@@ -21,6 +22,9 @@ class ChemViewChem extends JView
         $document->setTitle( $params->get( 'page_title' ) );
 
         $chem = $model->getChem($id);
+
+        if($chem[0]->cat_number == null) $mainframe->redirect('index.php' );
+
 
         $this->setLayout('jsme');
         $this->assignRef('request', $chem);

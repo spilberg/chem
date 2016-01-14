@@ -36,15 +36,9 @@
         <filename>controller.php</filename>
         <filename>chem.php</filename>
         <filename>index.html</filename>
-        <filename>views/index.html</filename>
-        <filename>views/chem/index.html</filename>
-        <filename>views/chem/view.html.php</filename>
-        <filename>views/chem/tmpl/default.php</filename>
-        <filename>views/chem/tmpl/jsme.php</filename>
-        <filename>views/chem/tmpl/index.html</filename>
-        <filename>assets/chem.css</filename>
-        <filename>assets/index.html</filename>
-        <filename>models/chem.php</filename>\
+        <folder>views</folder>
+        <folder>assets</folder>
+        <folder>models</folder>
         <folder>jsme</folder>
         <folder>tcpdf</folder>
     </files>

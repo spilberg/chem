@@ -44,6 +44,10 @@ switch ($task) {
         packageDelete($option);
         break;
 
+    case 'deletaallrecords':
+        deleteAllRecords();
+        break;
+
     case 'deletepackage':
         pakageDeleteProcess();
         break;
@@ -57,7 +61,7 @@ switch ($task) {
         break;
 
     case 'exportdb':
-        exportDB();
+        exportDB($option);
         break;
 
     case 'importdb':
@@ -318,6 +322,8 @@ function importDBProcess(){
                             'Available_from_stock' => 'mass',
                             'CAS_number' => 'cas_number',
                             'MDL_number' => 'mdl_number',
+                            'Boiling_point' => 'boiling_point',
+                            'Melting_point' => 'melting_point',
                             'SMILES' => 'smiles',
                             'Status' => 'status',
                             'iupac_name' => 'iupac_name',

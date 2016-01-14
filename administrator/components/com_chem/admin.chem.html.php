@@ -361,6 +361,29 @@ class HTML_chem {
                             </td>
                         </tr>
 
+
+                        <tr>
+                            <td class="key">
+                                <label for="boiling_point">
+                                    <?php echo JText::_( 'Boiling point'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="boiling_point" id="boiling_point" size="60" maxlength="255" value="<?php echo $row->boiling_point; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="melting_point">
+                                    <?php echo JText::_( 'Melting point'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="melting_point" id="melting_point" size="60" maxlength="255" value="<?php echo $row->melting_point; ?>" />
+                            </td>
+                        </tr>
+
                         <tr>
                             <td class="key">
                                 <label for="mdl_form">
@@ -589,16 +612,19 @@ class HTML_chem {
     ?>
         <form action="index.php" method="post" name="adminForm">
             <p>This is Component view chemical elements for joomla 1.5 (no legacy mode!)
-            <br />This component is specifically designed for "SigmaSoft"
-            To display molecule chemical element used
-            JSME: a free molecule editor in JavaScript
-            <br />
-            Copyright (c) 2013, Novartis Institutes for BioMedical Research Inc and Bruno Bienfait<br/>
-            <a href="license.txt">license.txt</a> contains text of the BSD license under which the JSME is distributed.<br/>
-            B. Bienfait and P. Ertl, <a href="http://www.jcheminf.com/content/5/1/24"><b>JSME: a free molecule editor in JavaScript</b></a>, J. Cheminformatics 5:24 (2013)
+                <br />This component is specifically designed for "SigmaSoft"
+                To display molecule chemical element used
+                JSME: a free molecule editor in JavaScript
+                <br />
+                Copyright (c) 2013, Novartis Institutes for BioMedical Research Inc and Bruno Bienfait<br/>
+                <a href="license.txt">license.txt</a> contains text of the BSD license under which the JSME is distributed.<br/>
+                B. Bienfait and P. Ertl, <a href="http://www.jcheminf.com/content/5/1/24"><b>JSME: a free molecule editor in JavaScript</b></a>, J. Cheminformatics 5:24 (2013)
             </p>
+            <p>For create PDF document using TCPDF. TCPDF is a PHP class for generating PDF files on-the-fly without requiring external extensions.<br/>
+                Version: 6.2.11, Release date: 2015-08-02, Author:	Nicola Asuni<br/><br/>
+                Copyright (c) 2002-2015: Nicola Asuni, Tecnick.com LTD, www.tecnick.com</p>
             <p>Programming by Nick Korbut.<br/>
-            email: <a href="mailto:nick.korbut@gmail.com">nick.korbut@gmail.com</a>
+                email: <a href="mailto:nick.korbut@gmail.com">nick.korbut@gmail.com</a>
             </p>
         </form>
     <?php

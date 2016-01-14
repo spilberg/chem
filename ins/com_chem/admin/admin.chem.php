@@ -312,7 +312,7 @@ function importDBProcess(){
     $mapping_fields  = array('id' => 'id',
                             'Formula' => 'molecular_formula',
                             'Mol Weight' => 'mol_weigh',
-                            'Catalog_namber' => 'cat_number',
+                            'Catalog_number' => 'cat_number',
                             'Purity' => 'purity',
                             'Molecular_Formula' =>'molecular_formula',
                             'Available_from_stock' => 'mass',

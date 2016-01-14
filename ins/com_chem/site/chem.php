@@ -10,26 +10,28 @@ JTable::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR.DS.'tables');
 require_once (JPATH_COMPONENT.DS.'controller.php');
 
 // Require specific controller if requested
-if($controller = JRequest::getWord('controller')) {
-    $path = JPATH_COMPONENT.DS.'controllers'.DS.$controller.'.php';
-    if (file_exists($path)) {
-        require_once $path;
-    } else {
-        $controller = '';
-    }
-}
+//if($controller = JRequest::getWord('controller')) {
+//    $path = JPATH_COMPONENT.DS.'controllers'.DS.$controller.'.php';
+//    if (file_exists($path)) {
+//        require_once $path;
+//    } else {
+//        $controller = '';
+//    }
+//}
 
 // Create the controller
-$classname	= 'ChemController'.ucfirst($controller);
-$controller = new $classname( );
+//$classname	= 'ChemController'.ucfirst($controller);
+//$controller = new $classname( );
+$controller = new ChemController( );
 
 // Register Extra tasks
-$controller->registerTask( 'results', 'display' );
+$controller->registerTask( 'getsdf', 'getsdf' );
+$controller->registerTask( 'getpdf', 'getpdf' );
 
 // Perform the Request task
 $controller->execute(JRequest::getCmd('task'));
 
 // Redirect if set by the controller
-$controller->redirect();
+//$controller->redirect();
 
 ?>
