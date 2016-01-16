@@ -157,21 +157,21 @@ $pdf->AddPage();
 $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
 
 // Set some content to print
-$html = <<<EOD
-<h1 style="text-align:center">Material Safety Data Sheet</h1>
+//$html = <<<EOD
+$html = '<h1 style="text-align:center">Material Safety Data Sheet</h1>
 
 <h2>1 - Product and Company Information</h2>
-<p>Product Name: $sdf_obj->iupac_name <br/>
-Product Number: $sdf_obj->cat_number <br/>
+<p>Product Name: '. $sdf_obj->iupac_name .'<br/>
+Product Number: '.$sdf_obj->cat_number .'<br/>
 Company: Otava Chemicals<br/>
 Phone: +1-416-549-8030<br/>
 Fax: +1-866-881-9921</p>
 
 <h2>2 - Composition/Information on Ingredients</h2>
-<p>Product Name: $sdf_obj->iupac_name<br/>
-CAS#: $sdf_obj->cas_number<br/>
-Formula: $sdf_obj->molecular_formula<br/>
-Molecular Weight: $sdf_obj->mol_weigh</p>
+<p>Product Name: '.$sdf_obj->iupac_name .'<br/>
+CAS#: '.(($sdf_obj->cas_number) ? $sdf_obj->cas_number : 'N/A') .'<br/>
+Formula: '. (($sdf_obj->molecular_formula) ? $sdf_obj->molecular_formula : 'N/A') .'<br/>
+Molecular Weight: '. (($sdf_obj->mol_weigh) ? $sdf_obj->mol_weigh : 'N/A') .'</p>
 
 <h2>3 - Hazards Identification</h2>
 <p>Physical/chemical hazards:Nonflammable, nonexplosive,<br/>
@@ -220,8 +220,8 @@ Keep tightly closed. Store in a dry place at room temperature.</p>
 
 <p>Physical State: Light yellow powder<br/>
 Odour: Almost odourless<br/>
-Melting Point: 180C<br/>
-Boiling Point: 180C</p>
+Melting Point: '.(($sdf_obj->melting_point) ? $sdf_obj->melting_point : 'N/A') .'<br/>
+Boiling Point: '.(($sdf_obj->boiling_point) ? $sdf_obj->boiling_point : 'N/A') .'</p>
 
 
 
@@ -272,8 +272,8 @@ TSCA: No. R&D Use Only</p>
 believed to be reliable and to represent the most reasonable current opinion on the subject when the MSDS was prepared.
 While the above information is believed to be accurate, no warranty, guaranty, or representation is made as to the correctness
 or sufficiency of the information and the information is intended only as a guide. Otava shall not be held liable for any damage resulting from handling or
-from contact with this product. The user of this product must decide what safety measures are necessary to safely use this product, either alone or in combination with other products, and determine environmental regulatory compliance obligations under any applicable Federal or State Laws.</p>
-EOD;
+from contact with this product. The user of this product must decide what safety measures are necessary to safely use this product, either alone or in combination with other products, and determine environmental regulatory compliance obligations under any applicable Federal or State Laws.</p>';
+//EOD;
 
 // Print text using writeHTMLCell()
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
@@ -282,7 +282,7 @@ $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
 // Close and output PDF document
 // This method has several options, check the source code documentation for more information.
-$pdf->Output($filename, 'D');
+$pdf->Output($filename, 'I');
 
 //============================================================+
 // END OF FILE

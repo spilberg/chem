@@ -765,9 +765,9 @@ exit;
             }
             //-->
         </script>
-
-        <form action="index.php" method="post" enctype="multipart/form-data" name="adminForm">
-            <p>In this place I am planing import DB functionality. Coming soon.</p>
+<table class="adminform" border="0">
+        <tr><td width="30%" valign="top"><form action="index.php" method="post" enctype="multipart/form-data" name="adminForm">
+            <p>For start import process select file with data and press button "ImportDB"</p>
 
             <p>Select file: <input type="file" name="filetodelete"/></p>
             <p>and presss button "ImportDB"</p>
@@ -776,13 +776,48 @@ exit;
             <input type="hidden" name="task" value="" />
             <?php echo JHTML::_( 'form.token' ); ?>
         </form>
+    </td>
+    <td valign="top">
+        <h3>Remember!</h3>
+        <p>For correct import framework to a website, image data must be appropriately formatted and it must include the following fields:
+        <ul>
+            <li>id</li>
+            <li>Formula</li>
+            <li>Mol Weight</li>
+            <li>Catalog_number</li>
+            <li>Purity</li>
+            <li>Molecular_Formula</li>
+            <li>Available_from_stock</li>
+            <li>CAS_number</li>
+            <li>MDL_number</li>
+            <li>Boiling_point</li>
+            <li>Melting_point</li>
+            <li>SMILES</li>
+            <li>Status</li>
+            <li>iupac_name</li>
+            <li>price1mg</li>
+            <li>price2mg</li>
+            <li>price3mg</li>
+            <li>price4mg</li>
+            <li>price5mg</li>
+            <li>price10mg</li>
+            <li>price15mg</li>
+            <li>price20mg</li>
+            <li>price25mg</li>
+            <li>price5umol</li>
+            <li>price10umol</li>
+            <li>price20umol</li>
+
+        </ul>
+        </p>
+    </td>
+    </tr>
+</table>
     <?php
 
     }
 
     function importDBProcess($array_chem_object){
-
-     //   var_dump($array_chem_object);
 
            $row =& JTable::getInstance('chem', 'Table');
 
@@ -805,7 +840,9 @@ exit;
 
 
                    echo "Insert of update element with cat_number: " . $array_chem_object[$j]->cat_number . "<br/>";
-               }
+               } else { echo 'Not find Catalog_number in record. Please check input file for correct field names. <br/>';}
+
+
            }
 
 

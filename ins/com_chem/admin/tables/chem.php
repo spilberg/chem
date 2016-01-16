@@ -17,6 +17,10 @@ class TableChem extends JTable
     var $cas_number = null;   //` varchar(50) DEFAULT NULL,
     /** @var string */
     var $mdl_number = null;   //` varchar(50) DEFAULT NULL,
+    /** @var string  */
+    var $boiling_point = null; //` varchar(50) DEFAULT NULL,
+    /** @var string  */
+    var $melting_point = null; //` varchar(50) DEFAULT NULL,
     /** @var string */
     var $mdl_form = null;   //` text NOT NULL,
     /** @var int  */

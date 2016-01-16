@@ -5,6 +5,8 @@ CREATE TABLE IF NOT EXISTS `jos_chem` (
   `mass` double DEFAULT NULL,
   `cas_number` varchar(50) DEFAULT NULL,
   `mdl_number` varchar(50) DEFAULT NULL,
+  `boiling_point` varchar(50) DEFAULT NULL,
+  `melting_point` varchar(50) DEFAULT NULL,
   `mdl_form` text NOT NULL,
   `purity` int(11) DEFAULT NULL,
   `smiles` varchar(100) DEFAULT NULL,

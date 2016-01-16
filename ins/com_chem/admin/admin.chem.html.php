@@ -361,6 +361,29 @@ class HTML_chem {
                             </td>
                         </tr>
 
+
+                        <tr>
+                            <td class="key">
+                                <label for="boiling_point">
+                                    <?php echo JText::_( 'Boiling point'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="boiling_point" id="boiling_point" size="60" maxlength="255" value="<?php echo $row->boiling_point; ?>" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="key">
+                                <label for="melting_point">
+                                    <?php echo JText::_( 'Melting point'); ?>:
+                                </label>
+                            </td>
+                            <td>
+                                <input class="inputbox" type="text" name="melting_point" id="melting_point" size="60" maxlength="255" value="<?php echo $row->melting_point; ?>" />
+                            </td>
+                        </tr>
+
                         <tr>
                             <td class="key">
                                 <label for="mdl_form">
@@ -618,7 +641,6 @@ class HTML_chem {
     function exportDB($option){
         ?>
 
-
         <script language="javascript" type="text/javascript">
             <!--
             function submitbutton(pressbutton) {
@@ -629,8 +651,8 @@ class HTML_chem {
                 }
 
                 // do field validation
-                if ( form.filetodelete.value == '' ) {
-                    alert( "<?php echo JText::_( 'You must select a file.', true ); ?>" );
+                if ( form.filetodelete.value == '' && form.itemtodelete.value == '' ) {
+                    alert( "<?php echo JText::_( 'For export list of records You can select file with list or write catalog numbers in field below.', true ); ?>" );
 //                } else if (  ) {
 //                    alert( "<?php //echo JText::_( 'Please select a Category.', true ); ?>//" );
                 } else {
@@ -643,18 +665,78 @@ class HTML_chem {
         </script>
 
         <form action="index.php" method="post" enctype="multipart/form-data" name="adminForm">
-            <p>In this place I am planing import DB functionality. Coming soon.</p>
+
+            <p>For export list of records You can select file with list or write catalog numbers in field below.</br>
+                One catalog number in one line.</p>
+            <p>You can choose both methods. In this case data in file and data in text field will be concatenated. </p>
 
             <p>Select file: <input type="file" name="filetodelete"/></p>
-            <p>and presss button "ImportDB"</p>
+            <p>or/and insert each item in each line.</p>
+            <textarea id="itemtodelete" name="itemtodelete" cols="50" rows="8" class="inputbox"></textarea>
+            <p>If You ready press button "Export DB".</p>
 
             <input type="hidden" name="option" value="<?php echo $option; ?>" />
             <input type="hidden" name="task" value="" />
             <?php echo JHTML::_( 'form.token' ); ?>
         </form>
-
     <?php
 
+    }
+
+    function exportDBProcess($todelete){
+       // var_dump($todelete); exit;
+        global $mainframe;
+
+        $header_string = '';
+                $export_string = '';
+                $all_string = '';
+//                $rec = $todelete[0];
+                foreach($todelete[0] as $key => $value ){
+                    if($key !== 'mdl_form')
+                        $header_string .= $key .';';
+                }
+        $header_string = rtrim($header_string, ';');
+                $header_string .= "\n";
+//                echo rtrim($header_string, ';') . "\n";
+
+                for($i= 0; $i < count($todelete); $i++){
+                    $rec = $todelete[$i];
+                    //var_dump($rec); exit;
+                    foreach($rec as $key => $value ){
+                        if($key !== 'mdl_form')
+                        $export_string .= $value .';';
+                    }
+                    $all_string .= rtrim($export_string, ';') . "\n";
+                    $export_string = '';
+//                      echo trim($todelete[$i]) . '<br/>';
+                    //echo $row->delRec(trim($todelete[$i])) . '<br/>';
+                }
+//
+                header('Content-Description: File Transfer');
+                header('Cache-Control: private, must-revalidate, post-check=0, pre-check=0, max-age=1');
+                //header('Cache-Control: public, must-revalidate, max-age=0'); // HTTP/1.1
+                header('Pragma: public');
+                header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+                header('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT');
+                header('Content-Type: text/csv');
+                $name = gmdate('D_d_M_Y_H:i:s').'.csv';
+                header('Content-Disposition: inline; filename="'.basename($name).'"');
+                echo $header_string . $all_string;
+
+exit;
+       // $mainframe->redirect( "index.php?option=com_chem", 'Records has been Exported!' );
+                ?>
+                 <!--        <form action="index.php" method="post" name="adminForm">-->
+<!--            <p>It is a process ...</p>-->
+<!--            <p>-->
+<!--            </p>-->
+<!--            <p>Operation is completed!</p>-->
+<!---->
+<!--            <input type="hidden" name="option" value="com_chem" />-->
+<!--            <input type="hidden" name="task" value="" />-->
+<!--            --><?php //echo JHTML::_( 'form.token' ); ?>
+<!--        </form>-->
+    <?php
     }
 
     function importDB($option){
@@ -767,6 +849,10 @@ class HTML_chem {
             <textarea id="itemtodelete" name="itemtodelete" cols="50" rows="8" class="inputbox"></textarea>
             <p>If You ready press button "Delete Package".</p>
 
+            <p style="color:red;">WARNING! If you want delete all records in your Data base, use this link
+                <a href="/administrator/index.php?option=com_chem&task=deleteallrecords">Delete All Records</a>
+                Remembe, after delete you can not return back. It is not a time machine. :-)</p>
+
             <input type="hidden" name="option" value="<?php echo $option; ?>" />
             <input type="hidden" name="task" value="" />
             <?php echo JHTML::_( 'form.token' ); ?>
@@ -782,7 +868,8 @@ class HTML_chem {
             <p>It is a process ...</p>
             <p><?php
                     for($i= 0; $i < count($todelete); $i++){
-                      echo $row->delRec(trim($todelete[$i])) . '<br/>';
+//                      echo trim($todelete[$i]) . '<br/>';
+                    echo $row->delRec(trim($todelete[$i])) . '<br/>';
                     }
                 ?>
             </p>

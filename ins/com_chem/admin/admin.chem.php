@@ -44,6 +44,10 @@ switch ($task) {
         packageDelete($option);
         break;
 
+    case 'deleteallrecords':
+        deleteAllRecords();
+        break;
+
     case 'deletepackage':
         pakageDeleteProcess();
         break;
@@ -57,7 +61,11 @@ switch ($task) {
         break;
 
     case 'exportdb':
-        exportDB();
+        exportDB($option);
+        break;
+
+    case 'exportdbprocess':
+        exportDBProcess();
         break;
 
     case 'importdb':
@@ -296,8 +304,41 @@ function aboutComponent(){
     HTML_chem::aboutComponent();
 }
 
-function exportDB(){
-    HTML_chem::exportDB();
+function exportDB($option){
+    HTML_chem::exportDB($option);
+}
+
+function exportDBProcess(){
+
+    $db =& JFactory::getDBO();
+
+    $todelete     = JRequest::getVar('itemtodelete');
+    $filetodelete = JRequest::getVar('filetodelete',null,'FILES');
+
+    if($filetodelete['name'] !== '') $list_from_file = file($filetodelete['tmp_name']);
+
+    if($todelete !== '') $list_from_field =  explode(PHP_EOL,$todelete);
+
+
+    if($list_from_field !== '' && !is_null($list_from_file))
+        $all_list = array_merge_recursive($list_from_field,$list_from_file);
+
+    if($list_from_field !== '' && $list_from_file == '')
+        $all_list = $list_from_field;
+
+    if($list_from_field == '' && $list_from_file !== '')
+        $all_list = $list_from_file;
+    $comma_separated = implode(",", $all_list);
+
+    $query = 'SELECT * FROM #__chem'
+        . ' WHERE cat_number IN ( '. $comma_separated .' )';
+
+    $db->setQuery($query);
+    $rows = $db->loadObjectList();
+
+//$query = "SELECT * FROM table WHERE id IN ($comma_separated)";
+//var_dump($rows); exit;
+    HTML_chem::exportDBProcess($rows);
 }
 
 function importDB($option){
@@ -318,6 +359,8 @@ function importDBProcess(){
                             'Available_from_stock' => 'mass',
                             'CAS_number' => 'cas_number',
                             'MDL_number' => 'mdl_number',
+                            'Boiling_point' => 'boiling_point',
+                            'Melting_point' => 'melting_point',
                             'SMILES' => 'smiles',
                             'Status' => 'status',
                             'iupac_name' => 'iupac_name',
@@ -371,6 +414,18 @@ function importDBProcess(){
 
 function packageDelete($option){
     HTML_chem::pakageDelete($option);
+}
+
+function deleteAllRecords(){
+    $db =& JFactory::getDBO();
+
+    $query = 'SELECT cat_number'
+        . ' FROM #__chem AS ch';
+    $db->setQuery($query);
+    $array_to_delete = $db->loadResultArray();
+
+    HTML_chem::pakageDeleteProcess($array_to_delete);
+   // var_dump($total); exit;
 }
 
 function pakageDeleteProcess(){
