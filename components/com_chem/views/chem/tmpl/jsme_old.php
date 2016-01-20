@@ -54,49 +54,50 @@ $valuta = $this->params->get('valuta');
 
 <div class="contentpane<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
 
-    <div id="list_of_prop1" >
-        <h4><?php echo $this->request[0]->iupac_name?></h4>
+    <div id="list_of_prop">
 
-        <p><a href="http://peter-ertl.com/jsme/index.html" target="_blank">"JSME Molecular Editor By B. Bienfait and P. Ertl"</a></p>
-        <div id="jsme_container" style="float: none;">
-        </div>
-        <div class="navigate">
-            <a href="/?option=<?php echo $option;?>&id=<?php echo $this->request[0]->cat_number;?>&task=getsdf" >Download SDF</a> &nbsp; <a href="/?option=<?php echo $option;?>&id=<?php echo $this->request[0]->cat_number;?>&task=getpdf">Download PDF</a>
-        </div>
-<br/>
+    <h4><?php echo $this->request[0]->iupac_name?></h4>
         <table class="molecula_property">
-                <tr><td width="15%">Catalog #</td><td><?php echo $this->request[0]->cat_number;?></td></tr>
-                <?php
-                    if(!is_null($this->request[0]->cas_number) && $this->request[0]->cas_number !== '')
-                        echo '<tr><td>CAS-number</td><td>'.$this->request[0]->cas_number.'</td></tr>';
+<!--            <tr><th colspan="2">--><?php //echo $this->request[0]->iupac_name;?><!--</th></tr>-->
+            <tr><td>Catalog #</td><td><?php echo $this->request[0]->cat_number;?></td></tr>
+            <?php
 
-                    if(!is_null($this->request[0]->mdl_number) && $this->request[0]->mdl_number !== '')
-                        echo '<tr><td>MDL-number</td><td>'.$this->request[0]->mdl_number.'</td></tr>';
+                if(!is_null($this->request[0]->cas_number) && $this->request[0]->cas_number !== '')
+                    echo '<tr><td>CAS-number</td><td>'.$this->request[0]->cas_number.'</td></tr>';
 
-                    if(!is_null($this->request[0]->molecular_formula) && $this->request[0]->molecular_formula !== '')
-                        echo '<tr><td>Formula</td><td>'.$this->request[0]->molecular_formula.'</td></tr>';
+                if(!is_null($this->request[0]->mdl_number) && $this->request[0]->mdl_number !== '')
+                    echo '<tr><td>MDL-number</td><td>'.$this->request[0]->mdl_number.'</td></tr>';
 
-                    if(!is_null($this->request[0]->mol_weigh) && $this->request[0]->mol_weigh !== '')
-                        echo '<tr><td>Molecular Weight</td><td>'.$this->request[0]->mol_weigh.'</td></tr>';
+                if(!is_null($this->request[0]->molecular_formula) && $this->request[0]->molecular_formula !== '')
+                    echo '<tr><td>Formula</td><td>'.$this->request[0]->molecular_formula.'</td></tr>';
 
-                    if(!is_null($this->request[0]->smiles) && $this->request[0]->smiles !== '')
-                        echo '<tr><td>SMILES</td><td>'.$this->request[0]->smiles.'</td></tr>';
+                if(!is_null($this->request[0]->mol_weigh) && $this->request[0]->mol_weigh !== '')
+                    echo '<tr><td>Molecular Weight</td><td>'.$this->request[0]->mol_weigh.'</td></tr>';
 
-                    if(!is_null($this->request[0]->status) && $this->request[0]->status !== '')
-                        echo '<tr><td>Status</td><td>'.$this->request[0]->status.'</td></tr>';
+                if(!is_null($this->request[0]->smiles) && $this->request[0]->smiles !== '')
+                    echo '<tr><td>SMILES</td><td>'.$this->request[0]->smiles.'</td></tr>';
 
-                    if(!is_null($this->request[0]->purity) && $this->request[0]->purity !== '')
-                        echo '<tr><td>Purity</td><td>'.$this->request[0]->purity.'</td></tr>';
-                ?>
-            </table>
+                if(!is_null($this->request[0]->status) && $this->request[0]->status !== '')
+                    echo '<tr><td>Status</td><td>'.$this->request[0]->status.'</td></tr>';
+
+                if(!is_null($this->request[0]->purity) && $this->request[0]->purity !== '')
+                    echo '<tr><td>Purity</td><td>'.$this->request[0]->purity.'</td></tr>';
+            ?>
+        </table>
+
     </div>
 
-    <div id="formula_price1">
+    <div id="formula_price">
+        <p><a href="http://peter-ertl.com/jsme/index.html" target="_blank">"JSME Molecular Editor By B. Bienfait and P. Ertl"</a></p>
+         <div id="jsme_container">
 
+    </div>
 
         <div id="podval">
 
-
+            <div class="navigate">
+                <a href="/?option=<?php echo $option;?>&id=<?php echo $this->request[0]->cat_number;?>&task=getsdf" >Download SDF</a> &nbsp; <a href="/?option=<?php echo $option;?>&id=<?php echo $this->request[0]->cat_number;?>&task=getpdf">Download PDF</a>
+            </div>
 
             <?php
                 if(!is_null($this->request[0]->status) && $this->request[0]->status == 'virtual')

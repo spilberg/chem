@@ -69,7 +69,7 @@ C19H17ClN2O4
 >  <id>
 3387
 
->  <Catalog_namber>
+>  <Catalog_number>
 0110420239
 
 >  <Purity>
@@ -186,7 +186,7 @@ C12H12BrN3O2S
 >  <id>
 7098
 
->  <Catalog_namber>
+>  <Catalog_number>
 7010210057
 
 >  <Purity>
@@ -302,7 +302,7 @@ C14H14N4
 >  <id>
 9818
 
->  <Catalog_namber>
+>  <Catalog_number>
 0127500003
 
 >  <Purity>
@@ -423,7 +423,7 @@ C17H18ClNO2
 >  <id>
 18667
 
->  <Catalog_namber>
+>  <Catalog_number>
 0103420002
 
 >  <Purity>
@@ -556,7 +556,7 @@ C20H25NO5S
 >  <id>
 18689
 
->  <Catalog_namber>
+>  <Catalog_number>
 0103420025
 
 >  <Purity>
@@ -677,7 +677,7 @@ C15H23N3O2S
 >  <id>
 22091
 
->  <Catalog_namber>
+>  <Catalog_number>
 0123750075
 
 >  <Purity>
@@ -736,6 +736,3 @@ virtual
 
 >  <price20umol>
 51
-
-$$$$
-

@@ -408,7 +408,7 @@ function importDBProcess(){
         $array_chem_object[$j] = $objItem;
 
     }
-
+//var_dump($array_chem_object);exit;
     HTML_chem::importDBProcess($array_chem_object);
 }
 

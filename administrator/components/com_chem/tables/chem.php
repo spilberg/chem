@@ -167,14 +167,14 @@ class TableChem extends JTable
 
       //  $db = & JFactory::getDBO();
 
-        $query = 'DELETE FROM jos_chem WHERE id = '. $myid;
+        $query = 'DELETE FROM jos_chem WHERE cat_number = '. $myid;
 //        $query = 'SELECT * FROM jos_chem WHERE id = '. $myid;
 
         $this->_db->setQuery($query);
 
         if($this->_db->query()) {
-            $this->_log->addEntry(array('level' => 'Delete Package', 'status' => ($this->_db->getAffectedRows() ? 'delete now' : 'not delete'), 'comment' => ' Row '. $myid));
-            $retData = 'Try to delete row with id: '. $myid . '&nbsp;&nbsp;&nbsp;&nbsp;--> ' .($this->_db->getAffectedRows() ? ' Row '. $myid .' <span style="color:#00ff00;">delete now</span>' : ' Row '. $myid .' <span style="color:#ff0000;">not delete</span>');
+            $this->_log->addEntry(array('level' => 'Delete Package', 'status' => ($this->_db->getAffectedRows() ? 'delete now' : 'not delete'), 'comment' => ' Cat_numbet '. $myid));
+            $retData = 'Try to delete row with Cat_number: '. $myid . '&nbsp;&nbsp;&nbsp;&nbsp;--> ' .($this->_db->getAffectedRows() ? ' Cat_number '. $myid .' <span style="color:#00ff00;">delete now</span>' : ' Row '. $myid .' <span style="color:#ff0000;">not delete</span>');
         } else {
             $retData = 'Errors ';
         }

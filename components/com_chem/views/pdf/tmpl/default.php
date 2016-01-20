@@ -228,7 +228,7 @@ Boiling Point: '.(($sdf_obj->boiling_point) ? $sdf_obj->boiling_point : 'N/A') .
 <h2>10 - Stability and Reactivity</h2>
 
 <p>STABILITY
-Stable: Stable under normal temperatures and pressuresБик.<br/>
+Stable: Stable under normal temperatures and pressures.<br/>
 Conditions of Instability: -<br/>
 Materials to Avoid: Strong oxidizing agents, Strong acids.<br/>
 HAZARDOUS DECOMPOSITION PRODUCTS<br/>

@@ -626,6 +626,8 @@ class HTML_chem {
             <p>Programming by Nick Korbut.<br/>
                 email: <a href="mailto:nick.korbut@gmail.com">nick.korbut@gmail.com</a>
             </p>
+
+
         </form>
     <?php
     }
@@ -821,7 +823,7 @@ exit;
 
            $row =& JTable::getInstance('chem', 'Table');
 
-           for($j = 0; $j < count($array_chem_object); $j++){
+           for($j = 0; $j <= count($array_chem_object)-1; $j++){
 
                if($array_chem_object[$j]->cat_number) {
 
