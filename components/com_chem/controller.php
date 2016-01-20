@@ -93,7 +93,7 @@ class ChemController extends JController
             "php" => "text/plain"
         );
 
-        $content = $sdf_obj->mdl_form.PHP_EOL;
+        $content = "\n".ltrim($sdf_obj->mdl_form).PHP_EOL;
         foreach (get_object_vars($sdf_obj) as $f => $v) {
             if($mapping_fields[$f] !== 'mdl_form') $content .= ">  <". $mapping_fields[$f].">" . PHP_EOL . $v . PHP_EOL . PHP_EOL ;
         }
