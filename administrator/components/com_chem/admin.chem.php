@@ -1,6 +1,6 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
-
+set_time_limit (0);
 /*
  * Make sure the user is authorized to view this page
  */
@@ -375,12 +375,16 @@ function importDBProcess(){
                             'price25mg' => 'price25mg',
                             'price5umol' => 'price5mmol',
                             'price10umol' => 'price10mmol',
-                            'price20umol' => 'price20mmol');
+                            'price20umol' => 'price20mmol',
+                            'price5mmol' => 'price5mmol',
+                            'price10mmol' => 'price10mmol',
+                            'price20mmol' => 'price20mmol');
 
     $array_chem_object = array();
 
     //read content of file
     $file_to_delete     = JRequest::getVar('filetodelete',null,'FILES');
+//    var_dump($file_to_delete); exit;
     $sdf_file         = fopen($file_to_delete['tmp_name'], 'r');
     $sdf_file_content = fread($sdf_file,filesize($file_to_delete['tmp_name']));
     fclose($sdf_file);
@@ -409,6 +413,7 @@ function importDBProcess(){
 
     }
 //var_dump($array_chem_object);exit;
+    set_time_limit (0);
     HTML_chem::importDBProcess($array_chem_object);
 }
 
@@ -419,12 +424,12 @@ function packageDelete($option){
 function deleteAllRecords(){
     $db =& JFactory::getDBO();
 
-    $query = 'SELECT cat_number'
-        . ' FROM #__chem AS ch';
+    $query = 'SELECT count(*) cat_number'
+        . ' FROM #__chem';
     $db->setQuery($query);
-    $array_to_delete = $db->loadResultArray();
-
-    HTML_chem::pakageDeleteProcess($array_to_delete);
+    $count_to_delete = $db->loadResult();
+// var_dump($count_to_delete); exit;
+    HTML_chem::allDeleteProcess($count_to_delete);
    // var_dump($total); exit;
 }
 

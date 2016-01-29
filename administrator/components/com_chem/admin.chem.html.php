@@ -1,5 +1,6 @@
 <?php
 defined( '_JEXEC' ) or die( 'Restricted access' );
+jimport('joomla.utilities.date');
 
 class HTML_chem {
 
@@ -774,6 +775,8 @@ exit;
             <p>Select file: <input type="file" name="filetodelete"/></p>
             <p>and presss button "ImportDB"</p>
 
+            <p>Remember! This process can take a long time. Please be patient</p>
+
             <input type="hidden" name="option" value="<?php echo $option; ?>" />
             <input type="hidden" name="task" value="" />
             <?php echo JHTML::_( 'form.token' ); ?>
@@ -821,32 +824,43 @@ exit;
 
     function importDBProcess($array_chem_object){
 
-           $row =& JTable::getInstance('chem', 'Table');
+        $date_start = new JDate('now');
 
-           for($j = 0; $j <= count($array_chem_object)-1; $j++){
+        $row =& JTable::getInstance('chem', 'Table');
 
-               if($array_chem_object[$j]->cat_number) {
+        for($j = 0; $j < count($array_chem_object); $j++){
 
-                   if (!$row->bind($array_chem_object[$j])) {
-                       JError::raiseError(500, $row->getError());
-                   }
+            if($array_chem_object[$j]->cat_number) {
+
+                if (!$row->bind($array_chem_object[$j])) {
+                    JError::raiseError(500, $row->getError());
+                }
 
 //                 if (!$row->check()) {
 //                     JError::raiseError(500, $row->getError() );
 //                 }
 
-                   if (!$row->storeDB()) {
-                       JError::raiseError(500, $row->getError());
-                   }
+                if (!$row->storeDB()) {
+                    JError::raiseError(500, $row->getError());
+                }
 
 
 
-                   echo "Insert of update element with cat_number: " . $array_chem_object[$j]->cat_number . "<br/>";
-               } else { echo 'Not find Catalog_number in record. Please check input file for correct field names. <br/>';}
+                echo "Insert of update element with cat_number: " . $array_chem_object[$j]->cat_number . "<br/>";
+            } else { echo 'Not find Catalog_number in record. Please check input file for correct field names. <br/>';}
 
 
-           }
+        }
+        $date_end = new JDate('now');
 
+        echo 'Processing ' . count($array_chem_object) . 'rows, elapsed '$date_end->_date - $date_start->_date .' seconds';
+//
+//        var_dump($date_start->_date);
+//
+//
+//        echo "<br/>";
+//
+//        var_dump($date_end);
 
     }
 
@@ -900,17 +914,40 @@ exit;
     }
 
     function pakageDeleteProcess($todelete){
-       // JRequest::setVar( 'hidemainmenu', 1 );
+        // JRequest::setVar( 'hidemainmenu', 1 );
         $row =& JTable::getInstance('chem', 'Table');
         ?>
         <form action="index.php" method="post" name="adminForm">
             <p>It is a process ...</p>
             <p><?php
-                    for($i= 0; $i < count($todelete); $i++){
-//                      echo trim($todelete[$i]) . '<br/>';
-                    echo $row->delRec(trim($todelete[$i])) . '<br/>';
-                    }
-                ?>
+                                for($i= 0; $i < count($todelete); $i++){
+                //                      echo trim($todelete[$i]) . '<br/>';
+                                    echo $row->delRec(trim($todelete[$i])) . '<br/>';
+                                    }
+                                ?>
+            </p>
+            <p>Operation is completed!</p>
+
+            <input type="hidden" name="option" value="com_chem" />
+            <input type="hidden" name="task" value="" />
+            <?php echo JHTML::_( 'form.token' ); ?>
+        </form>
+    <?php
+    }
+
+    function allDeleteProcess($todelete){
+        // JRequest::setVar( 'hidemainmenu', 1 );
+        $row =& JTable::getInstance('chem', 'Table');
+        ?>
+        <form action="index.php" method="post" name="adminForm">
+            <p>It is a process ...</p>
+            <p><?php
+                echo $row->delAllRecord( $todelete);
+                //                for($i= 0; $i < count($todelete); $i++){
+                ////                      echo trim($todelete[$i]) . '<br/>';
+                //                    echo $row->delRec(trim($todelete[$i])) . '<br/>';
+                //                    }
+                //                ?>
             </p>
             <p>Operation is completed!</p>
 

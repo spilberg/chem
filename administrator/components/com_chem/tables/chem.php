@@ -181,4 +181,20 @@ class TableChem extends JTable
 
         return $retData;
     }
+
+    function delAllRecord($count){
+        $query = 'TRUNCATE TABLE jos_chem';
+//        $query = 'SELECT * FROM jos_chem WHERE id = '. $myid;
+
+        $this->_db->setQuery($query);
+
+        if($this->_db->query()) {
+            $this->_log->addEntry(array('level' => 'Delete All', 'status' => 'delete now', 'comment' => ' Count of row '. $count));
+            $retData = 'Try to delete '. $count . ' rows: &nbsp;&nbsp;&nbsp;&nbsp;--> ' . $count . ' rows  <span style="color:#00ff00;">delete now</span>';
+        } else {
+            $retData = 'Errors ';
+        }
+
+        return $retData;
+    }
 }
