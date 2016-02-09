@@ -4,11 +4,10 @@ defined('_JEXEC') or die( 'Restricted access' );
 
 class TableChem extends JTable
 {
-
+    /** @var int Primary key */
+    var $id = null;
     /** @var  int */
     var $cat_number = null; // char(20) DEFAULT NULL,
-    /** @var null  */
-    var $id = null;   // ` int(11) DEFAULT NULL,
     /** @var null  */
     var $mol_weigh = null;   //` double DEFAULT NULL,
     /** @var null  */
@@ -67,7 +66,7 @@ class TableChem extends JTable
      */
     function __construct(&$db)
     {
-        parent::__construct( '#__chem', 'id', $db );
+        parent::__construct( '#__chem', 'cat_number', $db );
 
 
         jimport('joomla.error.log');
@@ -94,7 +93,7 @@ class TableChem extends JTable
 
 //        $k = $this->_tbl_key;
 
-        $this->_db->setQuery('SELECT count(*) FROM jos_chem Where id ='. $this->id);
+        $this->_db->setQuery('SELECT count(*) FROM jos_chem Where cat_number ='. $this->cat_number);
         $numrows = $this->_db->loadResult();
 
         if( $numrows )
@@ -167,14 +166,30 @@ class TableChem extends JTable
 
       //  $db = & JFactory::getDBO();
 
-        $query = 'DELETE FROM jos_chem WHERE id = '. $myid;
+        $query = 'DELETE FROM jos_chem WHERE cat_number = '. $myid;
 //        $query = 'SELECT * FROM jos_chem WHERE id = '. $myid;
 
         $this->_db->setQuery($query);
 
         if($this->_db->query()) {
-            $this->_log->addEntry(array('level' => 'Delete Package', 'status' => ($this->_db->getAffectedRows() ? 'delete now' : 'not delete'), 'comment' => ' Row '. $myid));
-            $retData = 'Try to delete row with id: '. $myid . '&nbsp;&nbsp;&nbsp;&nbsp;--> ' .($this->_db->getAffectedRows() ? ' Row '. $myid .' <span style="color:#00ff00;">delete now</span>' : ' Row '. $myid .' <span style="color:#ff0000;">not delete</span>');
+            $this->_log->addEntry(array('level' => 'Delete Package', 'status' => ($this->_db->getAffectedRows() ? 'delete now' : 'not delete'), 'comment' => ' Cat_numbet '. $myid));
+            $retData = 'Try to delete row with Cat_number: '. $myid . '&nbsp;&nbsp;&nbsp;&nbsp;--> ' .($this->_db->getAffectedRows() ? ' Cat_number '. $myid .' <span style="color:#00ff00;">delete now</span>' : ' Row '. $myid .' <span style="color:#ff0000;">not delete</span>');
+        } else {
+            $retData = 'Errors ';
+        }
+
+        return $retData;
+    }
+
+    function delAllRecord($count){
+        $query = 'TRUNCATE TABLE jos_chem';
+//        $query = 'SELECT * FROM jos_chem WHERE id = '. $myid;
+
+        $this->_db->setQuery($query);
+
+        if($this->_db->query()) {
+            $this->_log->addEntry(array('level' => 'Delete All', 'status' => 'delete now', 'comment' => ' Count of row '. $count));
+            $retData = 'Try to delete '. $count . ' rows: &nbsp;&nbsp;&nbsp;&nbsp;--> ' . $count . ' rows  <span style="color:#00ff00;">delete now</span>';
         } else {
             $retData = 'Errors ';
         }

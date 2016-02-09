@@ -1,5 +1,6 @@
 <?php
 defined( '_JEXEC' ) or die( 'Restricted access' );
+jimport('joomla.utilities.date');
 
 class HTML_chem {
 
@@ -116,7 +117,7 @@ class HTML_chem {
                 for ($i=0, $n=count($rows); $i < $n; $i++) {
                     $row = $rows[$i];
 
-                    $link 		= JRoute::_( 'index.php?option=com_chem&task=edit&cid[]='. $row->id );
+                    $link 		= JRoute::_( 'index.php?option=com_chem&task=edit&cid[]='. $row->cat_number );
 
                     $checked 	= JHTML::_('grid.checkedout',   $row, $i );
                     $access 	= JHTML::_('grid.access',   $row, $i );
@@ -140,17 +141,20 @@ class HTML_chem {
 
 
                         <td align="center">
-                            <?php
-                            if (JTable::isCheckedOut($user->get ('id'), $row->checked_out )) :
-                                echo htmlspecialchars($row->cat_number);
-                            else :
-                                ?>
-                                <span class="editlinktip hasTip" title="<?php echo JText::_( 'Edit Element' );?>::<?php echo htmlspecialchars($row->cat_number); ?>">
-						<a href="<?php echo $link; ?>">
-                            <?php echo htmlspecialchars($row->cat_number); ?></a> </span>
-                            <?php
-                            endif;
-                            ?>
+<!--                            --><?php
+//                            if (JTable::isCheckedOut($user->get ('id'), $row->checked_out )) :
+//                                echo htmlspecialchars($row->cat_number);
+//                            else :
+//                                ?>
+<!--                                <span class="editlinktip hasTip" title="--><?php //echo JText::_( 'Edit Element' );?><!--::--><?php //echo htmlspecialchars($row->cat_number); ?><!--">-->
+<!--						<a href="--><?php //echo $link; ?><!--">-->
+<!--                            --><?php //echo htmlspecialchars($row->cat_number); ?><!--</a> </span>-->
+<!--                            --><?php
+//                            endif;
+//                            ?>
+
+                            <a href="<?php echo $link; ?>">
+                                <?php echo htmlspecialchars($row->cat_number); ?></a> </span>
                         </td>
 
                         <td align="center">
@@ -312,7 +316,12 @@ class HTML_chem {
                                 </label>
                             </td>
                             <td>
-                                <input class="inputbox" type="text" name="cat_number" id="cat_number" size="60" maxlength="255" value="<?php echo $row->cat_number; ?>" />
+                                <?php if($row->cat_number){ ?>
+                                <strong><?php echo $row->cat_number; ?></strong>
+
+                                <?php } else { ?>
+                                    <input class="inputbox" type="text" name="cat_number" id="cat_number" size="60" maxlength="255" value="" />
+                                <?php } ?>
                             </td>
                         </tr>
 
@@ -601,6 +610,8 @@ class HTML_chem {
 
             <input type="hidden" name="option" value="<?php echo $option; ?>" />
             <input type="hidden" name="id" value="<?php echo $row->id; ?>" />
+            <input type="hidden" name="cat_number" value="<?php echo $row->cat_number; ?>" />
+
             <input type="hidden" name="cid[]" value="<?php echo $row->id; ?>" />
             <input type="hidden" name="task" value="" />
             <?php echo JHTML::_( 'form.token' ); ?>
@@ -626,6 +637,8 @@ class HTML_chem {
             <p>Programming by Nick Korbut.<br/>
                 email: <a href="mailto:nick.korbut@gmail.com">nick.korbut@gmail.com</a>
             </p>
+
+
         </form>
     <?php
     }
@@ -772,6 +785,8 @@ exit;
             <p>Select file: <input type="file" name="filetodelete"/></p>
             <p>and presss button "ImportDB"</p>
 
+            <p>Remember! This process can take a long time. Please be patient</p>
+
             <input type="hidden" name="option" value="<?php echo $option; ?>" />
             <input type="hidden" name="task" value="" />
             <?php echo JHTML::_( 'form.token' ); ?>
@@ -819,32 +834,50 @@ exit;
 
     function importDBProcess($array_chem_object){
 
-           $row =& JTable::getInstance('chem', 'Table');
 
-           for($j = 0; $j < count($array_chem_object); $j++){
 
-               if($array_chem_object[$j]->cat_number) {
+        $date_start = new JDate('now');
 
-                   if (!$row->bind($array_chem_object[$j])) {
-                       JError::raiseError(500, $row->getError());
-                   }
+        $row =& JTable::getInstance('chem', 'Table');
+
+
+//        echo "<pre>";
+//        print_r($row);
+//        echo "<pre>"; exit;
+
+        for($j = 0; $j < count($array_chem_object); $j++){
+
+            if($array_chem_object[$j]->cat_number) {
+
+                if (!$row->bind($array_chem_object[$j])) {
+                    JError::raiseError(500, $row->getError());
+                }
 
 //                 if (!$row->check()) {
 //                     JError::raiseError(500, $row->getError() );
 //                 }
 
-                   if (!$row->storeDB()) {
-                       JError::raiseError(500, $row->getError());
-                   }
+                if (!$row->storeDB()) {
+                    JError::raiseError(500, $row->getError());
+                }
 
 
 
-                   echo "Insert of update element with cat_number: " . $array_chem_object[$j]->cat_number . "<br/>";
-               } else { echo 'Not find Catalog_number in record. Please check input file for correct field names. <br/>';}
+                echo "Insert of update element with cat_number: " . $array_chem_object[$j]->cat_number . "<br/>";
+            } else { echo 'Not find Catalog_number in record. Please check input file for correct field names. <br/>';}
 
 
-           }
+        }
+        $date_end = new JDate('now');
 
+        echo 'Processing ' . count($array_chem_object) . 'rows, elapsed '.$date_end->_date - $date_start->_date .' seconds';
+//
+//        var_dump($date_start->_date);
+//
+//
+//        echo "<br/>";
+//
+//        var_dump($date_end);
 
     }
 
@@ -898,17 +931,40 @@ exit;
     }
 
     function pakageDeleteProcess($todelete){
-       // JRequest::setVar( 'hidemainmenu', 1 );
+        // JRequest::setVar( 'hidemainmenu', 1 );
         $row =& JTable::getInstance('chem', 'Table');
         ?>
         <form action="index.php" method="post" name="adminForm">
             <p>It is a process ...</p>
             <p><?php
-                    for($i= 0; $i < count($todelete); $i++){
-//                      echo trim($todelete[$i]) . '<br/>';
-                    echo $row->delRec(trim($todelete[$i])) . '<br/>';
-                    }
-                ?>
+                                for($i= 0; $i < count($todelete); $i++){
+                //                      echo trim($todelete[$i]) . '<br/>';
+                                    echo $row->delRec(trim($todelete[$i])) . '<br/>';
+                                    }
+                                ?>
+            </p>
+            <p>Operation is completed!</p>
+
+            <input type="hidden" name="option" value="com_chem" />
+            <input type="hidden" name="task" value="" />
+            <?php echo JHTML::_( 'form.token' ); ?>
+        </form>
+    <?php
+    }
+
+    function allDeleteProcess($todelete){
+        // JRequest::setVar( 'hidemainmenu', 1 );
+        $row =& JTable::getInstance('chem', 'Table');
+        ?>
+        <form action="index.php" method="post" name="adminForm">
+            <p>It is a process ...</p>
+            <p><?php
+                echo $row->delAllRecord( $todelete);
+                //                for($i= 0; $i < count($todelete); $i++){
+                ////                      echo trim($todelete[$i]) . '<br/>';
+                //                    echo $row->delRec(trim($todelete[$i])) . '<br/>';
+                //                    }
+                //                ?>
             </p>
             <p>Operation is completed!</p>
 

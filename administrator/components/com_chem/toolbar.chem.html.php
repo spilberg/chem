@@ -6,12 +6,12 @@ defined( '_JEXEC' ) or die ( 'Restricted access' );
 class TOOLBAR_chem
 {
 
-    function _DEFAULT() {
+    function _DEFAULT($task = null) {
 
         JToolBarHelper::title('Chem component','molecule');
 
-        JToolBarHelper::deleteList();
-        JToolBarHelper::addNewX();
+        if($task !== 'about') JToolBarHelper::deleteList();
+      //  JToolBarHelper::addNewX();
 //        JToolBarHelper::custom('config', 'config.png', 'config_f2.png', 'Settings', false, false);
         JToolBarHelper::preferences('com_chem', '500');
     }

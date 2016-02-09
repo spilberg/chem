@@ -117,7 +117,7 @@ class HTML_chem {
                 for ($i=0, $n=count($rows); $i < $n; $i++) {
                     $row = $rows[$i];
 
-                    $link 		= JRoute::_( 'index.php?option=com_chem&task=edit&cid[]='. $row->id );
+                    $link 		= JRoute::_( 'index.php?option=com_chem&task=edit&cid[]='. $row->cat_number );
 
                     $checked 	= JHTML::_('grid.checkedout',   $row, $i );
                     $access 	= JHTML::_('grid.access',   $row, $i );
@@ -141,17 +141,20 @@ class HTML_chem {
 
 
                         <td align="center">
-                            <?php
-                            if (JTable::isCheckedOut($user->get ('id'), $row->checked_out )) :
-                                echo htmlspecialchars($row->cat_number);
-                            else :
-                                ?>
-                                <span class="editlinktip hasTip" title="<?php echo JText::_( 'Edit Element' );?>::<?php echo htmlspecialchars($row->cat_number); ?>">
-						<a href="<?php echo $link; ?>">
-                            <?php echo htmlspecialchars($row->cat_number); ?></a> </span>
-                            <?php
-                            endif;
-                            ?>
+<!--                            --><?php
+//                            if (JTable::isCheckedOut($user->get ('id'), $row->checked_out )) :
+//                                echo htmlspecialchars($row->cat_number);
+//                            else :
+//                                ?>
+<!--                                <span class="editlinktip hasTip" title="--><?php //echo JText::_( 'Edit Element' );?><!--::--><?php //echo htmlspecialchars($row->cat_number); ?><!--">-->
+<!--						<a href="--><?php //echo $link; ?><!--">-->
+<!--                            --><?php //echo htmlspecialchars($row->cat_number); ?><!--</a> </span>-->
+<!--                            --><?php
+//                            endif;
+//                            ?>
+
+                            <a href="<?php echo $link; ?>">
+                                <?php echo htmlspecialchars($row->cat_number); ?></a> </span>
                         </td>
 
                         <td align="center">
@@ -313,7 +316,12 @@ class HTML_chem {
                                 </label>
                             </td>
                             <td>
-                                <input class="inputbox" type="text" name="cat_number" id="cat_number" size="60" maxlength="255" value="<?php echo $row->cat_number; ?>" />
+                                <?php if($row->cat_number){ ?>
+                                <strong><?php echo $row->cat_number; ?></strong>
+
+                                <?php } else { ?>
+                                    <input class="inputbox" type="text" name="cat_number" id="cat_number" size="60" maxlength="255" value="" />
+                                <?php } ?>
                             </td>
                         </tr>
 
@@ -602,6 +610,8 @@ class HTML_chem {
 
             <input type="hidden" name="option" value="<?php echo $option; ?>" />
             <input type="hidden" name="id" value="<?php echo $row->id; ?>" />
+            <input type="hidden" name="cat_number" value="<?php echo $row->cat_number; ?>" />
+
             <input type="hidden" name="cid[]" value="<?php echo $row->id; ?>" />
             <input type="hidden" name="task" value="" />
             <?php echo JHTML::_( 'form.token' ); ?>
@@ -788,7 +798,7 @@ exit;
         <ul>
             <li>id</li>
             <li>Formula</li>
-            <li>Mol Weight</li>
+            <li>Mol_Weight</li>
             <li>Catalog_number</li>
             <li>Purity</li>
             <li>Molecular_Formula</li>
@@ -824,9 +834,16 @@ exit;
 
     function importDBProcess($array_chem_object){
 
+
+
         $date_start = new JDate('now');
 
         $row =& JTable::getInstance('chem', 'Table');
+
+
+//        echo "<pre>";
+//        print_r($row);
+//        echo "<pre>"; exit;
 
         for($j = 0; $j < count($array_chem_object); $j++){
 
@@ -853,7 +870,7 @@ exit;
         }
         $date_end = new JDate('now');
 
-        echo 'Processing ' . count($array_chem_object) . 'rows, elapsed '$date_end->_date - $date_start->_date .' seconds';
+        echo 'Processing ' . count($array_chem_object) . 'rows, elapsed '.$date_end->_date - $date_start->_date .' seconds';
 //
 //        var_dump($date_start->_date);
 //

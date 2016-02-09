@@ -245,6 +245,8 @@ class JTable extends JObject
 		$db->setQuery( $query );
 
 		if ($result = $db->loadAssoc( )) {
+
+
 			return $this->bind($result);
 		}
 		else

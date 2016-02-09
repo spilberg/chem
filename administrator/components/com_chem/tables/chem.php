@@ -4,11 +4,10 @@ defined('_JEXEC') or die( 'Restricted access' );
 
 class TableChem extends JTable
 {
-
+    /** @var int Primary key */
+    var $id = null;
     /** @var  int */
     var $cat_number = null; // char(20) DEFAULT NULL,
-    /** @var null  */
-    var $id = null;   // ` int(11) DEFAULT NULL,
     /** @var null  */
     var $mol_weigh = null;   //` double DEFAULT NULL,
     /** @var null  */
@@ -67,7 +66,7 @@ class TableChem extends JTable
      */
     function __construct(&$db)
     {
-        parent::__construct( '#__chem', 'id', $db );
+        parent::__construct( '#__chem', 'cat_number', $db );
 
 
         jimport('joomla.error.log');
@@ -94,7 +93,7 @@ class TableChem extends JTable
 
 //        $k = $this->_tbl_key;
 
-        $this->_db->setQuery('SELECT count(*) FROM jos_chem Where id ='. $this->id);
+        $this->_db->setQuery('SELECT count(*) FROM jos_chem Where cat_number ='. $this->cat_number);
         $numrows = $this->_db->loadResult();
 
         if( $numrows )

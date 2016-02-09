@@ -105,12 +105,14 @@ function editMolecule($edit )
     $cid 	= JRequest::getVar('cid', array(0), '', 'array');
     $option = JRequest::getCmd('option');
 
-    JArrayHelper::toInteger($cid, array(0));
+//    JArrayHelper::toInteger($cid, array(0));
+    JArrayHelper::toString($cid, array(0));
 
     $row =& JTable::getInstance('chem', 'Table');
     // load the row from the db table
     if($edit)
         $row->load( $cid[0] );
+
 
 //    HTML_chem::editMolecule( $row, $lists, $option, $params );
     HTML_chem::editMolecule( $row, $option );
@@ -350,9 +352,9 @@ function importDBProcess(){
     define('RECORD_DELIMITER', "$$$$");
     define('FIELD_DELIMITER', ">  ");
 
-    $mapping_fields  = array('id' => 'id',
+    $mapping_fields  = array(
                             'Formula' => 'molecular_formula',
-                            'Mol Weight' => 'mol_weigh',
+                            'Mol_Weight' => 'mol_weigh',
                             'Catalog_number' => 'cat_number',
                             'Purity' => 'purity',
                             'Molecular_Formula' =>'molecular_formula',

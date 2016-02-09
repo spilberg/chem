@@ -16,7 +16,7 @@ define('FIELD_DELIMITER', ">  ");
 
 $mapping_fields  = array('id' => 'id',
     'molecular_formula' => 'Formula',
-    'mol_weigh' => 'Mol Weight',
+    'mol_weigh' => 'Mol_Weight',
     'mdl_form' => 'mdl_form',
     'cat_number' => 'Catalog_number',
     'purity' => 'Purity',
@@ -282,7 +282,7 @@ $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
 // Close and output PDF document
 // This method has several options, check the source code documentation for more information.
-$pdf->Output($filename, 'I');
+$pdf->Output($filename, 'D');
 
 //============================================================+
 // END OF FILE
