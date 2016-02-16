@@ -9,7 +9,7 @@
     <copyright>SigmaSoft</copyright>
     <license>SigmaSoft</license>
     <!--  The version string is recorded in the components table -->
-    <version>2.0.3</version>
+    <version>2.0.4</version>
     <!-- The description is optional and defaults to the name -->
     <description><![CDATA[<p>This is Component view chemical elements for joomla 1.5 (no legacy mode!)
     <br />This component is specifically designed for "SigmaSoft"
@@ -41,7 +41,16 @@
         <filename>views/chem/view.html.php</filename>
         <filename>views/chem/tmpl/default.php</filename>
         <filename>views/chem/tmpl/jsme.php</filename>
+        <filename>views/chem/tmpl/jsme_old.php</filename>
         <filename>views/chem/tmpl/index.html</filename>
+        <filename>views/pdf/index.html</filename>
+        <filename>views/pdf/view.html.php</filename>
+        <filename>views/pdf/tmpl/default.php</filename>
+        <filename>views/pdf/tmpl/index.html</filename>
+        <filename>views/sdf/index.html</filename>
+        <filename>views/sdf/view.html.php</filename>
+        <filename>views/sdf/tmpl/default.php</filename>
+        <filename>views/sdf/tmpl/index.html</filename>
         <filename>assets/chem.css</filename>
         <filename>assets/index.html</filename>
         <filename>models/chem.php</filename>\

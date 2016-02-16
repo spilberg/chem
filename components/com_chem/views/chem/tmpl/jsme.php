@@ -194,7 +194,7 @@ $valuta = $this->params->get('valuta');
             echo '<tr><td>Status</td><td>'.$this->request[0]->status.'</td></tr>';
 
         if(!is_null($this->request[0]->purity) && $this->request[0]->purity !== '')
-            echo '<tr><td>Purity</td><td>'.$this->request[0]->purity.'</td></tr>';
+            echo '<tr><td>Purity</td><td>'.$this->request[0]->purity.'%</td></tr>';
         ?>
     </table>
 
