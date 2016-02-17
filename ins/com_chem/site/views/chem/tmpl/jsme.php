@@ -62,7 +62,7 @@ $valuta = $this->params->get('valuta');
         <div id="jsme_container" style="float: none;">
         </div>
         <div class="navigate">
-            <a href="/?option=<?php echo $option;?>&id=<?php echo $this->request[0]->cat_number;?>&task=getsdf" >Download SDF</a> &nbsp; <a href="/?option=<?php echo $option;?>&id=<?php echo $this->request[0]->cat_number;?>&task=getpdf">Download PDF</a>
+            <a class="strsearch" href="/?option=<?php echo $option;?>&id=<?php echo $this->request[0]->cat_number;?>&task=getsdf" >Download SDF</a> &nbsp; <a class="strsearch" href="/?option=<?php echo $option;?>&id=<?php echo $this->request[0]->cat_number;?>&task=getpdf">Generate MSDS</a>
         </div>
 <br/>
 
@@ -77,10 +77,10 @@ $valuta = $this->params->get('valuta');
 
             <?php
             if(!is_null($this->request[0]->status) && $this->request[0]->status == 'virtual')
-                echo '<div class="mass"><p>Synthesis on request</p></div>';
+                echo '<div class="mass red"><p>Synthesis on request</p></div>';
 
             if(!is_null($this->request[0]->status) && $this->request[0]->status == 'in stock')
-                echo '<div class="mass"><p>Available from stock ' . $this->request[0]->mass . ' mg</p></div>';
+                echo '<div class="mass green"><p>Available from stock, ' . $this->request[0]->mass . ' mg</p></div>';
             ?>
 
             <table class="molecula_property">
@@ -126,7 +126,7 @@ $valuta = $this->params->get('valuta');
                 //            ?>
 
                 <?php
-                if(!is_null($this->request[0]->status) && $this->request[0]->status == 'virtual') {
+                if(!is_null($this->request[0]->status) && $this->request[0]->status !== 'virtual') {
                     if (!is_null($this->request[0]->price1mg) && $this->request[0]->price1mg !== '0')
                         echo '<tr><td>1 mg</td><td>' . $this->request[0]->price1mg . '</td><td>'.$valuta.'</td></tr>';
 
@@ -194,7 +194,7 @@ $valuta = $this->params->get('valuta');
             echo '<tr><td>Status</td><td>'.$this->request[0]->status.'</td></tr>';
 
         if(!is_null($this->request[0]->purity) && $this->request[0]->purity !== '')
-            echo '<tr><td>Purity</td><td>'.$this->request[0]->purity.'</td></tr>';
+            echo '<tr><td>Purity</td><td>'.$this->request[0]->purity.'%</td></tr>';
         ?>
     </table>
 

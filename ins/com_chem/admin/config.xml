@@ -10,13 +10,13 @@
 
         <param name="pageclass_sfx" type="text" default="" label="Page css class" description="Page css class (leave blank)" />
         <param name="page_title" type="text" default="My Chem Title" label="Page Title" description="Page Title" />
-        <param name="valuta" type="text" default="EUR" label="Valuta" description="Valuta" />
+        <param name="valuta" type="text" default="USD" label="Valuta" description="Valuta" />
 
 
         <param name="@spacer" type="spacer" default="Params for JSME editor" label="" description="" />
         <param name="jsme_height" type="text" default="380" label="JSME height (px)" description="JSME height in pixel" />
 
-        <param name="jsme_width" type="text" default="340" label="JSME width (px)" description="JSME width in pixel" />
+        <param name="jsme_width" type="text" default="450" label="JSME width (px)" description="JSME width in pixel" />
 
 
 

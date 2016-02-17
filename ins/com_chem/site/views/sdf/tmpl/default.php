@@ -9,7 +9,7 @@ define('FIELD_DELIMITER', ">  ");
 
 $mapping_fields  = array(
     'molecular_formula' => 'Formula',
-    'mol_weigh' => 'Mol Weight',
+    'mol_weigh' => 'Mol_Weight',
     'mdl_form' => 'mdl_form',
     'cat_number' => 'Catalog_number',
     'purity' => 'Purity',

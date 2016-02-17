@@ -798,7 +798,7 @@ exit;
         <ul>
             <li>id</li>
             <li>Formula</li>
-            <li>Mol Weight</li>
+            <li>Mol_Weight</li>
             <li>Catalog_number</li>
             <li>Purity</li>
             <li>Molecular_Formula</li>
