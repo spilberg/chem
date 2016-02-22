@@ -27,6 +27,8 @@ $controller = new ChemController( );
 // Register Extra tasks
 $controller->registerTask( 'getsdf', 'getsdf' );
 $controller->registerTask( 'getpdf', 'getpdf' );
+$controller->registerTask( 'sendrequest', 'sendrequest' );
+$controller->registerTask( 'getcap', 'getcap' );
 
 // Perform the Request task
 $controller->execute(JRequest::getCmd('task'));

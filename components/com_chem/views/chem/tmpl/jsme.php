@@ -3,7 +3,21 @@
 
    // JHTML::_('script', 'jquery-1.9.1.min.js', 'components/com_chem/marvin/js/lib/');
     JHTML::_('script', 'jsme.nocache.js', 'components/com_chem/jsme/');
-JHTML::_('stylesheet', 'chem.css', 'components/com_chem/assets/');
+    JHTML::_('stylesheet', 'chem.css', 'components/com_chem/assets/');
+    JHTML::_('script','jquery.min.js', 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/');
+    JHTML::_('script','modal.js', 'components/com_chem/assets/');
+//JLoader::import('com_chem.kcaptcha.kcaptcha','components' , 'components.');
+//unset($_SESSION['captcha_keystring']);
+//$session = & JFactory::getSession();
+//$captcha = new KCAPTCHA();
+
+//$session->set('captcha_keystring', 'qqw223');
+
+
+
+//if($session->get('captcha_keystring'))
+
+//<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 
     $jsme_param =   $this->params->get('jsme_xbutton').','.
@@ -61,8 +75,11 @@ $valuta = $this->params->get('valuta');
         <p><a href="http://peter-ertl.com/jsme/index.html" target="_blank">"JSME Molecular Editor By B. Bienfait and P. Ertl"</a></p>
         <div id="jsme_container" style="float: none;">
         </div>
+        <div id="res"></div>
         <div class="navigate">
-            <a class="strsearch" href="/?option=<?php echo $option;?>&id=<?php echo $this->request[0]->cat_number;?>&task=getsdf" >Download SDF</a> &nbsp; <a class="strsearch" href="/?option=<?php echo $option;?>&id=<?php echo $this->request[0]->cat_number;?>&task=getpdf">Generate MSDS</a>
+            <a class="strsearch" href="/?option=<?php echo $option;?>&id=<?php echo $this->request[0]->cat_number;?>&task=getsdf" >Download SDF</a> &nbsp;
+            <a class="strsearch" href="/?option=<?php echo $option;?>&id=<?php echo $this->request[0]->cat_number;?>&task=getpdf">Generate MSDS</a> &nbsp;
+            <a class="strsearch" id='btnSndReq' href="#">Send request</a>
         </div>
 <br/>
 
@@ -198,24 +215,6 @@ $valuta = $this->params->get('valuta');
         ?>
     </table>
 
-    <?php
-
-
-//    foreach($this->request[0] as $k => $v){
-//        echo '<b>' . $k . '</b> : ' . $v . '</br>';
-//    }
-
-
-
-    //        foreach($this->request as $obj) :
-    //            foreach($obj as $k => $v){
-    //                echo '<b>' . $k . '</b> : ' . $v . '</br>';
-    //            }
-    //            echo '</br>';
-    //        endforeach;
-    //
-
-    ?>
     <div id="text" style="display: none;">
         <textarea id="jme_output" rows="20" cols="80"><?php echo $this->request[0]->mdl_form;?></textarea>
 <!--        <button type="button" onclick="alert(jsmeApplet.smiles())">Show SMILES</button>-->
@@ -227,3 +226,32 @@ $valuta = $this->params->get('valuta');
 
 
 </div>
+
+<div class="wrapper"></div>
+<div class="form-action">
+    <img class="close" alt="Закрити" src="components/com_chem/assets/closebox.png">
+
+    <form id="reqform" onsubmit="return false;">
+        <div class="block">
+            <p>* required fields</p>
+            <input required type="text" id="name" name="name" placeholder="Name *" /><br/>
+            <input type="text" id="company" name="company" placeholder="Company" /><br/>
+            <input required type="email" id="email" name="email" placeholder="Email *"/><br/>
+            <textarea id="message" name="message" rows="3"><?php echo $this->request[0]->cat_number . "\nRequested quantity: ";?></textarea><br/>
+            <label for="sendme"><input type="checkbox" name="sendme" id="sendme">Please send me a copy of my request by Email</label>
+<!--            Enter text shown below:-->
+            <p><img src="/?option=<?php echo $option;?>&task=getcap&<?php echo session_name()?>=<?php echo session_id()?>"></p>
+<!--            <p><img src="components/com_chem/kcaptcha/?--><?php //echo session_name()?><!--=--><?php //echo session_id()?><!--"></p>-->
+            <input required type="text" id="keystring" name="keystring" placeholder="Enter the text as shown above" value=""/>
+
+            <input type="hidden" name="cat_number" value="<?php echo $this->request[0]->cat_number;?>" />
+        </div><br/>
+        <div class="block">
+            <button type="button" id="btnSubmit" class="strsearch">Send Request</button>
+        </div>
+    </form>
+
+</div>
+
+
+<?php //echo "<pre>"; var_dump($_SESSION); echo "<hr/>"; var_dump($session->get('captcha_keystring')); echo "</pre>"; //exit; ?>

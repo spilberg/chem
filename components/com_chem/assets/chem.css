@@ -62,7 +62,7 @@ table.molecula_property tr:nth-child(odd) {
 
 /* Structure Search */
 
-a.strsearch {
+button.strsearch, a.strsearch {
     -moz-box-shadow:inset 0px 1px 0px 0px #caefab;
     -webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
     box-shadow:inset 0px 1px 0px 0px #caefab;
@@ -87,7 +87,7 @@ a.strsearch {
     padding:7px 14px;
     text-decoration:none;
     text-shadow:0px 1px 0px #aade7c;
-    /*min-width: 160px;*/
+    min-width: inherit;
 }
 a.strsearch:hover {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a));
@@ -104,4 +104,117 @@ a.strsearch:hover {
 a.strsearch:active {
     position:relative;
     top:1px;
+}
+
+.modal{
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity: 0.8;
+    -webkit-transition: opacity 200ms ease-in;
+    -moz-transition: opacity 200ms ease-in;
+    transition: opacity 200ms ease-in;
+    pointer-events: none;
+}
+
+.modal > div{
+    width: 400px;
+    position: relative;
+    margin: 30px auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: grey;
+    opacity: 10%;
+    /*background: -moz-linear-gradient(#fff, #999);*/
+    /*background: -webkit-linear-gradient(#fff, #999);*/
+    /*background: -o-linear-gradient(#fff, #999);*/
+}
+
+/*.close {*/
+    /*background: #606061;*/
+    /*color: #FFFFFF;*/
+    /*line-height: 25px;*/
+    /*position: absolute;*/
+    /*right: -12px;*/
+    /*text-align: center;*/
+    /*top: -10px;*/
+    /*width: 24px;*/
+    /*text-decoration: none;*/
+    /*font-weight: bold;*/
+    /*-webkit-border-radius: 12px;*/
+    /*-moz-border-radius: 12px;*/
+    /*border-radius: 12px;*/
+    /*-moz-box-shadow: 1px 1px 3px #000;*/
+    /*-webkit-box-shadow: 1px 1px 3px #000;*/
+    /*box-shadow: 1px 1px 3px #000;*/
+/*}*/
+/*.close:hover {*/
+    /*background: #00d9ff;*/
+/*}*/
+
+/* dialog form */
+
+.wrapper{
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    z-index: 65535;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.form-action{
+    width: 320px;
+    height: 380px;
+    position: fixed;
+    box-shadow: 0 0 5px 3px #282828;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 65535;
+    background: #FFF;
+    display: none;
+}
+
+.close {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    float: right;
+    cursor: pointer;
+    margin-top: -17px;
+    right: -17px;
+}
+
+.block {
+    margin: 0px 12px 0 10px;
+    color: #080808;
+}
+
+.block textarea, .block input[type="text"], .block input[type="email"] {
+    width: 100% !important;
+    margin: 0 0 10px 0;
+    padding: 0 !important;
+}
+
+.border_red{
+    border: 1px solid red;
+}
+
+#reqform{
+    margin-top: 12px;
+}
+
+#btnSubmit{
+    text-align: center;
+    width: 100%;
 }

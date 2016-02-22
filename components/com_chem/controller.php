@@ -220,5 +220,43 @@ class ChemController extends JController
 
 //
     }
+
+    function sendrequest(){
+
+        $name = JRequest::getVar('name', null, '', 'string');
+        $company = JRequest::getVar('company', null, '', 'string');
+        $email = JRequest::getVar('email', null, '', 'string');
+
+        $sendme = JRequest::getVar('sendme', 'off', '', 'string');
+        $message = JRequest::getVar('message', null, '', 'string');
+        $keystring = JRequest::getVar('keystring', null, '', 'string');
+
+        $session = & JFactory::getSession();
+
+        $captcha_keystring = $session->get('captcha_keystring');
+
+        if(count($_POST)>0){
+            if(isset($captcha_keystring) && $captcha_keystring === $keystring){
+                echo "<p>Thank you! Your request has been sent. We will contact you.<p>";
+            }else{
+                echo "<p>Sorry! Your request has not sent. You need refresh your browser for new request.<p>";
+            }
+        }
+
+        $session->clear('captcha_keystring');
+//        unset($_SESSION['captcha_keystring']);
+        //var_dump($_SESSION);
+        exit;
+    }
+
+    function getcap(){
+        JLoader::import('com_chem.kcaptcha.kcaptcha','components' , 'components.');
+        $session = & JFactory::getSession();
+
+        $captcha = new KCAPTCHA();
+        $session->set('captcha_keystring', $captcha->getKeyString());
+      //  $_SESSION['captcha_keystring'] = $captcha->getKeyString();
+        exit;
+    }
 }
 
