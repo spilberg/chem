@@ -172,7 +172,7 @@ a.strsearch:active {
 
 .form-action{
     width: 320px;
-    height: 380px;
+    height: 400px;
     position: fixed;
     box-shadow: 0 0 5px 3px #282828;
     margin: auto;
@@ -217,4 +217,8 @@ a.strsearch:active {
 #btnSubmit{
     text-align: center;
     width: 100%;
+}
+
+#errormsg {
+    color: #ff0000;
 }

@@ -46,26 +46,33 @@ function  checkForm(){
     var name = $('#name');
     var email = $('#email');
     var keystring = $('#keystring');
+    var errormsg = $('#errormsg');
 
     if(name.val().length == 0){
         name.attr('class', 'border_red');
+        errormsg.html('Please enter all required fields');
         return false;
     } else {
         name.attr('class', '');
+        errormsg.html('&nbsp;');
     }
 
     if(email.val().length == 0){
         email.attr('class', 'border_red');
+        errormsg.html('Please enter all required fields');
         return false;
     } else {
         email.attr('class', '');
+        errormsg.html('&nbsp;');
     }
 
     if(keystring.val().length == 0){
         keystring.attr('class', 'border_red');
+        errormsg.html('Please enter all required fields');
         return false;
     } else {
         keystring.attr('class', '');
+        errormsg.html('&nbsp;');
     }
 
     return true;

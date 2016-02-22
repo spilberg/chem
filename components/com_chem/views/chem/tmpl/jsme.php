@@ -42,6 +42,8 @@
 
 $valuta = $this->params->get('valuta');
 
+$enablesendme = $this->params->get('enablesendme');
+
 ?>
 
 <script>
@@ -236,17 +238,21 @@ $valuta = $this->params->get('valuta');
             <p>* required fields</p>
             <input required type="text" id="name" name="name" placeholder="Name *" /><br/>
             <input type="text" id="company" name="company" placeholder="Company" /><br/>
-            <input required type="email" id="email" name="email" placeholder="Email *"/><br/>
+            <input required type="email" id="email" name="email" placeholder="Email *"/>
+            <p>Your message:</p>
             <textarea id="message" name="message" rows="3"><?php echo $this->request[0]->cat_number . "\nRequested quantity: ";?></textarea><br/>
-            <label for="sendme"><input type="checkbox" name="sendme" id="sendme">Please send me a copy of my request by Email</label>
+           <?php if($enablesendme) { ?>
+               <label for="sendme" ><input type = "checkbox" name = "sendme" id = "sendme" > Please send me a copy of my request by Email </label >
+           <?php } ?>
 <!--            Enter text shown below:-->
             <p><img src="/?option=<?php echo $option;?>&task=getcap&<?php echo session_name()?>=<?php echo session_id()?>"></p>
 <!--            <p><img src="components/com_chem/kcaptcha/?--><?php //echo session_name()?><!--=--><?php //echo session_id()?><!--"></p>-->
             <input required type="text" id="keystring" name="keystring" placeholder="Enter the text as shown above" value=""/>
 
             <input type="hidden" name="cat_number" value="<?php echo $this->request[0]->cat_number;?>" />
-        </div><br/>
+        </div>
         <div class="block">
+            <span id="errormsg">&nbsp;</span>
             <button type="button" id="btnSubmit" class="strsearch">Send Request</button>
         </div>
     </form>

@@ -12,6 +12,16 @@
         <param name="page_title" type="text" default="My Chem Title" label="Page Title" description="Page Title" />
         <param name="valuta" type="text" default="USD" label="Valuta" description="Valuta" />
 
+        <param name="@spacer" type="spacer" default="Params for Request form" label="" description="" />
+
+        <param name="enablesendme" type="radio" default="1" label="Show/hide Send me letter" description="Show/hide checkbox 'Please send me a copy of my request by Email'">
+            <option value="0">Hide</option>
+            <option value="1">Show</option>
+        </param>
+        <param name="emailfrom" type="text" default="no-reply@yourdomain.com" label="Email from" description="Email from" />
+        <param name="nameemailfrom" type="text" default="Admin yourdomain" label="Sender name" description="Sender name" />
+        <param name="emailsubject" type="text" default="Request From Message" label="Email subject" description="email subject" />
+        <param name="adminemail" type="text" default="admin@yourdomain.com" label="Admin email" description="Admin email. In this field you can write one of more emails separate with comma" />
 
         <param name="@spacer" type="spacer" default="Params for JSME editor" label="" description="" />
         <param name="jsme_height" type="text" default="380" label="JSME height (px)" description="JSME height in pixel" />
