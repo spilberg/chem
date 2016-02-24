@@ -244,9 +244,10 @@ $enablesendme = $this->params->get('enablesendme');
            <?php if($enablesendme) { ?>
                <label for="sendme" ><input type = "checkbox" name = "sendme" id = "sendme" > Please send me a copy of my request by Email </label >
            <?php } ?>
-<!--            Enter text shown below:-->
-            <p><img src="/?option=<?php echo $option;?>&task=getcap&<?php echo session_name()?>=<?php echo session_id()?>"></p>
-<!--            <p><img src="components/com_chem/kcaptcha/?--><?php //echo session_name()?><!--=--><?php //echo session_id()?><!--"></p>-->
+
+            <p><img id="imgcaptcha" src="/?option=<?php echo $option;?>&task=getcap&<?php echo session_name()?>=<?php echo session_id()?>&rand=">
+            <img id="reloadcaptcha" src="/administrator/images/reload.png"/></p>
+
             <input required type="text" id="keystring" name="keystring" placeholder="Enter the text as shown above" value=""/>
 
             <input type="hidden" name="cat_number" value="<?php echo $this->request[0]->cat_number;?>" />

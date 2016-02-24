@@ -6,12 +6,14 @@ $(document).ready(function(){
 
     $('#btnSndReq').on('click',function(e){
         //alert("The paragraph was clicked.");
+
        $('.wrapper').css('display','block');
        $('.form-action').css('display','block');
         e.preventDefault();
     });
 
     $('.close').on('click',function(e){
+        $('#reloadcaptcha').click();
         $('.wrapper').css('display','none');
         $('.form-action').css('display','none');
         e.preventDefault();
@@ -38,7 +40,16 @@ $(document).ready(function(){
         e.preventDefault();
     });
 
-
+    $('#reloadcaptcha').on('click', function(){
+        capsrc = $('#imgcaptcha').attr('src');
+        //len = capsrc.length;
+        if(capsrc.contains("&rand=")){
+            pos = capsrc.search("rand=")
+            search_src = capsrc.substr(0,pos+5);
+            rnd = Math.floor( Math.random() * ( 1 + 10 - 10000 ) ) + 10000;
+            $('#imgcaptcha').attr('src', search_src + rnd);
+        }
+    });
 
 });
 
