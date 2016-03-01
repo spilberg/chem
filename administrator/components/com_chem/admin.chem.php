@@ -80,12 +80,28 @@ switch ($task) {
         listOfFiles($option);
         break;
 
+    case 'listofsdf':
+        listOfSdf($option);
+        break;
+
     case 'viewlog':
         showLogFile();
         break;
 
     case 'delfiles':
         delFiles($fid);
+        break;
+
+    case 'ajaxupload':
+        ajaxupload($option);
+        break;
+
+    case 'upload':
+        uploadfiles();
+        break;
+
+    case 'progress';
+        progress();
         break;
 
     default:
@@ -418,6 +434,79 @@ function importDBProcess(){
     set_time_limit (0);
     HTML_chem::importDBProcess($array_chem_object);
 }
+function myImportDBProcess($myfilename){
+
+    define('RECORD_DELIMITER', "$$$$");
+    define('FIELD_DELIMITER', ">  ");
+
+    $mapping_fields  = array(
+                            'Formula' => 'molecular_formula',
+                            'Mol_Weight' => 'mol_weigh',
+                            'Catalog_number' => 'cat_number',
+                            'Purity' => 'purity',
+                            'Molecular_Formula' =>'molecular_formula',
+                            'Available_from_stock' => 'mass',
+                            'CAS_number' => 'cas_number',
+                            'MDL_number' => 'mdl_number',
+                            'Boiling_point' => 'boiling_point',
+                            'Melting_point' => 'melting_point',
+                            'SMILES' => 'smiles',
+                            'Status' => 'status',
+                            'iupac_name' => 'iupac_name',
+                            'price1mg' => 'price1mg',
+                            'price2mg' => 'price2mg',
+                            'price3mg' => 'price3mg',
+                            'price4mg' => 'price4mg',
+                            'price5mg' => 'price5mg',
+                            'price10mg' => 'price10mg',
+                            'price15mg' => 'price15mg',
+                            'price20mg' => 'price20mg',
+                            'price25mg' => 'price25mg',
+                            'price5umol' => 'price5mmol',
+                            'price10umol' => 'price10mmol',
+                            'price20umol' => 'price20mmol',
+                            'price5mmol' => 'price5mmol',
+                            'price10mmol' => 'price10mmol',
+                            'price20mmol' => 'price20mmol');
+
+    $array_chem_object = array();
+
+    //read content of file
+//    $file_to_delete     = JRequest::getVar('filetodelete',null,'FILES');
+//    var_dump($file_to_delete); exit;
+//    $sdf_file         = fopen($file_to_delete['tmp_name'], 'r');
+    $sdf_file         = fopen($myfilename, 'r');
+    $sdf_file_content = fread($sdf_file,filesize($myfilename));
+    fclose($sdf_file);
+
+    $records_array   = explode(RECORD_DELIMITER,$sdf_file_content);
+
+
+    for($j=0; $j<count($records_array); $j++){
+
+        $item_array = explode(FIELD_DELIMITER,$records_array[$j]);
+        $objItem    = new JObject();
+
+        for($i=0; $i < count($item_array); $i++){
+            if($i == 0) {
+               // echo "<br/><br/> mdl_file: " . $item_array[$i] . "<br/>";
+                $objItem->set('mdl_form',PHP_EOL.PHP_EOL.ltrim($item_array[$i]));
+            } else {
+                $item = explode(">", trim($item_array[$i], "\n\r<"));
+              //  echo $item[0] . ": " . trim($item[1]) . "<br/>";
+                if($mapping_fields[$item[0]]) // существует ли такое поле в таблице
+                    $objItem->set($mapping_fields[$item[0]],trim($item[1]));
+            }
+        }
+
+        $array_chem_object[$j] = $objItem;
+
+    }
+//var_dump($array_chem_object);exit;
+//    set_time_limit (0);
+//    HTML_chem::importDBProcess($array_chem_object);
+    return $array_chem_object;
+}
 
 function packageDelete($option){
     HTML_chem::pakageDelete($option);
@@ -466,6 +555,24 @@ function listOfFiles($option){
 
 }
 
+function listOfSdf($option){
+    global $mainframe;
+    $tmppath = $mainframe->getCfg( 'config.tmp_path' );
+
+
+    jimport('joomla.filesystem.folder');
+
+    $component = & JComponentHelper::getComponent('com_chem');
+    $params = new JParameter($component->params);
+    $mypath = $params->get('uploadpath');
+    if(!is_dir($tmppath . $mypath)) mkdir($tmppath . $mypath, 0755);
+
+
+    $filelist = JFolder::files($tmppath.$mypath, '.sdf', false, false, array('index.html'));
+    HTML_chem::showSdfList($filelist, $option);
+
+}
+
 function showLogFile(){
     $fid 	= JRequest::getVar('f');
     $option = JRequest::getCmd('option');
@@ -478,25 +585,236 @@ function showLogFile(){
 
 }
 
+/**
+ * @param $option
+ */
+function ajaxupload($option){
+
+    global $mainframe;
+    $tmppath = $mainframe->getCfg( 'config.tmp_path' );
+
+
+    jimport('joomla.filesystem.folder');
+
+    $component = & JComponentHelper::getComponent('com_chem');
+    $params = new JParameter($component->params);
+    $mypath = $params->get('uploadpath');
+    if(!is_dir($tmppath . $mypath)) mkdir($tmppath . $mypath, 0755);
+
+
+    $filelist = JFolder::files($tmppath.$mypath, '.sdf', false, false, array('index.html'));
+
+//    HTML_chem::showFileList($filelist, $option);
+
+    HTML_chem::ajaxupload($filelist, $option);
+}
+
+function uploadfiles(){
+    global $mainframe;
+    $tmppath = $mainframe->getCfg( 'config.tmp_path' );
+
+    $component = & JComponentHelper::getComponent('com_chem');
+    $params = new JParameter($component->params);
+
+    $mypath = $params->get('uploadpath');
+
+    // A list of permitted file extensions
+    $allowed = array('png', 'jpg', 'gif','zip', 'sdf');
+//var_dump($_FILES['upl']); exit;
+    if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
+
+        $extension = pathinfo($_FILES['upl']['name'], PATHINFO_EXTENSION);
+
+        if(!in_array(strtolower($extension), $allowed)){
+            echo '{"status":"error extension"}';
+            exit;
+        }
+//var_dump('/tmp/'.$_FILES['upl']['name']);
+//        exit;
+        if(!is_dir($tmppath . $mypath)) mkdir($tmppath . $mypath, 0755);
+
+        if(move_uploaded_file($_FILES['upl']['tmp_name'], $tmppath . $mypath .$_FILES['upl']['name'])){
+            echo '{"status":"success"}';
+            exit;
+        }
+    }
+
+    echo '{"status":"error"}';
+    exit;
+}
+
+function progress(){
+    header("Content-Type: text/event-stream");
+    header("Cache-Control: no-cache");
+    header("Access-Control-Allow-Origin: *");
+
+    ini_set('memory_limit', '-1');
+
+    $lastEventId = floatval(isset($_SERVER["HTTP_LAST_EVENT_ID"]) ? $_SERVER["HTTP_LAST_EVENT_ID"] : 0);
+    if ($lastEventId == 0) {
+        $lastEventId = floatval(isset($_GET["lastEventId"]) ? $_GET["lastEventId"] : 0);
+    }
+
+    $f 	= JRequest::getVar('f');
+    global $mainframe;
+    $tmppath = $mainframe->getCfg( 'config.tmp_path' );
+
+
+    jimport('joomla.filesystem.folder');
+
+    $component = & JComponentHelper::getComponent('com_chem');
+    $params = new JParameter($component->params);
+    $mypath = $params->get('uploadpath');
+
+    echo "data: starting;\n\n";
+    ob_flush();
+    flush();
+
+    try {
+        $array_chem_object = myImportDBProcess($tmppath . $mypath . $f);
+    }catch (Exception $e){
+        echo "data: error " . $e->getMessage() . ";\n\n";
+        ob_flush();
+        flush();
+        //exit;
+    }
+
+ //   $date_start = new JDate('now');
+
+    $row =& JTable::getInstance('chem', 'Table');
+
+
+//        echo "<pre>";
+//        print_r($row);
+//        echo "<pre>"; exit;
+
+    $total =  count($array_chem_object)-1;
+    $onepercent = round($total / 100);
+
+    echo "data: total: ".$total.";\n\n";
+//    echo "data: oneps ".$onepercent.";\n\n";
+    ob_flush();
+    flush();
+
+    $k = 0;
+    $p = 0;
+
+    for($j = 0; $j < count($array_chem_object); $j++) {
+
+        if ($array_chem_object[$j]->cat_number) {
+
+            if (!$row->bind($array_chem_object[$j])) {
+                JError::raiseError(500, $row->getError());
+            }
+
+//                 if (!$row->check()) {
+//                     JError::raiseError(500, $row->getError() );
+//                 }
+
+            if (!$row->storeDB()) {
+                JError::raiseError(500, $row->getError());
+            }
+
+
+            echo "id: " . $lastEventId . "\n";
+            echo "data: " . $array_chem_object[$j]->cat_number . ";\n\n";
+            if($k == $onepercent ) {
+                $p++;$k=0;
+                echo "data: percent:".$p .";\n\n";
+            }
+            ob_flush();
+            flush();
+            usleep(1); //sleep(1);
+            $k++;
+//            echo "Insert of update element with cat_number: " . $array_chem_object[$j]->cat_number . "<br/>";
+        } else {
+            //echo 'Not find Catalog_number in record. Please check input file for correct field names. <br/>';}
+
+
+        }
+
+    }
+    echo "data: percent:100;\n\n";
+    echo "data: finish;\n\n";
+    ob_flush();
+    flush();
+//        sleep(1);
+   // $date_end = new JDate('now');
+
+//    echo 'Processing ' . count($array_chem_object) . 'rows, elapsed '.$date_end->_date - $date_start->_date .' seconds';
+////
+////        var_dump($date_start->_date);
+////
+////
+////        echo "<br/>";
+////
+////        var_dump($date_end);
+
+//    echo ":" . str_repeat(" ", 2048) . "\n"; // 2 kB padding for IE
+//    echo "retry: 2000\n";
+
+//    // event-stream
+//    $i = $lastEventId;
+//    $c = $i + 100;
+//    while (++$i < $c) {
+//        echo "id: " . $i . "\n";
+//        echo "data: " . $i . ";\n\n";
+//        ob_flush();
+//        flush();
+//        sleep(1);
+//    }
+
+
+
+
+    exit;
+}
+
 function delFiles(&$fid){
     global $mainframe;
+    $tmppath = $mainframe->getCfg( 'config.tmp_path' );
+
+    $component = & JComponentHelper::getComponent('com_chem');
+    $params = new JParameter($component->params);
+
+    $mypath = $params->get('uploadpath');
+
+
+
+    $act = JRequest::getCmd('act');
 
     jimport('joomla.filesystem.file');
 
     // Check for request forgeries
     JRequest::checkToken() or jexit( 'Invalid Token' );
 
-    array_walk($fid,'glue');
+    if($act == 'log') array_walk($fid,'gluelog');
+    if($act == 'sdf') array_walk($fid,'gluesdf');
 
 
     JFile::delete($fid);
 
+    if($act == 'log')
+        $mainframe->redirect( "index.php?option=com_chem&amp;task=listoffiles", 'Recording has been deleted!' );
 
-    $mainframe->redirect( "index.php?option=com_chem&amp;task=listoffiles", 'Recording has been deleted!' );
-
+    if($act == 'sdf')
+        $mainframe->redirect( "index.php?option=com_chem&amp;task=listofsdf", 'Recording has been deleted!' );
 }
 
-function glue(&$value,$key){
+function gluelog(&$value,$key){
     $fp = JPATH_ROOT.DS.'logs'.DS;
+    $value = $fp.$value;
+}
+
+function gluesdf(&$value,$key){
+    global $mainframe;
+    $tmppath = $mainframe->getCfg( 'config.tmp_path' );
+
+    $component = & JComponentHelper::getComponent('com_chem');
+    $params = new JParameter($component->params);
+
+    $mypath = $params->get('uploadpath');
+
+    $fp = $tmppath . $mypath;
     $value = $fp.$value;
 }

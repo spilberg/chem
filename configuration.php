@@ -61,8 +61,8 @@ var $sef_suffix    = '0';
 /* Feed Settings */
 var $feed_limit   = 10;
 var $feed_email   = 'author';
-var $log_path = '/home/svit/www/chem/www/logs/';
-var $tmp_path = '/home/svit/www/chem/www/tmp/';
+var $log_path = 'Z:\\home\\chem\\www/logs/';
+var $tmp_path = 'Z:\\home\\chem\\www/tmp/';
 /* Session Setting */
 var $lifetime = '15';
 var $session_handler = 'database';

@@ -22,6 +22,7 @@ switch ( $task ) {
         break;
 
     case 'listoffiles':
+    case 'listofsdf':
         TOOLBAR_chem::_LISTOFFILES();
         break;
 

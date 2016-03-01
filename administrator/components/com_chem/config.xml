@@ -23,6 +23,9 @@
         <param name="emailsubject" type="text" default="Request From Message" label="Email subject" description="email subject" />
         <param name="adminemail" type="text" default="admin@yourdomain.com" label="Admin email" description="Admin email. In this field you can write one of more emails separate with comma" />
 
+        <param name="@spacer" type="spacer" default="Params for upload files" label="" description="" />
+        <param name="uploadpath" type="text" default="" label="Path to upload" description="Path to upload files, if live blank your files will stored in tmp folder" />
+
         <param name="@spacer" type="spacer" default="Params for JSME editor" label="" description="" />
         <param name="jsme_height" type="text" default="380" label="JSME height (px)" description="JSME height in pixel" />
 

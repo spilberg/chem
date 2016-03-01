@@ -51,6 +51,10 @@ $(document).ready(function(){
         }
     });
 
+    $('#sendme').on('change', function(){
+        $('#notes').fadeToggle( "slow", "linear" )
+    })
+
 });
 
 function  checkForm(){

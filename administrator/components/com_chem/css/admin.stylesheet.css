@@ -5,3 +5,15 @@
 .icon-32-download {
     background: url("../images/icon-32-download.png") 0 0 no-repeat;
 }
+
+a.mybtn {
+    background-color:#007a96;
+    padding:12px 26px;
+    color:#fff !important;
+    font-size:14px;
+    border-radius:2px;
+    cursor:pointer;
+    display:inline-block;
+    margin-bottom:12px;
+    line-height:1;
+}

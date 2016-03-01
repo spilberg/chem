@@ -164,12 +164,12 @@ class ChemController extends JController
                     $this->sendRequetQuote($emailfrom,$email,$emailsubject, $body);
 
                 if ($this->sendRequetQuote($emailfrom,$adminemail,$emailsubject, $body)) {
-                    echo '<p class="green">Thank you! Your request has been sent to admin. We will contact you.<p>';
+                    echo '<p class="green">Thank you, your request has been sent successfully. Our sales team will recontact you in order to better fulfil your expectations.<p>';
                 } else {
-                    echo '<p class="red">Error. Please contact administrator.<p>';
+                    echo '<p class="red">Sorry, but your request has not been sent. Please, reload the page and try again.<p>';
                 }
             }else{
-                echo '<p class="red">Sorry! Your request has not sent. You need refresh your browser for new request.<p>';
+                echo '<p class="red">Sorry, but your request has not been sent. Please, reload the page and try again.<p>';
             }
 //        }
 

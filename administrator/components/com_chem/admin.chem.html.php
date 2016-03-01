@@ -753,6 +753,8 @@ exit;
     }
 
     function importDB($option){
+global $mainframe;
+        $tmppath = $mainframe->getCfg( 'config.tmp_path' );
 
         ?>
 
@@ -786,7 +788,14 @@ exit;
             <p>and presss button "ImportDB"</p>
 
             <p>Remember! This process can take a long time. Please be patient</p>
-
+                   <ul>
+                       <li>Tmp path: <?php echo $mainframe->getCfg( 'config.tmp_path' ); ?></li>
+                       <li>max_execution_time:  <?php echo ini_get('max_execution_time');?></li>
+                       <li>max_input_time:  <?php echo ini_get('max_input_time');?></li>
+                       <li>upload_max_filesize:  <?php echo ini_get('upload_max_filesize');?></li>
+                       <li>post_max_size:  <?php echo ini_get('post_max_size');?></li>
+                       <li>memory_limit:  <?php echo ini_get('memory_limit');?></li>
+                   </ul>
             <input type="hidden" name="option" value="<?php echo $option; ?>" />
             <input type="hidden" name="task" value="" />
             <?php echo JHTML::_( 'form.token' ); ?>
@@ -1032,9 +1041,130 @@ exit;
 
                     <input type="hidden" name="option" value="<?php echo $option; ?>" />
                     <input type="hidden" name="task" value="" />
+                    <input type="hidden" name="act" value="log" />
                     <?php echo JHTML::_( 'form.token' ); ?>
         </form>
       <?php
+    }
+
+    function showSdfList($filelist, $option){
+        //  var_dump($filelist);
+        JHTML::_('behavior.modal', 'a.modal', array('handler' => 'ajax'));
+        JHTML::_('script', 'jquery.min.js','https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/');
+        JHTML::_('script', 'progress.js','administrator/components/com_chem/assets/js/');
+
+        JHTML::_('script', 'eventsource.js','administrator/components/com_chem/assets/js/');
+
+        ?>
+
+<!--        <a href="/administrator/index.php?opton=com_chem&task=ajaxupload" class="modal" rel="{handler: "iframe", size: {x: 600, y: 550}, onClose: function() {}}">Заказать</a>-->
+       <a href="/administrator/index.php?option=com_chem&task=ajaxupload&&tmpl=component" class="mybtn modal" rel="{handler: 'iframe', size: {x: 600, y: 550}, onClose: function() {document.location.reload();}}">Upload files</a>
+        <p>Upload files for processing. After treatment, remove them. The processing will be displayed in the corresponding progress bar. Be patient, it may take some time. During this time the session is overdue and will have you can log in again.
+       </p>
+        <form action="index.php" method="post" name="adminForm">
+
+            <table class="adminlist">
+                <thead>
+                <tr>
+                    <th width="10" rowspan="2">
+                        <?php echo JText::_( 'Num' ); ?>
+                    </th>
+                    <th width="10" class="title" rowspan="2">
+                        <input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count($filelist); ?>);" />
+                    </th>
+
+                    <th width="20%" >File name</th>
+                    <th>Progress</th>
+                    <th width="20%">Commands</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                $k = 0;
+                for ($i=0; $i < count($filelist); $i++) {
+//                $row = $rows[$i];
+
+                    $link 		= JRoute::_( 'index.php?option=com_chem&task=viewlog&f='. $filelist[$i] );
+
+                    $checked 	= JHTML::_('grid.id', $i, $filelist[$i], false, 'fid');
+                    $access 	= JHTML::_('grid.access',   $row, $i );
+                    $published 	= JHTML::_('grid.published', $row, $i );
+
+                    //                    $row->cat_link 	= JRoute::_( 'index.php?option=com_categories&section=com_contact_details&task=edit&type=other&cid[]='. $row->catid );
+                    //                    $row->user_link	= JRoute::_( 'index.php?option=com_users&task=editA&cid[]='. $row->user_id );
+                    ?>
+                    <tr class="<?php echo "row$k"; ?>">
+                        <td><?php echo $i + 1;?></td>
+                        <td>
+                            <?php echo $checked; ?>
+                        </td>
+                        <td>
+<!--                        <span class="editlinktip hasTip" title="--><?php //echo JText::_( 'View log' );?><!--::--><?php //echo htmlspecialchars($filelist[$i]); ?><!--">-->
+<!--						<a href="--><?php //echo $link; ?><!--">-->
+<!--                            --><?php //echo htmlspecialchars($filelist[$i]); ?><!--</a> </span>-->
+                            <?php echo htmlspecialchars($filelist[$i]); ?>
+                        </td>
+                        <td><progress id="progressbar_<?php echo $i;?>" value="0" max="100"></progress>&nbsp;<span id="ps_<?php echo $i;?>">0%</span>
+                            &nbsp;<span id="current_<?php echo $i;?>"></span> &nbsp;<span id="total_<?php echo $i;?>"></span>&nbsp;<span id="open_<?php echo $i;?>"></span></td>
+                        <?php $dataoptions = '{"name":"'. htmlspecialchars($filelist[$i]).'", "id":"'.$i.'"}'; ?>
+                        <td><button id="button_<?php echo $i;?>" type="button" data-options='<?php echo $dataoptions; ?>'>Process Import</button>&nbsp;<button id="stopbutton_<?php echo $i;?>" type="button" data-options='<?php echo $dataoptions; ?>'>Stop Import</button></td>
+                    </tr>
+                    <?php
+                    $k = 1 - $k;
+                } ?>
+                </tbody>
+
+            </table>
+
+
+            <input type="hidden" name="option" value="<?php echo $option; ?>" />
+            <input type="hidden" name="task" value="" />
+            <input type="hidden" name="act" value="sdf" />
+            <?php echo JHTML::_( 'form.token' ); ?>
+        </form>
+    <?php
+    }
+
+    function ajaxupload($filelist, $option){
+        global $mainframe;
+        $tmppath = $mainframe->getCfg( 'config.tmp_path' );
+
+        JHTML::stylesheet('style.css','administrator/components/com_chem/assets/css/');
+        JHTML::_('script', 'jquery.min.js','https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/');
+        JHTML::_('script', 'jquery.knob.js','administrator/components/com_chem/assets/js/');
+
+        JHTML::_('script', 'jquery.ui.widget.js','administrator/components/com_chem/assets/js/');
+        JHTML::_('script', 'jquery.iframe-transport.js','administrator/components/com_chem/assets/js/');
+        JHTML::_('script', 'jquery.fileupload.js','administrator/components/com_chem/assets/js/');
+        JHTML::_('script', 'script.js','administrator/components/com_chem/assets/js/');
+
+//        echo 'post_max_size = ' . ini_get('post_max_size') . "\n";
+        ?>
+
+        <ul>
+            <li>Tmp path: <?php echo $mainframe->getCfg( 'config.tmp_path' ); ?></li>
+            <li>max_execution_time:  <?php echo ini_get('max_execution_time');?></li>
+            <li>max_input_time:  <?php echo ini_get('max_input_time');?></li>
+            <li>upload_max_filesize:  <?php echo ini_get('upload_max_filesize');?></li>
+            <li>post_max_size:  <?php echo ini_get('post_max_size');?></li>
+            <li>memory_limit:  <?php echo ini_get('memory_limit');?></li>
+        </ul>
+        <form id="upload" method="post" action="/administrator/index.php?option=com_chem&task=upload" enctype="multipart/form-data">
+            <div id="drop">
+                Drop Files Here or&nbsp;
+
+                <a>Browse</a>
+                <input type="file" name="upl" multiple />
+            </div>
+
+            <ul>
+                <!-- The file uploads will be shown here -->
+            </ul>
+
+        </form>
+
+        <?php
+
     }
 
 }

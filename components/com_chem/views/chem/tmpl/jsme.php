@@ -244,6 +244,8 @@ $enablesendme = $this->params->get('enablesendme');
            <?php if($enablesendme) { ?>
                <label for="sendme" ><input type = "checkbox" name = "sendme" id = "sendme" > Please send me a copy of my request by Email </label >
            <?php } ?>
+            <p class="green" style="display: none; font-weight: bold;" id="notes">А copy of this request will be sent to your email. If you can`t find it, please check the spam folder.
+            </p>
 
             <p><img id="imgcaptcha" src="/?option=<?php echo $option;?>&task=getcap&<?php echo session_name()?>=<?php echo session_id()?>&rand=">
             <img id="reloadcaptcha" src="/administrator/images/reload.png"/></p>
